@@ -10,11 +10,9 @@
 >
 > 4. **建立依赖**
 >
-> 5. **相关配置信息**
->
-> 6. **参考资料**
+> 5. **参考资料**
 
-#### 
+
 
 * #### 项目背景
 
@@ -58,10 +56,12 @@ end
 
 * #### 建立依赖
 
-1. 在MSDKTest--&gt;Targets--&gt;Build Phases--&gt;Link Binary with Libraries添加自定义的MSDK.framework
-2. 不能在 MSDKTest--&gt;Targets--&gt;General--&gt;Embedded Binaries添加自定义的MSDK.framework。否则在打release包时会报错，[Found an unexpected Mach-O header code](#)
+1. 向MSDKTest添加MSDK.framework依赖。操作流程，在MSDKTest--&gt;Targets--&gt;Build Phases--&gt;Link Binary with Libraries添加自定义的MSDK.framework
+2. 向MSDKTest添加MSDK的header头文件索引。操作流程，MSDKTest--&gt;Targets--&gt;Build Settings--&gt;User Header Search Paths--&gt;$\(SRCROOT\)/../MSDK（并设置递归搜索，recursive）
+3. 不能在 MSDKTest--&gt;Targets--&gt;General--&gt;Embedded Binaries添加自定义的MSDK.framework。否则在打release包时会报错，[Found an unexpected Mach-O header code](#)
+4. 注意两个工程的Deployment Target版本号，MSDK版本兼容MSDKTest版本否则会报MSDK.framework找不到。
 
-
+* #### **参考资料**
 
 [iOS建一个framework和frameworkTest项目在workspace中](https://www.jianshu.com/p/a488399a14cd)
 

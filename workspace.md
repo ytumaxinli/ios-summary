@@ -12,8 +12,6 @@
 >
 > 5. **参考资料**
 
-
-
 * #### 项目背景
 
 由于业务需求，需要对外开发一个framework提供给第三方使用。由于要同时提供framework及使用demo，因此采用workspace管理测试project和framework project。

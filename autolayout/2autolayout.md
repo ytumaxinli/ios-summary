@@ -38,8 +38,7 @@
 >               multiplier:(CGFloat)multiplier                  //乘数
 >               constant:(CGFloat)c;                            //常量
 >
-> //示例:view1顶部相对于view2的顶部向下偏移10
-> //1 view1是view2的父view,因此contraint添加到view1上
+> //示例:view2顶部相对于view1的顶部向下偏移10，view1是view2的父view,因此contraint添加到view1上。
 > [self.view1 addConstraint:[NSLayoutConstraint constraintWithItem:self.view2
 >                                                        attribute:NSLayoutAttributeTop
 >                                                        relatedBy:NSLayoutRelationEqual

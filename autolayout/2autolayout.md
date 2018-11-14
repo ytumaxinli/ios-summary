@@ -59,8 +59,14 @@
 >                                                        attribute:NSLayoutAttributeTop
 >                                                       multiplier:1
 >                                                         constant:10]];
-> //示例：
-> [NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:50];
+> //示例：view2的高度为50
+> [NSLayoutConstraint constraintWithItem:self.view2 
+>                              attribute:NSLayoutAttributeHeight 
+>                              relatedBy:NSLayoutRelationEqual 
+>                              toItem:nil 
+>                              attribute:NSLayoutAttributeNotAnAttribute 
+>                              multiplier:1 
+>                              constant:50];
 > ```
 
 

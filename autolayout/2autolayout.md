@@ -31,13 +31,15 @@
 >
 > **使用NSLayoutConstraint注意事项：**
 >
-> * 需要添加约束的view,需要禁止translatesAutoresizingMaskIntoConstraints属性。
->
-> * 当第二个view为空时需要设置view2为nil,attr2为NSLayoutAttributeNotAnAttribute。
->
+> > 需要添加约束的view,需要禁止translatesAutoresizingMaskIntoConstraints属性。
+> >
+> > 如果约束不需要第二个view 和 属性是，可以设置view2为nil、attr2为NSLayoutAttributeNotAnAttribute
+> >
 > > ```
-> > If the constraint you wish to express does not have a second view and attribute, use nil and NSLayoutAttributeNotAnAttribute
+> > If the constraint you wish to express does not have a second view and attribute, 
+> > use nil and NSLayoutAttributeNotAnAttribute
 > > ```
+>
 >
 > **创建约束对象的常用方法**
 >

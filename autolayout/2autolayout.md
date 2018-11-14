@@ -97,13 +97,49 @@
 > >
 > > Multiple Predicates：\[flexibleButton\(&gt;=70,&lt;=100\)\]
 >
+> **VFL的使用**
+>
+> > 使用VFL来创建约束数组
+> >
+> > ```
+> > + (NSArray *)constraintsWithVisualFormat:(NSString *)format           //VFL语句                                                                                        
+> >                                  options:(NSLayoutFormatOptions)opts  //约束类型 
+> >                                  metrics:(NSDictionary *)metrics      //VFL语句中用到的具体数值
+> >                                  views:(NSDictionary *)views;         //VFL语句中用到的控件
+> >
+> > //创建一个字典（内部包含VFL语句中用到的控件）的快捷宏定义
+> > NSDictionaryOfVariableBindings(...)
+> > ```
+>
 > VFL示例
 >
 > > ```
-> >
+> > //禁止AutoresizingMask自动转化为约束
+> > [self.viewRed setTranslatesAutoresizingMaskIntoConstraints:NO];
+> > [self.viewBlue setTranslatesAutoresizingMaskIntoConstraints:NO];
+> > //_viewRed、_viewRed 1.宽度相等 2.顶底对齐 3分别距离父View左右边距及它们之间距离均为30
+> > [self.viewBase addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-gaps-[_viewRed(==_viewBlue)]-gaps-[_viewBlue]-gaps-|"
+> >                                                                       options:NSLayoutFormatAlignAllTop | NSLayoutFormatAlignAllBottom
+> >                                                                       metrics:@{@"gaps":@30}
+> >                                                                       views:NSDictionaryOfVariableBindings(_viewRed,_viewBlue)]];
+> > //_viewRed 1.高度为50 2.距离父底边10
+> > [self.viewBase addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[_viewRed(height)]-gaps-|"
+> >                                                                       options:kNilOptions
+> >                                                                       metrics:@{@"height":@50,@"gaps":@10}
+> >                                                                       views:NSDictionaryOfVariableBindings(_viewRed)]];
 > > ```
+
+
+
+断点调试
+
+
 
 参考文献：
 
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html\#//apple\_ref/doc/uid/TP40010853-CH7-SW1](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html#//apple_ref/doc/uid/TP40010853-CH7-SW1)
+
+https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints
+
+
 

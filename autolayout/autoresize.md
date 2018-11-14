@@ -41,11 +41,13 @@
 >
 > > An integer bit mask that determines how the receiver resizes itself when its superview’s bounds change.
 > >
-> > ## 
+> > ## Decalartion
 > >
 > > ## 
 > >
 > > When a view’s bounds change, that view automatically resizes its subviews according to each subview’s autoresizing mask. You specify the value of this mask by combining the constants described in[`UIViewAutoresizing`](https://developer.apple.com/documentation/uikit/uiviewautoresizing?language=objc)using the C bitwise OR operator. Combining these constants lets you specify which dimensions of the view should grow or shrink relative to the superview. The default value of this property is`UIViewAutoresizingNone`, which indicates that the view should not be resized at all.
+
+
 
 @property\(nonatomic\)UIViewAutoresizingautoresizingMask; // simple resize. default is UIViewAutoresizingNone
 

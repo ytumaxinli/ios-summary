@@ -11,9 +11,8 @@
 >
 > > obj1.property1 =（obj2.property2 \* multiplier）+ constant value
 >
->
->
 > **添加约束的规则  **
+>
 > > * 对于两个同层级view之间的约束关系，添加到它们的父view上
 > >
 > > ![](/assets/image8.jpeg)

@@ -75,24 +75,35 @@
 VFL语言
 
 > **VFL语言简介**
-> > VFL全称是Visual Format Language，翻译过来是“可视化格式语言”，VFL是苹果公司为了简化Autolayout的编码而推出的抽象语言
+>
+> > VFL全称是Visual Format Language，翻译过来是“可视化格式语言”，VFL是苹果公司为了简化Autolayout的编码而推出的抽象语言  
 > > ![](/assets/4F9D2A32-0B3A-4B4D-BCAD-EF1D298741AB.png)
 >
 > VFL示例
 >
-> > H:\[cancelButton\(72\)\]-12-\[acceptButton\(50\)\]
-> >
+> > ```
+> > H:[cancelButton(72)]-12-[acceptButton(50)]
 > > canelButton宽72，acceptButton宽50，它们之间间距12
-> > H:\[wideView\(&gt;=60@700\)\]
+> > ```
 > >
+> > ```
+> > H:[wideView(>=60@700)]
 > > wideView宽度大于等于60point，该约束条件优先级为700（优先级最大值为1000，优先级越高的约束越先被满足）
-> > V:\[redBox\]\[yellowBox\(==redBox\)\]
+> > ```
 > >
+> > ```
+> > V:[redBox][yellowBox(==redBox)]
 > > 竖直方向上，先有一个redBox，其下方紧接一个高度等于redBox高度的yellowBox
+> > ```
 > >
-> > H:\|-10-\[Find\]-\[FindNext\]-\[FindField\(&gt;=20\)\]-\|
-> >
-> > 水平方向上，Find距离父view左边缘默认间隔宽度，之后是FindNext距离Find间隔默认宽度；再之后是宽度不小于20的FindField，它和FindNext以及父view右边缘的间距都是默认宽度。（竖线“\|”表示superview的边缘）
+> > ```
+> > H:|-10-[Find]-[FindNext]-[FindField(>=20)]-|
+> > 水平方向上，Find距离父view左边缘默认间隔宽度，之后是FindNext距离Find间隔默认宽度；再之后是宽度不小于20的FindField，它和FindNext以及父view右边缘的间距都是默认宽度。（竖线“|”表示superview的边缘）
+> > ```
+
+参考文献：
+
+https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html\#//apple\_ref/doc/uid/TP40010853-CH7-SW1
 
 
 

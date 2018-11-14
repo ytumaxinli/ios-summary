@@ -27,7 +27,19 @@
 
 * #### NSLayoutConstraint
 
-> 一个NSLayoutConstraint对象就代表一个约束,创建约束对象的常用方法
+> 一个NSLayoutConstraint对象就代表一个约束。
+>
+> **使用NSLayoutConstraint注意事项：**
+>
+> * 需要添加约束的view,需要禁止translatesAutoresizingMaskIntoConstraints属性。
+>
+> * 当第二个view为空时需要设置view2为nil,attr2为NSLayoutAttributeNotAnAttribute。
+>
+> > ```
+> > If the constraint you wish to express does not have a second view and attribute, use nil and NSLayoutAttributeNotAnAttribute
+> > ```
+>
+> **创建约束对象的常用方法**
 >
 > ```
 > +(id)constraintWithItem:(id)view1                             //要约束的控件
@@ -39,6 +51,7 @@
 >               constant:(CGFloat)c;                            //常量
 >
 > //示例:view2顶部相对于view1的顶部向下偏移10，view1是view2的父view,因此contraint添加到view1上。
+> [self.view2 setTranslatesAutoresizingMaskIntoConstraints:NO];
 > [self.view1 addConstraint:[NSLayoutConstraint constraintWithItem:self.view2
 >                                                        attribute:NSLayoutAttributeTop
 >                                                        relatedBy:NSLayoutRelationEqual
@@ -46,8 +59,8 @@
 >                                                        attribute:NSLayoutAttributeTop
 >                                                       multiplier:1
 >                                                         constant:10]];
->                                                         
-> NSLayoutConstraint *constratin4 = [NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:50];
+> //示例：
+> [NSLayoutConstraint constraintWithItem:self.view2 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:50];
 > ```
 
 

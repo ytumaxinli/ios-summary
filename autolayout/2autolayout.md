@@ -27,5 +27,24 @@
 
 * #### NSLayoutConstraint
 
+> 一个NSLayoutConstraint对象就代表一个约束,创建约束对象的常用方法
+>
+> ```
+> +(id)constraintWithItem:(id)view1                             //要约束的控件
+>               attribute:(NSLayoutAttribute)attr1              //约束的类型（做怎样的约束）
+>               relatedBy:(NSLayoutRelation)relation            //与参照控件之间的关系  
+>               toItem:(id)view2                                //参照的控件
+>               attribute:(NSLayoutAttribute)attr2              //约束的类型（做怎样的约束）
+>               multiplier:(CGFloat)multiplier                  //乘数
+>               constant:(CGFloat)c;                            //常量
+>
+> //示例
+> [NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view2 attribute:NSLayoutAttributeBottom multiplier:1 constant:-10];
+> NSLayoutConstraint *constratin4 = [NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:50];
+>
+> ```
+
+
+
 
 

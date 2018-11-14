@@ -1,8 +1,13 @@
 * #### **文章摘要**
 
-> 1. **常见属性说明**
-> 2. **使用示例**
-> 3. **参考文献**
+> 1. **简介**
+> 2. **常见属性说明**
+> 3. **使用示例**
+> 4. **参考文献**
+
+* #### 简介
+
+> 在Autolayout之前，有Autoresizing可以作屏幕适配，但局限性较大，有些任务根本无法完成。Autoresizing只能设置自身和父控件之间的关系
 
 * #### 常见属性
 
@@ -24,7 +29,6 @@
 > >
 > > By default, the property is set to`YES`for any view you programmatically create.
 >
->
 > * **autoresizesSubviews**
 >
 > > A Boolean value that determines whether the receiver automatically resizes its subviews when its bounds change.
@@ -38,7 +42,6 @@
 > > **Discussion**
 > >
 > > When set to`YES`, the receiver adjusts the size of its subviews when its bounds change. The default value is`YES`.
->
 >
 > * **autoresizingMask**
 >
@@ -56,7 +59,6 @@
 > >
 > > If the autoresizing behaviors do not offer the precise layout that you need for your views, you can use a custom container view and override its[`layoutSubviews`](https://developer.apple.com/documentation/uikit/uiview/1622482-layoutsubviews?language=objc)method to position your subviews more precisely.
 >
->
 > * **UIViewAutoresizing**
 >
 > ```
@@ -71,7 +73,21 @@
 > };
 > ```
 
+* #### 使用示例
 
+```
+UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(kMargin, kTopSpace, kTopViewWidth, kTopViewHeight)];
+
+// 设置View控件的宽度按照父视图的比例进行缩放，距离父视图顶部、左边距和右边距的距离不变
+[topView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin];
+
+// 添加视图
+[self.view addSubview:topView];
+
+// 注意：重新设置topView位置的代码，必须要写在添加视图的后面，不然autoresizing的位置计算会出错！
+CGFloat topViewWidth = kUIScreen.size.width - kMargin * 2;
+[topView setFrame:CGRectMake(kMargin, kTopSpace, topViewWidth, kTopViewHeight)];
+```
 
 * #### 参考文献
 

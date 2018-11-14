@@ -38,13 +38,17 @@
 >               multiplier:(CGFloat)multiplier                  //乘数
 >               constant:(CGFloat)c;                            //常量
 >
-> //示例
-> [NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view2 attribute:NSLayoutAttributeBottom multiplier:1 constant:-10];
+> //示例:view1顶部相对于view2的顶部向下偏移1view1是view2的父view,
+> [self.view1 addConstraint:[NSLayoutConstraint constraintWithItem:self.view2
+>                                                        attribute:NSLayoutAttributeTop
+>                                                        relatedBy:NSLayoutRelationEqual
+>                                                           toItem:self.view1
+>                                                        attribute:NSLayoutAttributeTop
+>                                                       multiplier:1
+>                                                         constant:10]];
+>                                                         
 > NSLayoutConstraint *constratin4 = [NSLayoutConstraint constraintWithItem:self.view1 attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:50];
->
 > ```
-
-
 
 
 

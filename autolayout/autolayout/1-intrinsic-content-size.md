@@ -5,7 +5,7 @@
 > some views have a natural size given their current content.
 > ```
 
-* #### Intrinsic content size for common con
+* #### Intrinsic content size for common controls
 
 
 

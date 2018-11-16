@@ -6,22 +6,31 @@
 > When working with scroll views, you need to define both the size and position of the scroll view’s frame within its superview, and the size of the scroll view’s content area. All of these features can be set using Auto Layout.
 > ```
 
-
-
 * #### 约束分类
 
 > **scroll views的约束可以分为两类，作用于scroll view’s frame上的约束和作用于scroll view’s content area上的约束。**
 >
 > **scroll view’s frame上的约束：**
-> > scroll view与它之外的视图之间的约束都作用于scroll view’s frame
+>
+> > * scroll view与它之外的视图之间的约束都作用于scroll view’s frame
 > >
-> > 高度，宽度或中心之间的约束附作用于scroll view's frame。
+> > ```
+> > Any constraints between the scroll view and objects outside the scroll view attach to the scroll view’s frame, just as with any other view
+> > ```
+> >
+> > * 高度，宽度或中心之间的约束附作用于scroll view's frame。
 > >
 > > ```
 > > Constraints between the height, width, or centers attach to the scroll view’s frame
 > > ```
-
-
+>
+> * **content area上的约束**
+>
+> ```
+> Constraints between the height, width, or centers attach to the scroll view’s frame
+> ```
 
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithScrollViews.html\#//apple\_ref/doc/uid/TP40010853-CH24-SW1](#)
+
+
 

@@ -38,8 +38,6 @@
 > >
 > > ![](/assets/屏幕快照 2018-11-16 下午5.06.21.png)
 >
->
->
 > **固有尺寸设置优先级**
 >
 > > 抗拉伸优先级为250，抗压缩优先级为750。也可以对此进行修改。
@@ -49,6 +47,45 @@
 > >
 > > - (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
 > > ```
+
+* #### 示例
+
+> ```
+> //两个水平布局的label，两边间隔分别是12，中间间隔为8（懂意思就行）
+>
+> UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectZero];
+> label1.backgroundColor = [UIColor redColor];
+> label1.text = @"我是标题";
+> [self.view addSubview:label1];
+>  [label1 mas_makeConstraints:^(MASConstraintMaker *make) {
+>     make.centerY.equalTo(self.view);
+>     make.left.equalTo(@(12));
+>  }];
+>     
+> UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectZero];
+> label2.backgroundColor = [UIColor redColor];
+> label2.text = @"我是描述";
+> [self.view addSubview:label2];
+> [label2 mas_makeConstraints:^(MASConstraintMaker *make) {
+>     make.centerY.equalTo(label1);
+>     make.left.equalTo(label1.mas_right).offset(8);
+>     make.right.equalTo(self.view).offset(-12);
+> }];
+>
+> //通过设置抗拉伸优先级，改变被拉伸的lable
+> [label1 setContentHuggingPriority:UILayoutPriorityRequired
+>                           forAxis:UILayoutConstraintAxisHorizontal];
+> [label2 setContentHuggingPriority:UILayoutPriorityDefaultLow
+>                           forAxis:UILayoutConstraintAxisHorizontal];
+> ```
+>
+> ![](/assets/2701344-43751df97caa3b44.png)
+>
+> ![](/assets/2701344-cf1a2c1f96df59e8.png)
+
+
+
+
 
 
 

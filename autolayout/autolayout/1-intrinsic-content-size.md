@@ -14,8 +14,6 @@
 > | Labels, buttons, switches, and text fields | Defines both the height and the width. |
 > | Text views and image views | Intrinsic content size can vary. |
 >
->
->
 > **详细介绍**
 >
 > 1. UILabel 和 UIButton 的固有尺寸是根据他们的显示内容和字体大小确定的
@@ -39,6 +37,18 @@
 > > Compression resistance 向外推动视图，使得它不会夹住内容物不会被压缩。优先级为UILayoutPriorityDefaultHigh 750
 > >
 > > ![](/assets/屏幕快照 2018-11-16 下午5.06.21.png)
+>
+>
+>
+> **固有尺寸设置优先级**
+>
+> > 抗拉伸优先级为250，抗压缩优先级为750。也可以对此进行修改。
+> >
+> > ```
+> > - (void)setContentHuggingPriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
+> >
+> > - (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
+> > ```
 
 
 

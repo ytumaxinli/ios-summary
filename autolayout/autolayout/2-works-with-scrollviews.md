@@ -26,11 +26,11 @@
 >
 > * **content area上的约束**
 >
-> ```
-> Constraints between the height, width, or centers attach to the scroll view’s frame
-> ```
+> > scroll view的边缘或边距与其内容之间的约束作用于scroll view’s content area
+> >
+> > ```
+> > Constraints between the edges or margins of the scroll view and its content attach to the scroll view’s content area
+> > ```
 
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithScrollViews.html\#//apple\_ref/doc/uid/TP40010853-CH24-SW1](#)
-
-
 

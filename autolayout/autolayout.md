@@ -148,15 +148,17 @@
 
 * #### 调试AutoLayout
 
-> ### \
+> ###
 
 #### 
 
-参考文献：
+* #### 参考文献：
 
-[https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html\#//apple\_ref/doc/uid/TP40010853-CH7-SW1](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html#//apple_ref/doc/uid/TP40010853-CH7-SW1)
+> [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html\#//apple\_ref/doc/uid/TP40010853-CH7-SW1](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/index.html#//apple_ref/doc/uid/TP40010853-CH7-SW1)
+>
+> [Debugging iOS AutoLayout Issues](https://staxmanade.com/2015/06/debugging-ios-autolayout-issues/)
+>
+> [https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints](https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints)
 
-[Debugging iOS AutoLayout Issues](https://staxmanade.com/2015/06/debugging-ios-autolayout-issues/)
 
-[https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints](https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints)
 

@@ -8,6 +8,19 @@
 
 
 
+* #### 约束分类
+
+> **scroll views的约束可以分为两类，作用于scroll view’s frame上的约束和作用于scroll view’s content area上的约束。**
+>
+> **scroll view’s frame上的约束：**
+> > scroll view与它之外的视图之间的约束都作用于scroll view’s frame
+> >
+> > 高度，宽度或中心之间的约束附作用于scroll view's frame。
+> >
+> > ```
+> > Constraints between the height, width, or centers attach to the scroll view’s frame
+> > ```
+
 
 
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithScrollViews.html\#//apple\_ref/doc/uid/TP40010853-CH24-SW1](#)

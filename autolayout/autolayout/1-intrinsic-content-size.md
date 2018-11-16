@@ -44,6 +44,7 @@
 > >
 > > ```
 > > - (void)setContentHuggingPriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
+> > - (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
 > > ```
 
 * #### 示例
@@ -85,15 +86,11 @@
 >
 > ![](/assets/2701344-cf1a2c1f96df59e8.png)
 
-
-
 * #### 参考文献：
 
 > [Masonry 和 布局优先级约束](https://www.jianshu.com/p/63e9765feb3f)
 >
 > [Anatomy of a Constraint](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW1)
-
-
 
 
 

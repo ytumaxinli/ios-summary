@@ -79,13 +79,13 @@
 >                           forAxis:UILayoutConstraintAxisHorizontal];
 > ```
 >
+> 如果不添加任何约束是图一这样显示的。\(此时的约束是一个Ambiguous Layouts\)
+>
 > ![](/assets/2701344-43751df97caa3b44.png)
 >
+> 如果我们的需求是label1正常显示，拉伸label2呢，或者说**label2的内容紧跟着label1的内容显示**。只需要这样做：
+>
 > ![](/assets/2701344-cf1a2c1f96df59e8.png)
-
-
-
-
 
 
 

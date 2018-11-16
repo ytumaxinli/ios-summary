@@ -135,10 +135,10 @@
 > //约束最大优先级1000，不能超过此值：A required constraint.  Do not exceed this.
 > static const UILayoutPriority UILayoutPriorityRequired NS_AVAILABLE_IOS(6_0) = 1000; 
 >
-> //button抗拒拉伸的优先级：This is the priority level with which a button resists compressing its content.
+> //button抗拒压缩的优先级：This is the priority level with which a button resists compressing its content.
 > static const UILayoutPriority UILayoutPriorityDefaultHigh NS_AVAILABLE_IOS(6_0) = 750;
 >
-> //button抗拒压缩的优先级：This is the priority level at which a button hugs its contents horizontally. 
+> //button抗拒拉伸的优先级：This is the priority level at which a button hugs its contents horizontally. 
 > static const UILayoutPriority UILayoutPriorityDefaultLow NS_AVAILABLE_IOS(6_0) = 250; 
 >
 > //uiview通过调用-[UIView systemLayoutSizeFittingSize:]，给View设置尺寸所产生的约束优先级。
@@ -148,7 +148,7 @@
 
 * #### 调试AutoLayout
 
-> ### \#
+> ### \
 
 #### 
 

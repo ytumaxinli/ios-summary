@@ -36,15 +36,26 @@
 
 > **Use a dummy view to contain the scroll view’s content**
 >
-> > * [Calculating contentSize for UIScrollView when using Auto Layout](https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout)
+> > 使用虚拟View的步骤如下：
+> > 1 创建scrollView使用leading、 trailing、 top 、 bottom、height and width等属性，确定scrollView的frame\(size、positon\)
+> >
+> > 2 不直接在scrollview上添加需要显示的UI控件。首先创建一个view添加到scrollView上，这个就是所说的dummy view 它用来承载所用用来显示的UI子控件的。其次在这个dummy view上添加以下约束。
+> >
+> > > 2.1 设置dummy view的Leading, trailing, top and bottom与scrollview相等
+> > >
+> > > 2.2 设置dummy view的height、width属性与承载scollview的父view相同
+> >
+> > 设置其leading、 trailing、 top 、 bottom与scrollView的
+> >
+> > [Calculating contentSize for UIScrollView when using Auto Layout](https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout)
 >
 > **Use  layout group to contain the scroll view’s content**
 >
-> > 要根据内容的内在大小设置高度，您必须拥有从内容视图的上边缘到下边缘的不间断的约束和视图链。 同样，要设置宽度，您必须具有从内容视图的前缘到后缘的完整的约束和视图链。`To set the height based on the intrinsic size of your content, you must have an unbroken chain of constraints and views stretching from the content view’s top edge to its bottom edge. Similarly, to set the width, you must have an unbroken chain of constraints and views from the content view’s leading edge to its trailing edg`_`e`_
+> > 要根据内容的内在大小设置高度，您必须拥有从内容视图的上边缘到下边缘的不间断的约束和视图链。 同样，要设置宽度，您必须具有从内容视图的前缘到后缘的完整的约束和视图链。`To set the height based on the intrinsic size of your content, you must have an unbroken chain of constraints and views stretching from the content view’s top edge to its bottom edge. Similarly, to set the width, you must have an unbroken chain of constraints and views from the content view’s leading edge to its trailing edge`
 
 #### 
 
-https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout
+[https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout](https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout)
 
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithScrollViews.html\#//apple\_ref/doc/uid/TP40010853-CH24-SW1](#)
 

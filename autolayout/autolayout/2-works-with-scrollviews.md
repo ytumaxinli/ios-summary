@@ -86,10 +86,10 @@
 > > _ivTop = [[UIImageView alloc] initWithImage:imgTop];
 > > [_scvBase addSubview:_ivTop];
 > > [_ivTop makeConstraints:^(MASConstraintMaker *make) {
-> >     //建立上边缘约束（_ivTop 有 intrinsic size）
+> >     //建立上边缘约束
 > >     make.top.equalTo(self->_scvBase);
 > >
-> >         //确定scrollview content view width
+> >     //确定scrollview content view width
 > >     make.left.right.equalTo(self->_scvBase);
 > >     make.width.equalTo(SCREEN_WIDTH);
 > > }];
@@ -99,7 +99,7 @@
 > > _ivMiddle = [[UIImageView alloc] initWithImage:imgTop];
 > > [_scvBase addSubview:_ivMiddle];
 > > [_ivMiddle makeConstraints:^(MASConstraintMaker *make) {
-> >     //不间断约束（_ivMiddle 有 intrinsic size）
+> >     //不间断约束
 > >     make.top.equalTo(self->_ivTop.bottom);
 > >     make.left.equalTo(self->_ivTop);
 > > }];
@@ -110,7 +110,7 @@
 > > [_ivBottom setContentMode:UIViewContentModeScaleAspectFit];
 > > [_scvBase addSubview:_ivBottom];
 > > [_ivBottom makeConstraints:^(MASConstraintMaker *make) {
-> >     //不间断约束（_ivBottom 有 intrinsic size）
+> >     //不间断约束
 > >     make.top.equalTo(self->_imgMiddle.bottom).offset(10);
 > >     make.left.equalTo(self->_ivTop);    
 > >     //建立下边缘约束

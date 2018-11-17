@@ -32,5 +32,19 @@
 > > Constraints between the edges or margins of the scroll view and its content attach to the scroll view’s content area
 > > ```
 
+* #### Use a dummy view or layout group to contain the scroll view’s content
+
+> **Use a dummy view to contain the scroll view’s content**
+>
+> > * [Calculating contentSize for UIScrollView when using Auto Layout](https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout)
+>
+> **Use  layout group to contain the scroll view’s content**
+>
+> > 要根据内容的内在大小设置高度，您必须拥有从内容视图的上边缘到下边缘的不间断的约束和视图链。 同样，要设置宽度，您必须具有从内容视图的前缘到后缘的完整的约束和视图链。`To set the height based on the intrinsic size of your content, you must have an unbroken chain of constraints and views stretching from the content view’s top edge to its bottom edge. Similarly, to set the width, you must have an unbroken chain of constraints and views from the content view’s leading edge to its trailing edg`_`e`_
+
+#### 
+
+https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout
+
 [https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/WorkingwithScrollViews.html\#//apple\_ref/doc/uid/TP40010853-CH24-SW1](#)
 

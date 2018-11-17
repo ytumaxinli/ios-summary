@@ -52,10 +52,8 @@
 > > > > 1 如果dummy view如果所有子view在垂直方向上有确定的Height或者有intrinsic size，且构成了一个不间断的约束链。dummy view的高度即scrollView的content size height,由**子views**决定。
 > > > >
 > > > > 2 如果没有完成的约束链，dummy view的高度即scrollView的content size height，由之前设置的低优先级height决定
-> >
-> > 设置其leading、 trailing、 top 、 bottom与scrollView的
-> >
-> > [Calculating contentSize for UIScrollView when using Auto Layout](https://stackoverflow.com/questions/38948904/calculating-contentsize-for-uiscrollview-when-using-auto-layout)
+> > > >
+> > > > [Calculating contentSize for UIScrollView when using Auto Layout](#)
 >
 > **Use  layout group to contain the scroll view’s content**
 >

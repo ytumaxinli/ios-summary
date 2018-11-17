@@ -55,9 +55,191 @@
 > > > >
 > > > > [Calculating contentSize for UIScrollView when using Auto Layout](#)
 >
+>
+>
 > **Use  layout group to contain the scroll view’s content**
 >
-> > 要根据内容的内在大小设置高度，您必须拥有从内容视图的上边缘到下边缘的不间断的约束和视图链。 同样，要设置宽度，您必须具有从内容视图的前缘到后缘的完整的约束和视图链。`To set the height based on the intrinsic size of your content, you must have an unbroken chain of constraints and views stretching from the content view’s top edge to its bottom edge. Similarly, to set the width, you must have an unbroken chain of constraints and views from the content view’s leading edge to its trailing edge`
+> > 当scroll view的content view’s有intrinsic size和或者确定height时，可以通过从上边缘到下边缘不间断的约束和视图链，来确定content view的高度。设置宽度也是如此。
+> >
+> > ```
+> > To set the height based on the intrinsic size of your content, you must have an unbroken chain of constraints and views stretching from the content view’s top edge to its bottom edge. Similarly, to set the width, you must have an unbroken chain of constraints and views from the content view’s leading edge to its trailing edge
+> > ```
+> >
+> > **示例**
+> >
+> > ```
+> >  _scvBase = [[UIScrollView alloc] init];
+> >     [_scvBase setBackgroundColor:[UIColor whiteColor]];
+> >     _scvBase.clipsToBounds = YES;
+> >     [self.view addSubview:_scvBase];
+> >     [_scvBase makeConstraints:^(MASConstraintMaker *make) {
+> >         if(@available(iOS 11.0, *)){
+> >             make.top.equalTo(self.view.safeAreaLayoutGuideTop);
+> >             make.bottom.equalTo(self.view.safeAreaLayoutGuideBottom);
+> >         }else {
+> >             make.top.bottom.equalTo(self.view);
+> >         }
+> >         make.left.width.equalTo(self.view);
+> >     }];
+> >     
+> >     
+> >     
+> >     UIImage *imgTop = [UIImage imageNamed:[@"LinviteTop" stringByAppendingString:self.imgSuffix]];
+> >     [_ivTop setBackgroundColor:[UIColor yellowColor]];
+> >     _ivTop = [[UIImageView alloc] initWithImage:imgTop];
+> >     [_ivTop setContentMode:UIViewContentModeScaleAspectFit];
+> >     [_scvBase addSubview:_ivTop];
+> >     [_ivTop makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.left.right.equalTo(self->_scvBase);
+> >         make.width.equalTo(SCREEN_WIDTH);
+> >         make.height.equalTo(SCREEN_WIDTH * imgTop.size.height / imgTop.size.width);
+> >     }];
+> >     
+> >     _btnRule = [UIButton buttonWithType:UIButtonTypeCustom];
+> >     [_btnRule setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+> >     [_btnRule.titleLabel setFont:[UIFont regularChineseFontOfSize:14]];
+> >     [_btnRule setTitleColor:[UIColor colorWithHexString:@"#fc6031"] forState:UIControlStateNormal];
+> >     [_btnRule addTarget:self action:@selector(btnRuleAction) forControlEvents:UIControlEventTouchUpInside];
+> >     [_scvBase addSubview:_btnRule];
+> >     
+> >     _viewBind = [[LViewBind alloc] init];
+> >     _viewBind.layer.masksToBounds = YES;
+> >     _viewBind.layer.cornerRadius = 5;
+> >     [_scvBase addSubview:_viewBind];
+> >     [_viewBind makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_scvBase).offset(SCREEN_WIDTH * 472 / 640 + 10);
+> >         make.left.equalTo(self->_scvBase).offset(15 * SCREEN_WIDTH / 320);
+> >         make.right.equalTo(self->_scvBase).offset(-15 * SCREEN_WIDTH / 320);
+> >         make.height.equalTo(40);
+> >     }];
+> >     
+> >     __ws;
+> >     _viewRecord = [[LViewRecord alloc] init];
+> >     _viewRecord.layer.masksToBounds = YES;
+> >     _viewRecord.layer.cornerRadius = 5;
+> >     [_viewRecord setCellRewardAmtClickBlock:^{
+> >         [ws rewardAmtClickAction];
+> >     }];
+> >     [_viewRecord setCellInviteCntClickBlock:^{ _scvBase = [[UIScrollView alloc] init];
+> >     [_scvBase setBackgroundColor:[UIColor whiteColor]];
+> >     _scvBase.clipsToBounds = YES;
+> >     [self.view addSubview:_scvBase];
+> >     [_scvBase makeConstraints:^(MASConstraintMaker *make) {
+> >         if(@available(iOS 11.0, *)){
+> >             make.top.equalTo(self.view.safeAreaLayoutGuideTop);
+> >             make.bottom.equalTo(self.view.safeAreaLayoutGuideBottom);
+> >         }else {
+> >             make.top.bottom.equalTo(self.view);
+> >         }
+> >         make.left.width.equalTo(self.view);
+> >     }];
+> >     
+> >     
+> >     
+> >     UIImage *imgTop = [UIImage imageNamed:[@"LinviteTop" stringByAppendingString:self.imgSuffix]];
+> >     [_ivTop setBackgroundColor:[UIColor yellowColor]];
+> >     _ivTop = [[UIImageView alloc] initWithImage:imgTop];
+> >     [_ivTop setContentMode:UIViewContentModeScaleAspectFit];
+> >     [_scvBase addSubview:_ivTop];
+> >     [_ivTop makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.left.right.equalTo(self->_scvBase);
+> >         make.width.equalTo(SCREEN_WIDTH);
+> >         make.height.equalTo(SCREEN_WIDTH * imgTop.size.height / imgTop.size.width);
+> >     }];
+> >     
+> >     _btnRule = [UIButton buttonWithType:UIButtonTypeCustom];
+> >     [_btnRule setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+> >     [_btnRule.titleLabel setFont:[UIFont regularChineseFontOfSize:14]];
+> >     [_btnRule setTitleColor:[UIColor colorWithHexString:@"#fc6031"] forState:UIControlStateNormal];
+> >     [_btnRule addTarget:self action:@selector(btnRuleAction) forControlEvents:UIControlEventTouchUpInside];
+> >     [_scvBase addSubview:_btnRule];
+> >     
+> >     _viewBind = [[LViewBind alloc] init];
+> >     _viewBind.layer.masksToBounds = YES;
+> >     _viewBind.layer.cornerRadius = 5;
+> >     [_scvBase addSubview:_viewBind];
+> >     [_viewBind makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_scvBase).offset(SCREEN_WIDTH * 472 / 640 + 10);
+> >         make.left.equalTo(self->_scvBase).offset(15 * SCREEN_WIDTH / 320);
+> >         make.right.equalTo(self->_scvBase).offset(-15 * SCREEN_WIDTH / 320);
+> >         make.height.equalTo(40);
+> >     }];
+> >     
+> >     __ws;
+> >     _viewRecord = [[LViewRecord alloc] init];
+> >     _viewRecord.layer.masksToBounds = YES;
+> >     _viewRecord.layer.cornerRadius = 5;
+> >     [_viewRecord setCellRewardAmtClickBlock:^{
+> >         [ws rewardAmtClickAction];
+> >     }];
+> >     [_viewRecord setCellInviteCntClickBlock:^{
+> >         [ws inviteCntClickAction];
+> >     }];
+> >     [_scvBase addSubview:_viewRecord];
+> >     [_viewBind setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+> >     [_viewRecord makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_viewBind.bottom).offset(10);
+> >         make.top.equalTo(self->_scvBase).offset(SCREEN_WIDTH * 472 / 640 + 10).priority(MASLayoutPriorityDefaultLow);
+> >         make.left.equalTo(self->_scvBase).offset(15 * SCREEN_WIDTH / 320);
+> >         make.right.equalTo(self->_scvBase).offset(-15 * SCREEN_WIDTH / 320);
+> >         make.height.equalTo(103);
+> >     }];
+> >     
+> >     UIImage *imgBottom = [UIImage imageNamed:[@"LinviteBottom" stringByAppendingString:self.imgSuffix]];
+> >     _ivBottom = [[UIImageView alloc] initWithImage:imgBottom];
+> >     [_ivBottom setContentMode:UIViewContentModeScaleAspectFit];
+> >     [_scvBase addSubview:_ivBottom];
+> >     [_ivBottom makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_viewRecord.bottom).offset(10);
+> >         make.left.width.equalTo(self->_scvBase);
+> >         make.height.equalTo(SCREEN_WIDTH * imgBottom.size.height / imgBottom.size.width);
+> >         make.bottom.equalTo(self->_scvBase.bottom);
+> >         
+> >     }];
+> >     
+> >     UIView *viewMask = [[UIView alloc] init];
+> >     [viewMask setBackgroundColor:[UIColor whiteColor]];
+> >     [_scvBase addSubview:viewMask];
+> >     [viewMask makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_ivBottom.bottom);
+> >         make.left.equalTo(self->_scvBase);
+> >         make.width.equalTo(SCREEN_WIDTH);
+> >         make.bottom.equalTo(self->_ivTop.bottom);
+> >     }];
+> >         [ws inviteCntClickAction];
+> >     }];
+> >     [_scvBase addSubview:_viewRecord];
+> >     [_viewBind setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisHorizontal];
+> >     [_viewRecord makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_viewBind.bottom).offset(10);
+> >         make.top.equalTo(self->_scvBase).offset(SCREEN_WIDTH * 472 / 640 + 10).priority(MASLayoutPriorityDefaultLow);
+> >         make.left.equalTo(self->_scvBase).offset(15 * SCREEN_WIDTH / 320);
+> >         make.right.equalTo(self->_scvBase).offset(-15 * SCREEN_WIDTH / 320);
+> >         make.height.equalTo(103);
+> >     }];
+> >     
+> >     UIImage *imgBottom = [UIImage imageNamed:[@"LinviteBottom" stringByAppendingString:self.imgSuffix]];
+> >     _ivBottom = [[UIImageView alloc] initWithImage:imgBottom];
+> >     [_ivBottom setContentMode:UIViewContentModeScaleAspectFit];
+> >     [_scvBase addSubview:_ivBottom];
+> >     [_ivBottom makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_viewRecord.bottom).offset(10);
+> >         make.left.width.equalTo(self->_scvBase);
+> >         make.height.equalTo(SCREEN_WIDTH * imgBottom.size.height / imgBottom.size.width);
+> >         make.bottom.equalTo(self->_scvBase.bottom);
+> >         
+> >     }];
+> >     
+> >     UIView *viewMask = [[UIView alloc] init];
+> >     [viewMask setBackgroundColor:[UIColor whiteColor]];
+> >     [_scvBase addSubview:viewMask];
+> >     [viewMask makeConstraints:^(MASConstraintMaker *make) {
+> >         make.top.equalTo(self->_ivBottom.bottom);
+> >         make.left.equalTo(self->_scvBase);
+> >         make.width.equalTo(SCREEN_WIDTH);
+> >         make.bottom.equalTo(self->_ivTop.bottom);
+> >     }];
+> > ```
 
 #### 
 

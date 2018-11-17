@@ -36,14 +36,22 @@
 
 > **Use a dummy view to contain the scroll view’s content**
 >
-> > 使用虚拟View的步骤如下：
+> > 使用虚拟View的步骤如下：  
 > > 1 创建scrollView使用leading、 trailing、 top 、 bottom、height and width等属性，确定scrollView的frame\(size、positon\)
 > >
 > > 2 不直接在scrollview上添加需要显示的UI控件。首先创建一个view添加到scrollView上，这个就是所说的dummy view 它用来承载所用用来显示的UI子控件的。其次在这个dummy view上添加以下约束。
 > >
 > > > 2.1 设置dummy view的Leading, trailing, top and bottom与scrollview相等
 > > >
-> > > 2.2 设置dummy view的height、width属性与承载scollview的父view相同
+> > > 2.2 设置dummy view的height、width属性与承载scollview的父view相同\(可以视情况来进行设定具体值\),并将equal height约束的优先级设为低优先级（承载的UI子view有确定的Height或者有intrinsic size则可以调整dummy view的高度）。
+> > >
+> > > 2.3 如果所有子view在垂直方向上有确定的Height或者有intrinsic size，且构成了一个不间断的约束链。设置UI子view的最后一个元素bottom与dummy view的底部相同，来调整dummy view的高度。
+> > >
+> > > 总结：
+> > >
+> > > > 1 如果dummy view如果所有子view在垂直方向上有确定的Height或者有intrinsic size，且构成了一个不间断的约束链。dummy view的高度即scrollView的content size height,由**子views**决定。
+> > > >
+> > > > 2 如果没有完成的约束链，dummy view的高度即scrollView的content size height，由之前设置的低优先级height决定
 > >
 > > 设置其leading、 trailing、 top 、 bottom与scrollView的
 > >

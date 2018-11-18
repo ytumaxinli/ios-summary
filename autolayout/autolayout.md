@@ -66,7 +66,7 @@
 >                              relatedBy:NSLayoutRelationEqual 
 >                              toItem:nil 
 >                              attribute:NSLayoutAttributeNotAnAttribute 
->                              multiplier:1 
+>                              multiplier:0 
 >                              constant:50];
 > ```
 
@@ -148,7 +148,7 @@
 
 * #### 调试AutoLayout
 
-> ## \#
+> ## \
 
 #### 
 

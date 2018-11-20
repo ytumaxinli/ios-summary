@@ -167,8 +167,10 @@
 > > > * 使用NSLayoutConstraint布局时可以将topLayoutGuide作为约束的一个constraint item使用。如：`[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0];`
 > > >
 > > > * topLayoutGuide的值可以通过调用self.topLayoutGuide.length获得。这个length由视图控制器或其封闭的容器视图控制器（navigation 或 tabbar controller）进行约束。具体如下：
-> > > * > 1没有被包裹的view controller，这个属性指的是status bar\(如果status bar显示的情况下\)的底部或者是view controller's view的上边缘。
+> > >
+> > > * > 1没有被包裹的view controller，这个属性指的是status bar\(如果status bar显示的情况下\)的底部或者是view controller's view的上边缘。  
 > > >   > 2 被包裹的view controller不约束这个属性，相反包裹view controller来约束这个属性用来指示：
+> > >   >
 > > >   > > 2.1 navigation bar的底部，如果navigation bar可见
 > > >   > >
 > > >   > > 2.2 status bar的底部，如果只用status bar可见
@@ -177,9 +179,26 @@
 > > >   >
 > > >   > 3 如果包裹控制器navigation controller 的 navigation bar 可见且不透明，则navigation controller会布置最前面的视图控制器的视图，使其顶部边缘邻接导航栏的底部。在这种情况下，此属性的值为0。
 > > >
-> > > 不使用约束的情况下使用topLayoutGuide，即请获取topLayoutGuide相对于包含视图顶部边界的位置。
+> > > * 不使用约束的情况下使用topLayoutGuide，即请获取topLayoutGuide相对于包含视图顶部边界的位置。
+> > > * ```
+> > >   //view controller subclass中的使用方式
+> > >   //只能在次获取，其他地方获取不到
+> > >   - (void) viewDidLayoutSubviews {
+> > >       CGRect viewBounds = self.view.bounds;
+> > >       CGFloat topBarOffset = self.topLayoutGuide.length;
+> > >   }
+> > >
+> > >   //view subclass中的使用方式
+> > >   - (void) layoutSubviews {
+> > >       [super layoutSubviews]; 
+> > >       // You must call super here or the system raises an exception
+> > >
+> > >       CGRect bounds = self.bounds;
+> > >       CGFloat topBarOffset = myVCReference.topLayoutGuide.length;
+> > >   }
+> > >   ```
 >
-> **ios11**
+> iOS11
 >
 > > ```
 > > @interface UIView(UIViewHierarchy)

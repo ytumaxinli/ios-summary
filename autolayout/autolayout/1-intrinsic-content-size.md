@@ -86,6 +86,26 @@
 >
 > ![](/assets/2701344-cf1a2c1f96df59e8.png)
 
+* #### 其它常见示例
+
+> **1 the label’s width is based on the size of its text property, and the text field expands and shrinks to fit the remaining space.**
+>
+> > 约束展示![](/assets/simple_label_and_text_field_2x.png)约束伪代码
+> >
+> > ```
+> > Name Label.Leading = Superview.LeadingMargin
+> >
+> > Name Text Field.Trailing = Superview.TrailingMargin
+> >
+> > Name Text Field.Leading = Name Label.Trailing + Standard
+> >
+> > Name Text Field.Top = Top Layout Guide.Bottom + 20.0
+> >
+> > Name label.Baseline = Name Text Field.Baseline
+> > ```
+
+#### 
+
 * #### 参考文献：
 
 > [Masonry 和 布局优先级约束](https://www.jianshu.com/p/63e9765feb3f)

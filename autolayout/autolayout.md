@@ -145,9 +145,35 @@
 > static const UILayoutPriority UILayoutPriorityFittingSizeLevel NS_AVAILABLE_IOS(6_0) = 50;
 > ```
 
-* ## topLayoutGuide/bottomLayoutGuide
+* #### 安全边界
 
-> ##
+> **ios7 **
+>
+> > ```
+> > @interface UIViewController (UILayoutSupport)
+> >
+> > // These objects may be used as layout items in the NSLayoutConstraint API
+> >
+> > //API_DEPRECATED("Use view.safeAreaLayoutGuide.topAnchor instead of topLayoutGuide.bottomAnchor", ios(7.0,11.0), tvos(7.0,11.0));
+> > @property(nonatomic,readonly,strong) id<UILayoutSupport> topLayoutGuide;
+> >
+> > //API_DEPRECATED("Use view.safeAreaLayoutGuide.bottomAnchor instead of bottomLayoutGuide.topAnchor", ios(7.0,11.0), tvos(7.0,11.0));
+> > @property(nonatomic,readonly,strong) id<UILayoutSupport> bottomLayoutGuide;
+> > ...
+> > @end
+> > ```
+>
+> **ios11**
+>
+> > ```
+> > @interface UIView(UIViewHierarchy)
+> > /* The top of the safeAreaLayoutGuide indicates the unobscured top edge of the view (e.g, not behind
+> >  the status bar or navigation bar, if present). Similarly for the other edges.
+> >  */
+> > @property(nonatomic,readonly,strong) UILayoutGuide *safeAreaLayoutGuide API_AVAILABLE(ios(11.0),tvos(11.0));
+> > ...
+> > @end
+> > ```
 
 #### 
 

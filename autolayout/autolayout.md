@@ -76,8 +76,7 @@
 
 > **VFL语言简介**
 >
-> > VFL全称是Visual Format Language，翻译过来是“可视化格式语言”，VFL是苹果公司为了简化Autolayout的编码而推出的抽象语言  
-> > ![](/assets/4F9D2A32-0B3A-4B4D-BCAD-EF1D298741AB.png)
+> > VFL全称是Visual Format Language，翻译过来是“可视化格式语言”，VFL是苹果公司为了简化Autolayout的编码而推出的抽象语言![](/assets/4F9D2A32-0B3A-4B4D-BCAD-EF1D298741AB.png)
 >
 > **VFL的语法**
 >

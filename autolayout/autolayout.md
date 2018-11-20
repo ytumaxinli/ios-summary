@@ -175,7 +175,7 @@
 > > >   > >
 > > >   > > 2.2 status bar的底部，如果只用status bar可见
 > > >   > >
-> > >   > > 2.3 view controller's view上边缘，如果status bar 、navigation bar均可见
+> > >   > > 2.3 view controller's view上边缘，如果status bar 、navigation bar均可见
 > > >   >
 > > >   > 3 如果包裹控制器navigation controller 的 navigation bar 可见且不透明，则navigation controller会布置最前面的视图控制器的视图，使其顶部边缘邻接导航栏的底部。在这种情况下，此属性的值为0。
 > > > * 不使用约束的情况下使用topLayoutGuide，即请获取topLayoutGuide相对于包含视图顶部边界的位置。
@@ -201,8 +201,6 @@
 > > **bottomLayoutGuide**
 > >
 > > > 与topLayoutGuide类似详见官方文档
->
->
 >
 > **iOS11**
 >

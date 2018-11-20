@@ -86,11 +86,13 @@
 >
 > ![](/assets/2701344-cf1a2c1f96df59e8.png)
 
-* #### 其它常见示例
+* #### [其它常见示例](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/ViewswithIntrinsicContentSize.html#//apple_ref/doc/uid/TP40010853-CH13-SW1)
 
-> **1 the label’s width is based on the size of its text property, and the text field expands and shrinks to fit the remaining space.**
+> **1 Dynamic Height Label and Text Field**
 >
-> > 约束展示![](/assets/simple_label_and_text_field_2x.png)约束伪代码
+> Name Label和Name Text Field的底部对齐，并它们中height较高的控件的上边缘为基准距父view的上边缘向下偏移20
+>
+> > **约束展示**![](/assets/dynamic_height_label_and_text_field_2x.png)**约束伪代码**
 > >
 > > ```
 > > Name Label.Leading = Superview.LeadingMargin
@@ -99,12 +101,121 @@
 > >
 > > Name Text Field.Leading = Name Label.Trailing + Standard
 > >
-> > Name Text Field.Top = Top Layout Guide.Bottom + 20.0
+> > Name Label.Top >= Top Layout Guide.Bottom + 20.0
+> >
+> > Name Label.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
+> >
+> > Name Text Field.Top >= Top Layout Guide.Bottom + 20.0
+> >
+> > Name Text Field.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
 > >
 > > Name label.Baseline = Name Text Field.Baseline
 > > ```
+> >
+> > **Discussion**
+> >
+> > This recipe uses a pair of constraints for each control. A required, greater-than-or-equal constraint defines the minimum distance between that control and the layout guide, while an optional constraint tries to pull the control to exactly 20.0 points from the layout guide.
+> >
+> > Both constraints are satisfiable for the taller constraint, so the system places it exactly 20.0 points from the layout guide. However, for the shorter control, only the minimum distance is satisfiable. The other constraint is ignored. This lets the Auto Layout system dynamically recalculate the layout as the height of the controls change at runtime.
+>
+>
+>
+> **2 Fixed Height Columns**
+>
+> 水平方向上三个lable左右对齐，width以内容最长的Lable为准。text field占据剩余空间
+>
+> > **约束展示**![](/assets/fixed_height_columns_2x.png)**约束伪代码**
+> >
+> > ```
+> > First Name Label.Leading = Superview.LeadingMargin
+> >
+> > Middle Name Label.Leading = Superview.LeadingMargin
+> >
+> > Last Name Label.Leading = Superview.LeadingMargin
+> >
+> > First Name Text Field.Leading = First Name Label.Trailing + Standard
+> >
+> > Middle Name Text Field.Leading = Middle Name Label.Trailing + Standard
+> >
+> > Last Name Text Field.Leading = Last Name Label.Trailing + Standard
+> >
+> > First Name Text Field.Trailing = Superview.TrailingMargin
+> >
+> > Middle Name Text Field.Trailing = Superview.TrailingMargin
+> >
+> > Last Name Text Field.Trailing = Superview.TrailingMargin
+> >
+> > First Name Label.Baseline = First Name Text Field.Baseline
+> >
+> > Middle Name Label.Baseline = Middle Name Text Field.Baseline
+> >
+> > Last Name Label.Baseline = Last Name Text Field.Baseline
+> >
+> > First Name Text Field.Width = Middle Name Text Field.Width
+> >
+> > First Name Text Field.Width = Last Name Text Field.Width
+> >
+> > First Name Text Field.Top = Top Layout Guide.Bottom + 20.0
+> >
+> > Middle Name Text Field.Top = First Name Text Field.Bottom + Standard
+> >
+> > Last Name Text Field.Top = Middle Name Text Field.Bottom + Standard
+> > ```
+> >
+> > **Discussion**
+> >
+> > Additionally, because a label’s compression resistance is greater than its content hugging, all the labels prefer to be stretched rather than squeezed
+>
+>
+>
+> **3 Dynamic Height Columns**
+>
+> > **The goals of this recipe include:**
+> >
+> > > The trailing edge of the labels are aligned, based on the length of the longest label.
+> > >
+> > > The text fields are the same width, and their leading and trailing edges are aligned.
+> > >
+> > > The text fields expand to fill all the remaining space in the superview.
+> > >
+> > > The height between rows are based on the tallest element in the row.
+> > >
+> > > Everything is dynamic, so if the font size or label text changes, the layout automatically updates.
+> >
+> > **约束展示**![](/assets/dynamic_columns_2x.png)**约束伪代码**
+> >
+> > ```
+> > First Name Label.Leading = Superview.LeadingMargin
+> > Middle Name Label.Leading = Superview.LeadingMargin
+> > Last Name Label.Leading = Superview.LeadingMargin
+> > First Name Text Field.Leading = First Name Label.Trailing + Standard
+> > Middle Name Text Field.Leading = Middle Name Label.Trailing + Standard
+> > Last Name Text Field.Leading = Last Name Label.Trailing + Standard
+> > First Name Text Field.Trailing = Superview.TrailingMargin
+> > Middle Name Text Field.Trailing = Superview.TrailingMargin
+> > Last Name Text Field.Trailing = Superview.TrailingMargin
+> > First Name Label.Baseline = First Name Text Field.Baseline
+> > Middle Name Label.Baseline = Middle Name Text Field.Baseline
+> > Last Name Label.Baseline = Last Name Text Field.Baseline
+> > First Name Text Field.Width = Middle Name Text Field.Width
+> > First Name Text Field.Width = Last Name Text Field.Width
+> > First Name Label.Top >= Top Layout Guide.Bottom + 20.0
+> > First Name Label.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
+> > First Name Text Field.Top >= Top Layout Guide.Bottom + 20.0
+> > First Name Text Field.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
+> > Middle Name Label.Top >= First Name Label.Bottom + Standard
+> > Middle Name Label.Top = First Name Label.Bottom + Standard (Priority 249)
+> > Middle Name Text Field.Top >= First Name Text Field.Bottom + Standard
+> > Middle Name Text Field.Top = First Name Text Field.Bottom + Standard (Priority 249)
+> > Last Name Label.Top >= Middle Name Label.Bottom + Standard
+> > Last Name Label.Top = Middle Name Label.Bottom + Standard (Priority 249)
+> > Last Name Text Field.Top >= Middle Name Text Field.Bottom + Standard
+> > Last Name Text Field.Top = Middle Name Text Field.Bottom + Standard (Priority 249)
+> > ```
 
-#### 
+
+
+
 
 * #### 参考文献：
 

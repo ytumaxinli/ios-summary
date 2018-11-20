@@ -164,7 +164,7 @@
 > >
 > > > 只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。topLayoutGuide是一个虚拟view，用来表示不希望在半透明或透明UIKit栏后面显示的内容的最高垂直范围（例如状态或导航栏）。
 > > >
-> > > 使用NSLayoutConstraint布局时可以将topLayoutGuide作为约束的一个constraint item使用。如：
+> > > 使用NSLayoutConstraint布局时可以将topLayoutGuide作为约束的一个constraint item使用。如：`[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0];`
 >
 > **ios11**
 >

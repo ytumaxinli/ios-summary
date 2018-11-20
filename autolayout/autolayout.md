@@ -162,7 +162,7 @@
 > >
 > > **topLayoutGuide**
 > >
-> > > 当view controller位于屏幕最前面时，它的topLayoutGuide属性将发挥作用。它表示从屏幕的顶部下不希望在半透明或透明UIKit栏后面显示的内容的最高垂直范围（例如状态或导航栏）。
+> > > 只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。它表示从屏幕的顶部向下的一个垂直矩形范围，当视图内容从它的底部开始布局时可以避免被在透明或透明UIKit栏遮挡（例如状态或导航栏）。
 > > >
 > > > ```
 > > > Discussion
@@ -179,7 +179,7 @@
 > > > When laying out a storyboard scene, the Top Layout Guide object is available in the Interface Builder outline view as a child of the View Controller object. Adding a top layout guide using Interface Builder provides backward compatibility to iOS 6.
 > > > As an example of how to programmatically use this property with Auto Layout, say you want to position a control such that its top edge is 20 points below the top layout guide. This scenario applies to any of the scenarios listed above. Use code similar to the following:
 > > > ```
->
+> >
 > > ```
 > >
 > > ```

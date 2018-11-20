@@ -206,7 +206,40 @@
 >
 > the buttons’ widths are based on the longest title. If there’s enough space, the buttons are stretched only until they both match the intrinsic content size of the longer button. Any additional space is divided evenly around the buttons.
 >
-> > **约束展示**![](/assets/dynamic_columns_2x.png)![](/assets/two_buttons_with_equal_spacing_2x.png)
+> > **约束展示**![](/assets/two_buttons_with_equal_spacing_2x.png)**约束伪代码**
+> >
+> > ```
+> > Leading Dummy View.Leading = Superview.LeadingMargin
+> > Short Button.Leading = Leading Dummy View.Trailing
+> > Center Dummy View.Leading = Short Button.Trailing
+> > Long Button.Leading = Center Dummy View.Trailing
+> > Trailing Dummy View.Leading = Long Button.Trailing
+> > Trailing Dummy View.Trailing = Superview.TrailingMargin
+> > Bottom Layout Guide.Top = Leading Dummy View.Bottom + 20.0
+> > Bottom Layout Guide.Top = Short Button.Bottom + 20.0
+> > Bottom Layout Guide.Top = Center Dummy View.Bottom + 20.0
+> > Bottom Layout Guide.Top = Long Button.Bottom + 20.0
+> > Bottom Layout Guide.Top = Trailing Dummy View.Bottom + 20.0
+> > Short Button.Leading >= Superview.LeadingMargin
+> > Long Button.Leading >= Short Button.Trailing + Standard
+> > Superview.TrailingMargin >= Long Button.Trailing
+> > Leading Dummy View.Width = Center Dummy View.Width
+> > Leading Dummy View.Width = Trailing Dummy View.Width
+> > Short Button.Width = Long Button.Width
+> > Leading Dummy View.Height = 0.0
+> > Center Dummy View.Height = 0.0
+> > Trailing Dummy View.Height = 0.0
+> > ```
+> >
+> > **Discussion**
+> >
+> > In this recipe, you use dummy views to represent the empty space. These views are empty instances of the UIView class. In this recipe, they are given a 0-point height to minimize their effect on the view hierarchy.
+> >
+> > This recipe uses greater-than-or-equal constraints to set the minimum spacing around the buttons. Required constraints also guarantee that the buttons are always the same width, and the dummy views are also always the same width \(though, they can be a different width than the buttons\). The rest of the layout is largely managed by the button’s CHCR priorities. If there isn’t enough space, the dummy views collapse to a 0-point width, and the button’s divide the available space amongst themselves \(with the standard spacing between them\). As the available space increases, the buttons expand until they reach the larger button’s intrinsic width, then the dummy views begin to expand. The dummy views continue to expand to fill any remaining space.
+>
+> 其他
+>
+> https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/ViewswithIntrinsicContentSize.html\#//apple\_ref/doc/uid/TP40010853-CH13-SW1
 
 * #### 参考文献：
 

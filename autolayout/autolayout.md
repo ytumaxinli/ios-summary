@@ -147,7 +147,7 @@
 
 * #### 安全边界
 
-> **iOS7  **topLayoutGuide、bottomLayoutGuide
+> [**iOS7  **topLayoutGuide、bottomLayoutGuide](https://www.cnblogs.com/lurenq/p/7849813.html)
 >
 > > **声明**
 > >
@@ -223,6 +223,8 @@
 > [Debugging iOS AutoLayout Issues](https://staxmanade.com/2015/06/debugging-ios-autolayout-issues/)
 >
 > [https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints](https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints)
+>
+> [iOS开发-LayoutGuide](https://www.cnblogs.com/lurenq/p/7849813.html)
 
 
 

@@ -147,20 +147,41 @@
 
 * #### 安全边界
 
-> **ios7 **
+> **iOS7  **topLayoutGuide、bottomLayoutGuide
+>
+> > **声明**
+> >
+> > > ```
+> > > @interface UIViewController (UILayoutSupport)
+> > > // These objects may be used as layout items in the NSLayoutConstraint API
+> > > @property(nonatomic,readonly,strong)id<UILayoutSupport> topLayoutGuideAPI_DEPRECATED("Use view.safeAreaLayoutGuide.topAnchor instead of topLayoutGuide.bottomAnchor", ios(7.0,11.0), tvos(7.0,11.0));
+> > > @property(nonatomic,readonly,strong)id<UILayoutSupport> bottomLayoutGuideAPI_DEPRECATED("Use view.safeAreaLayoutGuide.bottomAnchor instead of bottomLayoutGuide.topAnchor", ios(7.0,11.0), tvos(7.0,11.0));
+> > > ....
+> > > @end
+> > > ```
+> >
+> > **topLayoutGuide**
+> >
+> > > 当view controller位于屏幕最前面时，它的topLayoutGuide属性将发挥作用。它表示从屏幕的顶部下不希望在半透明或透明UIKit栏后面显示的内容的最高垂直范围（例如状态或导航栏）。
+> > >
+> > > ```
+> > > Discussion
+> > >
+> > > The topLayoutGuide property comes into play when a view controller is frontmost onscreen. It indicates the highest vertical extent for content that you don't want to appear behind a translucent or transparent UIKit bar (such as a status or navigation bar). This property implements the UILayoutSupport protocol and you can employ it as a constraint item when using the NSLayoutConstraint class.
+> > > The value of this property is, specifically, the value of the length property of the object returned when you query this property. This value is constrained by either the view controller or by its enclosing container view controller (such as a navigation or tab bar controller), as follows:
+> > > A view controller not within a container view controller constrains this property to indicate the bottom of the status bar, if visible, or else to indicate the top edge of the view controller's view.
+> > > A view controller within a container view controller does not set this property's value. Instead, the container view controller constrains the value to indicate:
+> > > The bottom of the navigation bar, if a navigation bar is visible
+> > > The bottom of the status bar, if only a status bar is visible
+> > > The top edge of the view controller's view, if neither a status bar nor navigation bar is visible
+> > > If a container navigation controller's navigation bar is visible and opaque, the navigation controller lays out the frontmost view controller's view so its top edge abuts the bottom of the navigation bar. In this case, the value of this property is 0.
+> > > Query this property within your implementation of the viewDidLayoutSubviews method.
+> > > When laying out a storyboard scene, the Top Layout Guide object is available in the Interface Builder outline view as a child of the View Controller object. Adding a top layout guide using Interface Builder provides backward compatibility to iOS 6.
+> > > As an example of how to programmatically use this property with Auto Layout, say you want to position a control such that its top edge is 20 points below the top layout guide. This scenario applies to any of the scenarios listed above. Use code similar to the following:
+> > > ```
 >
 > > ```
-> > @interface UIViewController (UILayoutSupport)
 > >
-> > // These objects may be used as layout items in the NSLayoutConstraint API
-> >
-> > //API_DEPRECATED("Use view.safeAreaLayoutGuide.topAnchor instead of topLayoutGuide.bottomAnchor", ios(7.0,11.0), tvos(7.0,11.0));
-> > @property(nonatomic,readonly,strong) id<UILayoutSupport> topLayoutGuide;
-> >
-> > //API_DEPRECATED("Use view.safeAreaLayoutGuide.bottomAnchor instead of bottomLayoutGuide.topAnchor", ios(7.0,11.0), tvos(7.0,11.0));
-> > @property(nonatomic,readonly,strong) id<UILayoutSupport> bottomLayoutGuide;
-> > ...
-> > @end
 > > ```
 >
 > **ios11**

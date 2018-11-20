@@ -1,4 +1,4 @@
-只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。它是一个顶部与屏幕顶部对齐，宽度与屏幕宽度相同的一个view。当视图内容从它的底部开始布局时可以避免被半透明或透明UIKit栏遮挡（例如状态或导航栏）。在使用NSLayoutConstraint是可以将topLayoutGuide作为约束的一个constraint item使用。如：  
+只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。它是一个view，表示不希望在半透明或透明UIKit栏后面显示的内容的最高垂直范围（例如状态或导航栏）。使用NSLayoutConstraint时可以将topLayoutGuide作为约束的一个constraint item使用。如：  
 \[NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.topLayoutGuide attribute:NSLayoutAttributeBottom multiplier:1 constant:0\];
 
 topLayoutGuide的值可以通过调用self.topLayoutGuide.length获得。这个length由视图控制器或其封闭的容器视图控制器（navigation 或 tabbar controller）进行约束。具体如下：
@@ -28,8 +28,6 @@ NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings (button, topGuide
                                                    views: viewsDictionary]];
 [self.view layoutSubviews]; // You must call this method here or the system raises an exception
 ```
-
-
 
 不使用约束的情况下使用topLayoutGuide，即请获取topLayoutGuide相对于包含视图顶部边界的位置。
 

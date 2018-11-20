@@ -162,7 +162,7 @@
 > >
 > > **topLayoutGuide**
 > >
-> > > 只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。它表示从屏幕的顶部向下的一个垂直矩形范围，当视图内容从它的底部开始布局时可以避免被在透明或透明UIKit栏遮挡（例如状态或导航栏）。
+> > > 只有当view controller在屏幕最前面时，它的topLayoutGuide属性才会发挥作用。它是一个view，表示不希望在半透明或透明UIKit栏后面显示的内容的最高垂直范围（例如状态或导航栏）。使用NSLayoutConstraint时可以将topLayoutGuide作为约束的一个constraint item使用。如：
 >
 > **ios11**
 >

@@ -96,19 +96,12 @@
 > >
 > > ```
 > > Name Label.Leading = Superview.LeadingMargin
-> >
 > > Name Text Field.Trailing = Superview.TrailingMargin
-> >
 > > Name Text Field.Leading = Name Label.Trailing + Standard
-> >
 > > Name Label.Top >= Top Layout Guide.Bottom + 20.0
-> >
 > > Name Label.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
-> >
 > > Name Text Field.Top >= Top Layout Guide.Bottom + 20.0
-> >
 > > Name Text Field.Top = Top Layout Guide.Bottom + 20.0 (Priority 249)
-> >
 > > Name label.Baseline = Name Text Field.Baseline
 > > ```
 > >
@@ -117,8 +110,6 @@
 > > This recipe uses a pair of constraints for each control. A required, greater-than-or-equal constraint defines the minimum distance between that control and the layout guide, while an optional constraint tries to pull the control to exactly 20.0 points from the layout guide.
 > >
 > > Both constraints are satisfiable for the taller constraint, so the system places it exactly 20.0 points from the layout guide. However, for the shorter control, only the minimum distance is satisfiable. The other constraint is ignored. This lets the Auto Layout system dynamically recalculate the layout as the height of the controls change at runtime.
->
->
 >
 > **2 Fixed Height Columns**
 >
@@ -166,8 +157,6 @@
 > >
 > > Additionally, because a label’s compression resistance is greater than its content hugging, all the labels prefer to be stretched rather than squeezed
 >
->
->
 > **3 Dynamic Height Columns**
 >
 > > **The goals of this recipe include:**
@@ -212,10 +201,6 @@
 > > Last Name Text Field.Top >= Middle Name Text Field.Bottom + Standard
 > > Last Name Text Field.Top = Middle Name Text Field.Bottom + Standard (Priority 249)
 > > ```
-
-
-
-
 
 * #### 参考文献：
 

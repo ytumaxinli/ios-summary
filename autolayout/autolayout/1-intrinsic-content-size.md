@@ -201,6 +201,12 @@
 > > Last Name Text Field.Top >= Middle Name Text Field.Bottom + Standard
 > > Last Name Text Field.Top = Middle Name Text Field.Bottom + Standard (Priority 249)
 > > ```
+>
+> **4 Two Buttons with Equal Spacing**
+>
+> the buttons’ widths are based on the longest title. If there’s enough space, the buttons are stretched only until they both match the intrinsic content size of the longer button. Any additional space is divided evenly around the buttons.
+>
+> > **约束展示**![](/assets/dynamic_columns_2x.png)![](/assets/two_buttons_with_equal_spacing_2x.png)
 
 * #### 参考文献：
 

@@ -52,7 +52,7 @@
 > > 你需要做两件事：
 > >
 > > 1. 重写- \(CGSize\)intrinsicContentSize,为内容返回恰当的大小;
-> > 2. 调用- \(void\)invalidateIntrinsicContentSize,通知layout
+> > 2. 调用- \(void\)invalidateIntrinsicContentSize,使得layout系统将新的intrinsic content size放入下一个layout pass中
 > > 3. 如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返回`UIViewNoIntrinsicMetricNSViewNoIntrinsicMetric`
 > >
 > > 。

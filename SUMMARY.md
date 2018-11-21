@@ -10,7 +10,7 @@
     * [2.2 Works With ScrollViews](autolayout/autolayout/2-works-with-scrollviews.md)
     * [2.3 Self-Sizing Table View Cells](autolayout/autolayout/23-self-sizing-table-view-cells.md)
     * [2.4 Debugging Auto Layout](autolayout/autolayout/24-debugging-auto-layout.md)
-    * 2.5 Changing Constraints
+    * [2.5 Changing Constraints](autolayout/autolayout/25-changing-constraints.md)
 * [UIKit](uikit.md)
   * [UIWindow](uikit/uiwindow.md)
   * [UiButton](uikit/uibutton.md)

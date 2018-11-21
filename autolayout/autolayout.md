@@ -233,8 +233,8 @@
 > [iOS开发-LayoutGuide](https://www.cnblogs.com/lurenq/p/7849813.html)
 >
 > [Difference between Frame Rectangle and Alignment Rectangle](https://stackoverflow.com/questions/28152533/difference-between-frame-rectangle-and-alignment-rectangle)
-
-
+>
+> [iOS 利用 Autolayout 实现 view 间隔自动调整](http://nathanli.cn/2016/07/09/autolayout_interval/)
 
 
 

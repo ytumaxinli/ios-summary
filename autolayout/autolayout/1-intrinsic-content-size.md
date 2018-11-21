@@ -49,7 +49,7 @@
 >
 > [**自定义视图中实现固有内容尺寸**](https://blog.csdn.net/hard_man/article/details/50888377)
 >
-> > 你需要做两件事：
+> > 为了在自定义视图中实现固有内容尺寸，你需要做两件事:
 > >
 > > 1. 重写- \(CGSize\)intrinsicContentSize,为内容返回恰当的大小;
 > > 2. 调用- \(void\)invalidateIntrinsicContentSize,使得layout系统将新的intrinsic content size放入下一个layout pass中

@@ -53,9 +53,43 @@
 > >
 > > 1. 重写- \(CGSize\)intrinsicContentSize,为内容返回恰当的大小;
 > > 2. 调用- \(void\)invalidateIntrinsicContentSize,使得layout系统将新的intrinsic content size放入下一个layout pass中
-> > 3. 如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返回`UIViewNoIntrinsicMetricNSViewNoIntrinsicMetric`
 > >
-> > 。
+> > 注：如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返回UIViewNoIntrinsicMetricNSViewNoIntrinsicMetric
+> > ```
+> > -(void) testIntrinsicView{
+> >     IntrinsicView *intrinsicView1 = [[IntrinsicView alloc] init];
+> >     intrinsicView1.extendSize = CGSizeMake(100, 100);
+> >     intrinsicView1.backgroundColor = [UIColor greenColor];
+> >     [self.view addSubview:intrinsicView1];
+> >     [self.view addConstraints:@[
+> >                                 //距离superview上方100点
+> >                                   [NSLayoutConstraint constraintWithItem:intrinsicView1 attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:100],
+> >                                   //距离superview左面10点
+> >                                   [NSLayoutConstraint constraintWithItem:intrinsicView1 attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:10],
+> >     ]];
+> > }
+> >
+> > @implementation IntrinsicView
+> >
+> > //当用户设置extendSize时，提示系统IntrinsicContentSize变化了。
+> > -(void)setExtendSize:(CGSize)extendSize{
+> >     _extendSize = extendSize;
+> >     //如果不加这句话，在view显示之后（比如延时几秒），再设置extendSize不会有效果。
+> >     //本例中也就是testInvalidateIntrinsic的方法不会产生预期效果。
+> >     [self invalidateIntrinsicContentSize];
+> > }
+> >
+> > //通过覆盖intrinsicContentSize函数修改View的Intrinsic的大小
+> > -(CGSize)intrinsicContentSize{
+> >     if (closeIntrinsic) {
+> >         return CGSizeMake(UIViewNoIntrinsicMetric, UIViewNoIntrinsicMetric);
+> >     } else {
+> >         return CGSizeMake(_extendSize.width, _extendSize.height);
+> >     }
+> > }
+> > @end
+> >
+> > ```
 
 * #### 示例
 

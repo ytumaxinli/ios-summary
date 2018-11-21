@@ -47,14 +47,15 @@
 > > - (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
 > > ```
 >
-> **自定义视图中实现固有内容尺寸**
+> [**自定义视图中实现固有内容尺寸**](https://blog.csdn.net/hard_man/article/details/50888377)
 >
 > > 你需要做两件事：
 > >
 > > 1. 重写- \(CGSize\)intrinsicContentSize,为内容返回恰当的大小;
 > > 2. 调用- \(void\)invalidateIntrinsicContentSize,使得layout系统将新的intrinsic content size放入下一个layout pass中
 > >
-> > 注：如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返回UIViewNoIntrinsicMetricNSViewNoIntrinsicMetric
+> >    注：如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返**UIViewNoIntrinsicMetric**
+> >
 > > ```
 > > -(void) testIntrinsicView{
 > >     IntrinsicView *intrinsicView1 = [[IntrinsicView alloc] init];
@@ -88,7 +89,6 @@
 > >     }
 > > }
 > > @end
-> >
 > > ```
 
 * #### 示例
@@ -290,6 +290,10 @@
 > [Masonry 和 布局优先级约束](https://www.jianshu.com/p/63e9765feb3f)
 >
 > [Anatomy of a Constraint](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW1)
+>
+> [只有20%的iOS程序员能看懂：详解intrinsicContentSize 及 约束优先级／content Hugging／content Compression Resistance](https://blog.csdn.net/hard_man/article/details/50888377)
+>
+> [先进的自动布局工具箱](https://objccn.io/issue-3-5/)
 
 
 

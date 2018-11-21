@@ -46,6 +46,16 @@
 > > - (void)setContentHuggingPriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
 > > - (void)setContentCompressionResistancePriority:(UILayoutPriority)priority forAxis:(UILayoutConstraintAxis)axis NS_AVAILABLE_IOS(6_0);
 > > ```
+>
+> **自定义视图中实现固有内容尺寸**
+>
+> > 你需要做两件事：
+> >
+> > 1. 重写- \(CGSize\)intrinsicContentSize,为内容返回恰当的大小;
+> > 2. 调用- \(void\)invalidateIntrinsicContentSize,通知layout
+> > 3. 如果这个视图只有一个方向的尺寸设置了固有尺寸，那么为另一个方向的尺寸返回`UIViewNoIntrinsicMetricNSViewNoIntrinsicMetric`
+> >
+> > 。
 
 * #### 示例
 

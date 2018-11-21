@@ -128,6 +128,8 @@
 > >                                                                       views:NSDictionaryOfVariableBindings(_viewRed)]];
 > > ```
 
+#### 
+
 * #### AutoLayout优先级
 
 > ```
@@ -144,6 +146,8 @@
 > // When you send -[UIView systemLayoutSizeFittingSize:], the size fitting most closely to the target size (the argument) is computed.  UILayoutPriorityFittingSizeLevel is the priority level with which the view wants to conform to the target size in that computation.  It's quite low.  It is generally not appropriate to make a constraint at exactly this priority.  You want to be higher or lower
 > static const UILayoutPriority UILayoutPriorityFittingSizeLevel NS_AVAILABLE_IOS(6_0) = 50;
 > ```
+
+#### 
 
 * #### 安全边界
 
@@ -214,7 +218,9 @@
 > > @end
 > > ```
 
-#### 
+* ### [Frame 和 Alignment Rect](https://stackoverflow.com/questions/28152533/difference-between-frame-rectangle-and-alignment-rectangle) {#frame-alignment-rect}
+
+> 自动布局并不会操作视图的 frame，但能作用于视图的 alignment rect。
 
 * #### 参考文献：
 
@@ -225,6 +231,10 @@
 > [https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints](https://stackoverflow.com/questions/26389273/how-to-trap-on-uiviewalertforunsatisfiableconstraints)
 >
 > [iOS开发-LayoutGuide](https://www.cnblogs.com/lurenq/p/7849813.html)
+>
+> [Difference between Frame Rectangle and Alignment Rectangle](https://stackoverflow.com/questions/28152533/difference-between-frame-rectangle-and-alignment-rectangle)
+
+
 
 
 

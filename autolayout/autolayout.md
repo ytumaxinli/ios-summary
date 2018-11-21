@@ -220,7 +220,7 @@
 
 * ### [Frame 和 Alignment Rect](https://stackoverflow.com/questions/28152533/difference-between-frame-rectangle-and-alignment-rectangle) {#frame-alignment-rect}
 
-> 自动布局并不会操作视图的 frame，但能作用于视图的 alignment rect。
+> 约束实质上与视图的frame无关，而是视图的alignment rect相关。它们的值通常是相同的， 除非子类中覆盖修改alignmentRectInsets。 `Constraints do not actually relate the frames of the views, rather they relate the "alignment rects" of views.  This is the same as the frame unless overridden by a subclass of UIView.`
 
 * #### 参考文献：
 

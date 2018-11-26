@@ -2,13 +2,15 @@
 
 > _A navigation controller is a container view controller—that is, it embeds the content of other view controllers inside of itself. You access a navigation controller’s view from its view property.  This view incorporates the navigation bar, an optional toolbar, and the content view corresponding to the topmost view controller._
 >
-> navigation controller 是一个容器view controller，它将其他控制器的内容嵌入到自身当中。我们可以通过view属性访问navigation controller's的view。这个view将navigation bar、可选的tool bar还有最上层的vc的view组织在一起，成为了navgiation contrller的view；
+> navigation controller 是一个容器view controller，它将其他控制器的内容嵌入到自身当中。我们可以通过view属性访问navigation controller's的view。**这个view将navigation bar、可选的tool bar还有最上层的vc的view组织在一起,来显示页面**；
 >
 > 下图显示了如何组装这些视图以呈现整体导航界面,此图进一步将navigation interface嵌入到了一个tab bar interface中。![](/assets/NavigationViews.png)
-
-
-
-
+>
+> **Note**
+>
+> > _Because the content view underlaps the navigation bar in iOS 7 and later, you must consider that space when designing your view controller content._
+> >
+> > 由于iOS7及之后的版本将view controller的内容view放到了navigation bar的下方\(被nav bar遮盖\)，因此当设计view controller 内容时必须要考虑这个间距
 
 关键属性：
 

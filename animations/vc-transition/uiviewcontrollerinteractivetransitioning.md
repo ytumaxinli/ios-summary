@@ -8,13 +8,9 @@
 >
 > _A set of methods that enable an object \(such as a navigation controller\) to drive a view controller transition._
 
-
-
 **Declaration**
 
 > @protocol UIViewControllerInteractiveTransitioning
-
-
 
 **Overview**
 
@@ -25,12 +21,34 @@
 > 如果想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见UIViewControllerAnimatedTransitioning
 >
 > 对于可以调用以从startInteractiveTransition：方法中检索视图转换上下文信息的方法，参见：[`UIViewControllerContextTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
+
+
+
+**Topics**
+
+> **Starting an Interactive Transition**
 >
-> .
+> > [**startInteractiveTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning/1622028-startinteractivetransition?language=objc)
+> >
+> > ```
+> > - (void)startInteractiveTransition:(id<UIViewControllerContextTransitioning>)transitionContext;
+> > ```
+> >
+> > 当系统需要建立view controller的交互部分，并且启动动画时调用。_Called when the system needs to set up the interactive portions of a view controller transition and start the animations._
 >
+> > [**wantsInteractiveStart**](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning/1829433-wantsinteractivestart?language=objc)
+> >
+> > 一个bool类型值，在启动时候标示过渡是否是可交互的。_A Boolean value indicating whether the transition is interactive when it starts._
 >
+> **Providing a Transition’s Completion Characteristics**
 >
-> .
+> > [**completionCurve**](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning/1622027-completioncurve?language=objc)
+> >
+> > 当系统需要动画完成曲线来进行交互式view controller过渡时调用。_Called when the system needs the animation completion curve for an interactive view controller transition._
+>
+> > [**completionSpeed**](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning/1622031-completionspeed?language=objc)
+> >
+> > 在交互部分完成后，系统需要一个速度来完成交互式过渡时调用。Called when the system needs the speed at which to complete an interactive transition, after the interactive portion is finished.
 
 
 

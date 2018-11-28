@@ -17,6 +17,16 @@
 > > 通过转场代理创建animator对象 ，即创建一个遵循UIViewControllerTransitioningDelegate协议的对象。当显示一个view controller 通过设置presentation style [`UIModalPresentationCustom`](https://developer.apple.com/documentation/uikit/uimodalpresentationstyle/uimodalpresentationcustom?language=objc)，并且将转场代理设置为 view controller's 的[`transitioningDelegate`](https://developer.apple.com/documentation/uikit/uiviewcontroller/1621421-transitioningdelegate?language=objc)属性。view controller通过转场代理找到动画对象，并使用它进行动画。可以为presenting 和 dismissing  view controller提供不同的动画。
 > >
 > > 为了在view controller的转场中添加用户交互，必须将**动画对象**和一个**交互动画对象**（一个自定义遵循[`UIViewControllerInteractiveTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc) 协议的对象）结合使用。对于更多定义交互转场的，查看[`UIViewControllerInteractiveTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc)。
+> >
+> > ```
+> > The methods in this protocol let you define an animator object, which creates the animations for transitioning a view controller on or off screen in a fixed amount of time. The animations you create using this protocol must not be interactive. To create interactive transitions, you must combine your animator object with another object that controls the timing of your animations.
+> >
+> > In your animator object, implement the transitionDuration: method to specify the duration of your transition and implement the animateTransition: method to create the animations themselves. Information about the objects involved in the transition is passed to your animateTransition: method in the form of a context object. Use the information provided by that object to move the target view controller’s view on or off screen over the specified duration.
+> >
+> > Create your animator object from a transitioning delegate—an object that conforms to the UIViewControllerTransitioningDelegate protocol. When presenting a view controller, set the presentation style to UIModalPresentationCustom and assign your transitioning delegate to the view controller’s transitioningDelegate property. The view controller retrieves your animator object from the transitioning delegate and uses it to perform the animations. You can provide separate animator objects for presenting and dismissing the view controller.
+> >
+> > To add user interaction to a view controller transition, you must use an animator object together with an interactive animator object—a custom object that adopts the UIViewControllerInteractiveTransitioning protocol. For more on defining interactive transitions, see UIViewControllerInteractiveTransitioning.
+> > ```
 >
 > **Topics**
 >
@@ -24,9 +34,9 @@
 > >
 > > > [**animateTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1622061-animatetransition?language=objc)
 > > >
-> > > `- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext; `告诉动画对象执行转场动画。_Tells your animator object to perform the transition animations._
-> >
-> > > [**animationEnded:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1622059-animationended?language=objc)   
+> > > `- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;`告诉动画对象执行转场动画。_Tells your animator object to perform the transition animations._
+> > >
+> > > [**animationEnded:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1622059-animationended?language=objc)  
 > > > _// This is a convenience and if implemented will be invoked by the system when the transition context's completeTransition: method is invoked._
 > > >
 > > > `- (void)animationEnded:(BOOL)transitionCompleted;`告诉动画对象执行转场动画完毕。_Tells your animator object that the transition animations have finished._
@@ -50,8 +60,6 @@
 > > > [**UIViewControllerContextTransitioning**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
 > > >
 > > > 一组为view controllers 间转场动画提供上下文信息的方法。_A set of methods that provide contextual information for transition animations between view controllers._
-
-
 
 
 

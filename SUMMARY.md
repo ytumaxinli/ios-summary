@@ -19,4 +19,5 @@
   * [VC Transition](animations/vc-transition.md)
     * [UIViewControllerContextTransitioning](animations/vc-transition/uiviewcontrollercontexttransitioning.md)
     * [UIViewControllerAnimatedTransitioning](animations/vc-transition/uiviewcontrolleranimatedtransitioning.md)
+    * [UIViewControllerInteractiveTransitioning](animations/vc-transition/uiviewcontrollerinteractivetransitioning.md)
 

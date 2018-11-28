@@ -10,7 +10,7 @@
 >
 > **Overview**
 >
-> > 此协议中的方法允许您定义动画对象，该动画对象创建一个用于屏幕上或屏幕外的view controller固定时长的转场动画。使用协议创建的动画必须是不能交互的。要创建交互式过渡，必须将动画对象与控制动画时间的另一个对象组合在一起。
+> > 此协议中的方法允许您定义动画对象，该动画对象创建动画，用于在固定时间内过渡view controller到屏幕上或屏幕外。使用协议创建的动画必须是不能交互的。要创建交互式过渡，必须将动画对象与控制动画时间的另一个对象组合在一起。
 > >
 > > ```
 > > The methods in this protocol let you define an animator object, which creates the animations for transitioning a view controller on or off screen in a fixed amount of time. The animations you create using this protocol must not be interactive. To create interactive transitions, you must combine your animator object with another object that controls the timing of your animations.

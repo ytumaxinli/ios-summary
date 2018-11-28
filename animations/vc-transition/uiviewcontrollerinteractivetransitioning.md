@@ -58,10 +58,7 @@
 > >
 > > [**UIViewImplicitlyAnimating**](https://developer.apple.com/documentation/uikit/uiviewimplicitlyanimating?language=objc)
 > >
-> > 修改正在运行的动画的接口。An interface for modifying an animation while it is running.[  
-> > ](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition?language=objc)
-
-
+> > 修改正在运行的动画的接口。An interface for modifying an animation while it is running.[  ](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition?language=objc)
 
 
 

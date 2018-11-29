@@ -44,7 +44,7 @@ Protocol
 > >                                                                       sourceController:(UIViewController *)source;
 > > ```
 > >
-> > 让代理对象返回过渡动画对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
+> > 让代理对象返回转场动画对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
 > >
 > > [**animationControllerForDismissedController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622047-animationcontrollerfordismissedc?language=objc)
 > >
@@ -52,7 +52,7 @@ Protocol
 > > - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed;
 > > ```
 > >
-> > 让代理对象返回过渡动画对象，当dismissing view controller时使用。_Asks your delegate for the transition animator object to use when dismissing a view controller._
+> > 让代理对象返回转场动画对象，当dismissing view controller时使用。_Asks your delegate for the transition animator object to use when dismissing a view controller._
 >
 > **Getting the Interactive Animator Objects**
 >

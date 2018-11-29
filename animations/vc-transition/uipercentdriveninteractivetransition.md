@@ -27,6 +27,10 @@
 > ```
 >
 > 如果使用UIPercentDrivenInteractiveTransition的子类，必须在每个覆盖方法的开始调用父类方法。
+>
+> ```
+> You can subclass UIPercentDrivenInteractiveTransition, but if you do so you must start each of your method overrides with a call to the super implementation of the method.
+> ```
 
 **Topics**
 

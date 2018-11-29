@@ -29,6 +29,10 @@
 > > **重要**
 > >
 > > 定义自定义动画对象时，需要始终检查isAnimated方法返回的值，以确定是否应创建动画。并且在创建过渡动画时，需要在可是的完成block中调用[`completeTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622042-completetransition?language=objc) 方法，让UIKit知道所有的动画已经执行完。
+> >
+> > ```
+> > When defining custom animator objects, always check the value returned by the isAnimated method to determine whether you should create animations at all. And when you do create transition animations, always call the completeTransition: method from an appropriate completion block to let UIKit know when all of your animations have finished.
+> > ```
 >
 > **Topics**
 >
@@ -130,6 +134,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[                      
+[                        
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

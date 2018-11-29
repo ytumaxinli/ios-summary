@@ -11,14 +11,15 @@ Protocol
 > **此协议与UINavigationControllerDelegate有些类似，都提供了获取固定时长转场动画和交互式转场动画的方法，让遵循协议者进行实现。区别就是一个是navigation push/pop,一个是present/dismiss.**
 >
 > ```
-> - (nullableid<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController
->  interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>) animationController NS_AVAILABLE_IOS(7_0);
+> //UINavigationControllerDelegate
+> - (nullableid<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVCNS_AVAILABLE_IOS(7_0);
+> - (nullableid<UIViewControllerInteractiveTransitioning>)navigationController:(UINavigationController *)navigationController interactionControllerForAnimationController:(id<UIViewControllerAnimatedTransitioning>) animationController NS_AVAILABLE_IOS(7_0);
 >
->
-> - (nullableid<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
->  animationControllerForOperation:(UINavigationControllerOperation)operation
->  fromViewController:(UIViewController *)fromVC
->  toViewController:(UIViewController *)toVCNS_AVAILABLE_IOS(7_0);
+> //UIViewControllerTransitioningDelegate 
+> - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source;
+> - (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed;
+> - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator;
+> - (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator;
 > ```
 
 **Declaration**

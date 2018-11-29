@@ -26,13 +26,17 @@
 > To support an interactive view controller transition, you must also provide a transition animator delegate, which is a custom object that adopts the UIViewControllerAnimatedTransitioning protocol. The transition delegate and the transition animator can, if you wish, be defined within a single custom class, but the class must adopt both protocols.
 > ```
 >
-> 然而只是想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见UIViewControllerAnimatedTransitioning
+> 然而只是想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见[UIViewControllerAnimatedTransitioning](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning?language=objc)
 >
 > ```
 > If you instead want to provide a fixed-duration animated view controller transition—one that does not support user interaction—use a transition animator delegate on its own. Refer to UIViewControllerAnimatedTransitioning.
 > ```
 >
-> 对于可以调用以从startInteractiveTransition：方法中检索视图转换上下文信息的方法，参见：[`UIViewControllerContextTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
+> 对于可以调用以从[startInteractiveTransition:](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning/1622028-startinteractivetransition?language=objc)方法中检索视图转换上下文信息的方法，参见： [UIViewControllerContextTransitioning](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
+>
+> ```
+> For the methods you can call to retrieve view transition context information from within your startInteractiveTransition: method, refer to UIViewControllerContextTransitioning.
+> ```
 
 **Topics**
 

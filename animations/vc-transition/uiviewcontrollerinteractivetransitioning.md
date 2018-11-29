@@ -20,13 +20,17 @@
 > An interactive transition delegate (which is the term for an object that supports this protocol) can respond to touch events, or to time-varying programmatic input, by speeding up, slowing down, or even reversing the progress of a view controller transition. For example, an interactive transition on a navigation controller could respond to a swipe gesture by moving a view controller onto or off of the navigation stack.
 > ```
 >
-> 为了支持交互式view controller 过渡，还必须提供一个transition animator delegate。这个delegate是一个遵循[`UIViewControllerAnimatedTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning?language=objc) 协议的自定义对象。transition delegate（遵循UIViewControllerInteractiveTransitioning 协议的对象） 和 the transition animator（遵循UIViewControllerAnimatedTransitioning 协议的对象），能够并且你希望的话，可以被定义到同时遵循两个协议的的一个单独的自定义类中。
+> 为了支持交互式view controller转场，还必须提供一个transition animator delegate。这个delegate是一个遵循[`UIViewControllerAnimatedTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning?language=objc) 协议的自定义对象。transition delegate（遵循UIViewControllerInteractiveTransitioning 协议的对象） 和 the transition animator（遵循UIViewControllerAnimatedTransitioning 协议的对象），能够并且你希望的话，可以被定义到同时遵循两个协议的的一个单独的自定义类中。
 >
 > ```
 > To support an interactive view controller transition, you must also provide a transition animator delegate, which is a custom object that adopts the UIViewControllerAnimatedTransitioning protocol. The transition delegate and the transition animator can, if you wish, be defined within a single custom class, but the class must adopt both protocols.
 > ```
 >
 > 如果想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见UIViewControllerAnimatedTransitioning
+>
+> ```
+> If you instead want to provide a fixed-duration animated view controller transition—one that does not support user interaction—use a transition animator delegate on its own. Refer to UIViewControllerAnimatedTransitioning.
+> ```
 >
 > 对于可以调用以从startInteractiveTransition：方法中检索视图转换上下文信息的方法，参见：[`UIViewControllerContextTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
 

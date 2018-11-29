@@ -4,7 +4,7 @@
 
 > #### **简介**
 >
-> > 为页面View Controller间**过渡动画**，提供上下文信息的一组方法。
+> > 为页面View Controller间**转场动画**，提供上下文信息的一组方法。
 > >
 > > _A set of methods that provide contextual information for transition animations between view controllers_
 >
@@ -15,6 +15,10 @@
 > **Overview**
 >
 > > 不要在自己的类中遵循此协议，也不要直接创建遵循此协议的对象。在过渡期间，被过渡调用的动画对象从UIKit接收完全配置的上下文对象。遵循UIViewControllerAnimatedTransitioning或者UIViewControllerInteractiveTransitioning协议的自定义动画对象，应该只是从上下文对象中检索所需的信息。
+> >
+> > ```
+> > Do not adopt this protocol in your own classes, nor should you directly create objects that adopt this protocol. During a transition, the animator objects involved in that transition receive a fully configured context object from UIKit. Custom animator objects—objects that adopt the UIViewControllerAnimatedTransitioning or UIViewControllerInteractiveTransitioning protocol—should simply retrieve the information they need from the provided object.
+> > ```
 > >
 > > 上下文对象封装了关于，在过渡中被调用的views  和 view controllers的信息。它也包含了怎样执行过渡的详细信息。对于交互型过渡，交互动画对象使用这个协议的方法来报告动画的进度。当动画开始，交互动画对象必须保存一个上下文的指。根据用户的交互，动画对象然后调用[`updateInteractiveTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622025-updateinteractivetransition?language=objc),[`finishInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622056-finishinteractivetransition?language=objc) or [`cancelInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622038-cancelinteractivetransition?language=objc) 来报告动画完成的进度。这些方法给UIKit发送信息，这个它就可以控制动画的时间进度。
 > >
@@ -122,6 +126,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[          
+[            
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

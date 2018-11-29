@@ -21,4 +21,5 @@
     * [UIViewControllerAnimatedTransitioning](animations/vc-transition/uiviewcontrolleranimatedtransitioning.md)
     * [UIViewControllerInteractiveTransitioning](animations/vc-transition/uiviewcontrollerinteractivetransitioning.md)
     * [UIPercentDrivenInteractiveTransition](animations/vc-transition/uipercentdriveninteractivetransition.md)
+    * [UIViewControllerTransitioningDelegate](animations/vc-transition/uiviewcontrollertransitioningdelegate.md)
 

@@ -32,5 +32,43 @@ Protocol
 > For custom modal transition styles, you can provide a UIPresentationController object in addition to the animator objects. The system creates your presentation controller before presenting the view controller and keeps a reference to that object until the view controller is dismissed. Because its existence extends beyond the lifespan of either animator object, you can use the presentation controller to coordinate aspects of the presentation or dismissal process that would be difficult to do otherwise. For example, if your custom transition style involves displaying a separate shadow view as a backdrop to the view controller’s content, the presentation controller can create the shadow view and show it and hide it at the appropriate times.
 > ```
 
+**Topics**
+
+> **Getting the Transition Animator Objects**
+>
+> > [**animationControllerForPresentedController:presentingController:sourceController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622037-animationcontrollerforpresentedc?language=objc)
+> >
+> > ```
+> > - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented 
+> >                                                                   presentingController:(UIViewController *)presenting 
+> >                                                                       sourceController:(UIViewController *)source;
+> > ```
+> >
+> > 让代理对象返回ransition animator对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
+>
+> > [**animationControllerForDismissedController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622047-animationcontrollerfordismissedc?language=objc)
+> >
+> > ```
+> > - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed;
+> > ```
+> >
+> > 让代理对象返回ransition animator对象，当dismissing view controller时使用。_Asks your delegate for the transition animator object to use when dismissing a view controller._
+>
+> **Getting the Interactive Animator Objects**
+>
+> > [`interactionControllerForPresentation:`](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622050-interactioncontrollerforpresenta?language=objc)
+> >
+> > Asks your delegate for the interactive animator object to use when presenting a view controller.
+> >
+> > [`interactionControllerForDismissal:`](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622030-interactioncontrollerfordismissa?language=objc)
+> >
+> > Asks your delegate for the interactive animator object to use when dismissing a view controller.
+>
+> **Getting the Custom Presentation Controller**
+>
+> > [`presentationControllerForPresentedViewController:presentingViewController:sourceViewController:`](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622057-presentationcontrollerforpresent?language=objc)
+> >
+> > Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller.
+
 
 

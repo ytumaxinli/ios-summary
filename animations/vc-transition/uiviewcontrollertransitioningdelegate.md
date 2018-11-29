@@ -4,7 +4,7 @@ Protocol
 
 **简介**
 
-> 一组用来提供用于管理视图控制器之间的固定长度或交互式过渡的对象的方法。
+> 一组提供对象的方法，这些对象用来管理view controllers之间的固定时长转场或交互式转场。
 >
 > A set of methods that vend objects used to manage a fixed-length or interactive transition between view controllers.
 

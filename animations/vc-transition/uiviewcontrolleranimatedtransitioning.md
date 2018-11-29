@@ -39,7 +39,9 @@
 > > [self presentViewController:vc animated:YES completion:nil];
 > > ```
 > >
-> > 4 为了在view controller的转场中添加用户交互，必须将**动画对象**和一个**交互动画对象**（一个自定义遵循[`UIViewControllerInteractiveTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc) 协议的对象）结合使用。对于更多定义交互转场的，查看[`UIViewControllerInteractiveTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc)。
+> > 4 为了在view controller的转场中添加用户交互，必须将**动画对象**和一个**交互动画对象**（一个自定义遵循[`UIViewControllerInteractiveTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc) 协议的对象）结合使用。
+> >
+> > 对于更多定义交互转场的，查看[UIViewControllerInteractiveTransitioning](https://developer.apple.com/documentation/uikit/uiviewcontrollerinteractivetransitioning?language=objc)。
 > >
 > > ```
 > > To add user interaction to a view controller transition, you must use an animator object together with an interactive animator object—a custom object that adopts the UIViewControllerInteractiveTransitioning protocol. For more on defining interactive transitions, see UIViewControllerInteractiveTransitioning.
@@ -51,12 +53,16 @@
 > >
 > > > [**animateTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1622061-animatetransition?language=objc)
 > > >
-> > > `- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;`告诉动画对象执行转场动画。_Tells your animator object to perform the transition animations._
+> > > `- (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext;`
+> > >
+> > > 告诉动画对象执行转场动画。_Tells your animator object to perform the transition animations._
 > > >
 > > > [**animationEnded:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1622059-animationended?language=objc)  
 > > > _// This is a convenience and if implemented will be invoked by the system when the transition context's completeTransition: method is invoked._
 > > >
-> > > `- (void)animationEnded:(BOOL)transitionCompleted;`告诉动画对象执行转场动画完毕。_Tells your animator object that the transition animations have finished._
+> > > `- (void)animationEnded:(BOOL)transitionCompleted;`
+> > >
+> > > 告诉动画对象执行转场动画完毕。_Tells your animator object that the transition animations have finished._
 > >
 > > **Reporting Transition Duration**
 > >
@@ -68,7 +74,7 @@
 > >
 > > > [**interruptibleAnimatorForTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning/1829434-interruptibleanimatorfortransiti?language=objc)
 > > >
-> > > Returns the interruptible animator to use during the transition.
+> > > 在转场中返回可中断动画对象。Returns the interruptible animator to use during the transition.
 >
 > **See Also**
 >

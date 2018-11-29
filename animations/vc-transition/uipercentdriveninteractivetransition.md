@@ -8,23 +8,21 @@
 >
 > An object that drives an interactive animation between one view controller and another.
 
-
-
 **Declaration**
 
 > @interface UIPercentDrivenInteractiveTransition : NSObject
-
-
 
 **Overview**
 
 > 百分比驱动交互式过渡对象依赖 transition animator delegate--即一个遵循[`UIViewControllerAnimatedTransitioning`](https://developer.apple.com/documentation/uikit/uiviewcontrolleranimatedtransitioning?language=objc)协议的自定义对象--来创建动画和执行动画。
 >
+> ```
+> A percent-driven interactive transition object relies on a transition animator delegate—a custom object that adopts the UIViewControllerAnimatedTransitioning protocol—to set up and perform the animations.
+> ```
+>
 > 为了使用这个具体的类，在view controller代理请求交互式过渡控制器的时候，返回一个UIPercentDrivenInteractiveTransition的实例。当影响过渡进度的用户事件到达时，需要调用[`updateInteractiveTransition:`](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622051-updateinteractivetransition?language=objc),[`cancelInteractiveTransition`](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622026-cancelinteractivetransition?language=objc), and [`finishInteractiveTransition`](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622035-finishinteractivetransition?language=objc)方法以反映当前进度。例如：可以通过手势识别的代理方法，调用这些方法以反映手势完成了多少。
 >
 > 如果使用UIPercentDrivenInteractiveTransition的子类，必须在每个覆盖方法的开始调用父类方法。
-
-
 
 **Topics**
 
@@ -56,19 +54,19 @@
 >
 > **Managing a Transition**
 >
-> > [**- updateInteractiveTransition:**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622051-updateinteractivetransition?language=objc)
+> > [**- updateInteractiveTransition:**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622051-updateinteractivetransition?language=objc)
 > >
 > > 更新过渡完成的百分比。Updates the completion percentage of the transition.
 > >
-> > [**- pauseInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1829435-pauseinteractivetransition?language=objc)
+> > [**- pauseInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1829435-pauseinteractivetransition?language=objc)
 > >
 > > 暂停一个可中断的过渡动画。Pauses an interruptible transition animation.
 > >
-> > [**- cancelInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622026-cancelinteractivetransition?language=objc)
+> > [**- cancelInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622026-cancelinteractivetransition?language=objc)
 > >
 > > 通知系统用户交互取消了这个过渡。Notifies the system that user interactions canceled the transition.
 > >
-> > [**- finishInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622035-finishinteractivetransition?language=objc)
+> > [**- finishInteractiveTransition**](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition/1622035-finishinteractivetransition?language=objc)
 > >
 > > 通知系统用户交互表示过渡完成。Notifies the system that user interactions signaled the completion of the transition.
 

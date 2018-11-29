@@ -92,33 +92,41 @@
 > >
 > > > [**completeTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622042-completetransition?language=objc)
 > > >
-> > > `- (void)completeTransition:(BOOL)didComplete;`通知系统transition动画已经完成。Notifies the system that the transition animation is done.
+> > > `- (void)completeTransition:(BOOL)didComplete;`
+> > >
+> > > 通知系统transition动画已经完成。_Notifies the system that the transition animation is done._
 > > >
 > > > [**updateInteractiveTransition:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622025-updateinteractivetransition?language=objc)
 > > >
-> > > `- (void)updateInteractiveTransition:(CGFloat)percentComplete;`更新transition动画完成的百分比。Updates the completion percentage of the transition.
+> > > `- (void)updateInteractiveTransition:(CGFloat)percentComplete;`
+> > >
+> > > 更新transition动画完成的百分比。_Updates the completion percentage of the transition._
 > > >
 > > > [**pauseInteractiveTransition**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1829437-pauseinteractivetransition?language=objc)
 > > >
-> > > `- (void)pauseInteractiveTransition;`告诉系统暂停动画。Tells the system to pause the animations.
+> > > `- (void)pauseInteractiveTransition;`
+> > >
+> > > 告诉系统暂停动画。_Tells the system to pause the animations._
 > > >
 > > > [**finishInteractiveTransition**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622056-finishinteractivetransition?language=objc)
 > > >
-> > > 通知系统用户交互transition完成。Notifies the system that user interactions signaled the completion of the transition.
+> > > 通知系统用户交互transition完成。_Notifies the system that user interactions signaled the completion of the transition._
 > > >
 > > > [**cancelInteractiveTransition**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622038-cancelinteractivetransition?language=objc)
 > > >
-> > > 通知系统用户交互transition取消。Notifies the system that user interactions canceled the transition.
+> > > 通知系统用户交互transition取消。_Notifies the system that user interactions canceled the transition._
 > > >
 > > > [**transitionWasCancelled**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622039-transitionwascancelled?language=objc)
 > > >
-> > > 返回一个bool值，标示transition是否被取消。_Returns a Boolean value indicating whether the transition was canceled._
+> > > 返回一个bool值，指示转场是否被取消。_Returns a Boolean value indicating whether the transition was canceled._
 > >
 > > **Getting the Rotation Factor**
 > >
 > > > [**targetTransform**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622036-targettransform?language=objc)
 > > >
-> > > `@property(nonatomic, readonly) CGAffineTransform targetTransform;`返回一个仿射矩阵，标示在transition中应用的旋转量。Returns a transform indicating the amount of rotation being applied during the transition.
+> > > `@property(nonatomic, readonly) CGAffineTransform targetTransform;`
+> > >
+> > > 返回一个仿射矩阵，标示在transition中应用的旋转量。Returns a transform indicating the amount of rotation being applied during the transition.
 > >
 > > **Constants**
 > >
@@ -138,6 +146,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[                            
+[                              
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

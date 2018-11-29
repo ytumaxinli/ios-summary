@@ -20,7 +20,7 @@
 > > Do not adopt this protocol in your own classes, nor should you directly create objects that adopt this protocol. During a transition, the animator objects involved in that transition receive a fully configured context object from UIKit. Custom animator objects—objects that adopt the UIViewControllerAnimatedTransitioning or UIViewControllerInteractiveTransitioning protocol—should simply retrieve the information they need from the provided object.
 > > ```
 > >
-> > 上下文对象封装有关转换中涉及的views和view controllers的信息。它也包含了怎样执行转场的详细信息。对于交互型转场，交互动画对象使用这个协议的方法来报告动画的进度。当动画开始，交互动画对象必须保存一个上下文的指。根据用户的交互，动画对象然后调用[`updateInteractiveTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622025-updateinteractivetransition?language=objc),[`finishInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622056-finishinteractivetransition?language=objc) or [`cancelInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622038-cancelinteractivetransition?language=objc) 来报告动画完成的进度。这些方法给UIKit发送信息，这个它就可以控制动画的时间进度。
+> > 上下文对象封装有关转换中涉及的views和view controllers的信息。它也包含了怎样执行转场的详细信息。对于交互型转场，**交互动画对象使用这个协议的方法来报告动画的进度**。在动画开始时，交互动画对象必须保存一个上下文的指针。根据用户的交互，动画对象然后调用[`updateInteractiveTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622025-updateinteractivetransition?language=objc),[`finishInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622056-finishinteractivetransition?language=objc) or [`cancelInteractiveTransition`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622038-cancelinteractivetransition?language=objc) 来报告动画完成的进度。这些方法给UIKit发送信息，因此UIKit就可以驱动动画的时间进度。
 > >
 > > ```
 > > A context object encapsulates information about the views and view controllers involved in the transition. It also contains details about the how to execute the transition. For interactive transitions, the interactive animator object uses the methods of this protocol to report the animation’s progress. When the animation starts, the interactive animator object must save a pointer to the context object. Based on user interactions, the animator object then calls the updateInteractiveTransition:, finishInteractiveTransition, or cancelInteractiveTransition methods to report the progress toward completing the animation. Those methods send that information to UIKit so that it can drive the timing of the animations.
@@ -130,6 +130,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[                    
+[                      
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

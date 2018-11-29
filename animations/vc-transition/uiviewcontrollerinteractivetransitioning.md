@@ -14,7 +14,7 @@
 
 **Overview**
 
-> 一个遵循UIViewControllerInteractiveTransitioning协议的对象，能够通过加速、减速或者甚至反转view controller过渡的进度来响应触摸事件或者时变程序输入。例如：navigation controller上的交互式过渡可以通过移动view controller进入或者移除navigation 栈来响应滑动手势。
+> 一个遵循UIViewControllerInteractiveTransitioning协议的对象，能够通过加速、减速或者甚至反转view controller转场的进度来响应触摸事件或者通过编程输入的时间变量。例如：navigation controller上的交互式转场可以通过移动view controller进入或者移除navigation 栈来响应滑动手势。
 >
 > ```
 > An interactive transition delegate (which is the term for an object that supports this protocol) can respond to touch events, or to time-varying programmatic input, by speeding up, slowing down, or even reversing the progress of a view controller transition. For example, an interactive transition on a navigation controller could respond to a swipe gesture by moving a view controller onto or off of the navigation stack.

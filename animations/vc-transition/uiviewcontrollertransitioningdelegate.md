@@ -82,7 +82,7 @@ Protocol
 > >                                                           sourceViewController:(UIViewController *)source;
 > > ```
 > >
-> > 让代理对象返回一个自定义的presentation controller，在presenting a view controller时管理视图层次结构。Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller.
+> > 让代理对象返回一个自定义的presentation controller，在presenting a view controller时管理视图层次结构。_Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller._
 
 
 

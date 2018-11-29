@@ -45,7 +45,7 @@ Protocol
 > > ```
 > >
 > > 让代理对象返回过渡动画对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
->
+> >
 > > [**animationControllerForDismissedController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622047-animationcontrollerfordismissedc?language=objc)
 > >
 > > ```
@@ -63,7 +63,7 @@ Protocol
 > > ```
 > >
 > > 让代理对象返回交互式动画对象，当presenting view controller时使用。_Asks your delegate for the interactive animator object to use when presenting a view controller._
->
+> >
 > > [**interactionControllerForDismissal:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622030-interactioncontrollerfordismissa?language=objc)
 > >
 > > ```
@@ -82,7 +82,7 @@ Protocol
 > >                                                           sourceViewController:(UIViewController *)source;
 > > ```
 > >
-> > Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller.
+> > 让代理对象返回一个自定义的presentation controller，在presenting a view controller时管理视图层次结构。Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller.
 
 
 

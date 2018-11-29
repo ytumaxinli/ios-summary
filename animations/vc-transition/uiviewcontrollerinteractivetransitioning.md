@@ -4,7 +4,7 @@
 
 **简介**
 
-> 一组能够使对象（例如navigation controller）控制view controller转场的方法。
+> 一组使对象（例如navigation controller）能够驱动view controller转场的方法。
 >
 > _A set of methods that enable an object \(such as a navigation controller\) to drive a view controller transition._
 

@@ -26,7 +26,7 @@
 > To support an interactive view controller transition, you must also provide a transition animator delegate, which is a custom object that adopts the UIViewControllerAnimatedTransitioning protocol. The transition delegate and the transition animator can, if you wish, be defined within a single custom class, but the class must adopt both protocols.
 > ```
 >
-> 如果想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见UIViewControllerAnimatedTransitioning
+> 然而只是想要提供一个固定时长的view controller 转场动画-即不支持用户交互-单独使用transition animator即可。参见UIViewControllerAnimatedTransitioning
 >
 > ```
 > If you instead want to provide a fixed-duration animated view controller transition—one that does not support user interaction—use a transition animator delegate on its own. Refer to UIViewControllerAnimatedTransitioning.

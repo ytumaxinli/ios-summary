@@ -14,7 +14,7 @@
 >
 > **Overview**
 >
-> > 不要在自己的类中遵循此协议，也不要直接创建遵循此协议的对象。在过渡期间，被过渡调用的动画对象从UIKit接收完全配置的上下文对象。遵循UIViewControllerAnimatedTransitioning或者UIViewControllerInteractiveTransitioning协议的自定义动画对象，应该只是从上下文对象中检索所需的信息。
+> > 不要在自己的类中遵循此协议，也不要直接创建遵循此协议的对象。在转场期间，转场所涉及的动画对象从UIKit接收完全配置的上下文对象。遵循UIViewControllerAnimatedTransitioning或者UIViewControllerInteractiveTransitioning协议的自定义动画对象，应该只是从上下文对象中检索所需的信息。
 > >
 > > ```
 > > Do not adopt this protocol in your own classes, nor should you directly create objects that adopt this protocol. During a transition, the animator objects involved in that transition receive a fully configured context object from UIKit. Custom animator objects—objects that adopt the UIViewControllerAnimatedTransitioning or UIViewControllerInteractiveTransitioning protocol—should simply retrieve the information they need from the provided object.
@@ -126,6 +126,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[            
+[              
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

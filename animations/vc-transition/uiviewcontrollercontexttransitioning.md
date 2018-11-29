@@ -28,7 +28,7 @@
 > >
 > > **重要**
 > >
-> > 定义自定义动画对象时，需要始终检查isAnimated方法返回的值，以确定是否应创建动画。并且在创建转场动画时，需要在可是的完成block中调用[`completeTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622042-completetransition?language=objc) 方法，让UIKit知道所有的动画已经执行完。
+> > 定义自定义动画对象时，需要始终检查isAnimated方法返回的值，以确定是否应创建动画。并且在创建转场动画时，需要在合适的完成block中调用[`completeTransition:`](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622042-completetransition?language=objc) 方法，让UIKit知道所有的动画已经执行完。
 > >
 > > ```
 > > When defining custom animator objects, always check the value returned by the isAnimated method to determine whether you should create animations at all. And when you do create transition animations, always call the completeTransition: method from an appropriate completion block to let UIKit know when all of your animations have finished.
@@ -40,11 +40,11 @@
 > >
 > > > [**containerView**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622045-containerview?language=objc)
 > > >
-> > > 在过渡中被调用的views的superview,即动画views的承载view._The view that acts as the superview for the views involved in the transition. _**Required.**
+> > > 扮演在转场中涉及到的views的父view. _The view that acts as the superview for the views involved in the transition_**.**
 > > >
 > > > [**viewControllerForKey:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622043-viewcontrollerforkey?language=objc)
 > > >
-> > > 返回transition中涉及的view congtroller。_Returns a view controller involved in the transition.**Required.**_
+> > > 返回transition中涉及的view congtroller。_Returns a view controller involved in the transition**.**_
 > > >
 > > > ```
 > > > [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
@@ -53,7 +53,7 @@
 > > >
 > > > [**viewForKey:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622055-viewforkey?language=objc)
 > > >
-> > > 返回transition中涉及的指定view。_Returns the specified view involved in the transition.**Required**_
+> > > 返回transition中涉及的指定view。_Returns the specified view involved in the transition._
 > > >
 > > > ```
 > > > [transitionContext viewForKey:UITransitionContextFromViewKey];
@@ -64,25 +64,29 @@
 > >
 > > > [**initialFrameForViewController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622033-initialframeforviewcontroller?language=objc)
 > > >
-> > > `- (CGRect)initialFrameForViewController:(UIViewController *)vc;`返回指定的view controller's view的起始frame。_ Returns the starting frame rectangle for the specified view controller’s view. _
+> > > `- (CGRect)initialFrameForViewController:(UIViewController *)vc;`
+> > >
+> > > 返回指定的view controller's view的起始frame。_ Returns the starting frame rectangle for the specified view controller’s view. _
 > > >
 > > > [**finalFrameForViewController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622024-finalframeforviewcontroller?language=objc)
 > > >
-> > > `- (CGRect)finalFrameForViewController:(UIViewController *)vc;`返回指定的view controller’s view的最终frame。_Returns the ending frame rectangle for the specified view controller’s view._
+> > > `- (CGRect)finalFrameForViewController:(UIViewController *)vc;`
+> > >
+> > > 返回指定的view controller’s view的最终frame。_Returns the ending frame rectangle for the specified view controller’s view._
 > >
 > > **Getting the Transition Behaviors**
 > >
 > > > [**animated**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/2097569-animated?language=objc)
 > > >
-> > > 一个bool类型值，标示这个transition是否应该被设置为动画。_A Boolean value indicating whether the transition should be animated. **Required**_**.**
+> > > 一个bool类型值，指示这个转场是否应该被设置为动画。_A Boolean value indicating whether the transition should be animated_**.**
 > > >
 > > > [**interactive**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/2097570-interactive?language=objc)
 > > >
-> > > 一个bool类型值，标示这个transition正在交互。_A Boolean value indicating whether the transition is currently interactive. **Required**_**.**
+> > > 一个bool类型值，指示这个转场正在交互。_A Boolean value indicating whether the transition is currently interactive. _
 > > >
 > > > [**presentationStyle**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622049-presentationstyle?language=objc)
 > > >
-> > > 返回view controller transition 的展示样式。_Returns the presentation style for the view controller transition._
+> > > 返回view controller转场的presentation style。_Returns the presentation style for the view controller transition._
 > >
 > > **Reporting the Transition Progress**
 > >
@@ -134,6 +138,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[                          
+[                            
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

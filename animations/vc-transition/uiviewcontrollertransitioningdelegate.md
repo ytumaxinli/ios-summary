@@ -44,17 +44,15 @@ Protocol
 > >                                                                       sourceController:(UIViewController *)source;
 > > ```
 > >
-> > 让代理对象返回ransition animator对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
-> >
+> > 让代理对象返回过渡动画对象，当presenting view controller时使用。_ Asks your delegate for the transition animator object to use when presenting a view controller._
+>
 > > [**animationControllerForDismissedController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622047-animationcontrollerfordismissedc?language=objc)
 > >
 > > ```
 > > - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed;
 > > ```
 > >
-> > 让代理对象返回ransition animator对象，当dismissing view controller时使用。_Asks your delegate for the transition animator object to use when dismissing a view controller._
->
->
+> > 让代理对象返回过渡动画对象，当dismissing view controller时使用。_Asks your delegate for the transition animator object to use when dismissing a view controller._
 >
 > **Getting the Interactive Animator Objects**
 >
@@ -64,15 +62,25 @@ Protocol
 > > - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id<UIViewControllerAnimatedTransitioning>)animator;
 > > ```
 > >
-> > Asks your delegate for the interactive animator object to use when presenting a view controller.
+> > 让代理对象返回交互式动画对象，当presenting view controller时使用。_Asks your delegate for the interactive animator object to use when presenting a view controller._
+>
+> > [**interactionControllerForDismissal:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622030-interactioncontrollerfordismissa?language=objc)
 > >
-> > [`interactionControllerForDismissal:`](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622030-interactioncontrollerfordismissa?language=objc)
+> > ```
+> > - (id<UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id<UIViewControllerAnimatedTransitioning>)animator;
+> > ```
 > >
-> > Asks your delegate for the interactive animator object to use when dismissing a view controller.
+> > 让代理对象返回交互式动画对象，当dismissing view controller时使用。_Asks your delegate for the interactive animator object to use when dismissing a view controller._
 >
 > **Getting the Custom Presentation Controller**
 >
-> > [`presentationControllerForPresentedViewController:presentingViewController:sourceViewController:`](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622057-presentationcontrollerforpresent?language=objc)
+> > [**presentationControllerForPresentedViewController:presentingViewController:sourceViewController:**](https://developer.apple.com/documentation/uikit/uiviewcontrollertransitioningdelegate/1622057-presentationcontrollerforpresent?language=objc)
+> >
+> > ```
+> > - (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented 
+> >                                                       presentingViewController:(UIViewController *)presenting 
+> >                                                           sourceViewController:(UIViewController *)source;
+> > ```
 > >
 > > Asks your delegate for the custom presentation controller to use for managing the view hierarchy when presenting a view controller.
 

@@ -83,6 +83,28 @@
 > > > [**UIViewControllerContextTransitioning**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning?language=objc)
 > > >
 > > > 一组为view controllers 间转场动画提供上下文信息的方法。_A set of methods that provide contextual information for transition animations between view controllers._
+>
+> **黑屏问题**
+>
+> > 通过present展示的view controller，在dismiss过渡动画中在containerView添加fromVC和toVC不正确时会出现黑屏问题。正确写法
+> >
+> > ```
+> > UIView *containerView = [transitionContext containerView];
+> > UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
+> > UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
+> >
+> > // Boolean value to determine presentation or dismissal animation
+> > if (self.presenting){        
+> >     [transitionContext.containerView addSubview:toViewController.view];
+> >     // Your presenting animation code
+> > } else {
+> >     // Your dismissal animation code
+> > }
+> > ```
+> >
+> > [参考文献：https://stackoverflow.com/questions/25588617/ios-8-screen-blank-after-dismissing-view-controller-with-custom-presentation](https://stackoverflow.com/questions/25588617/ios-8-screen-blank-after-dismissing-view-controller-with-custom-presentation)
+
+
 
 
 

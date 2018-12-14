@@ -122,7 +122,29 @@
 > > 0x6000023de910 0x9a838cca1910ed4a
 > > ```
 >
+>
+>
 > > 方法二：归档
+> >
+> > 归档的自定义类需要实现NSCoding协议
+> >
+> > ```
+> > - (void)encodeWithCoder:(NSCoder *)aCoder {
+> >     [super encodeWithCoder:aCoder];
+> >     [aCoder encodeObject:self.author forKey:kAuthor];
+> > }
+> >  
+> > - (id)initWithCoder:(NSCoder *)aDecoder {
+> >     self = [super initWithCoder:aDecoder];
+> >     self.author = [aDecoder decodeObjectForKey:kAuthor];
+> >     return self;
+> > }
+> > ```
+> >
+> > ```
+> >  NSData *arrayData = [NSKeyedArchiver archivedDataWithRootObject:array1];
+> >  NSArray *array2 = [NSKeyedUnarchiver unarchiveObjectWithData:tempData];
+> > ```
 
 #### 面试例题
 

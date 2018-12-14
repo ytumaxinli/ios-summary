@@ -1,6 +1,7 @@
 #### 浅拷贝：仅拷贝指向对象的指针，不拷贝对象本身
 
 > 当原对象是不可变对象时，使用copy是仅拷贝对象的指针
+>
 > ```
 > NSString *str1 = @"str1";
 > NSString *str2 = [str1 copy];
@@ -12,15 +13,46 @@
 > */
 > ```
 
-
-
 #### 深拷贝：拷贝对象到另一块内存中
 
+> **遵循NSCopying、NSMutableCopying协议的系统类**
 >
-
-
-
-
+> > 遵循NSCopying、NSMutableCopying协议的系统类可直接调用copy或者mutableCopy方法
+>
+> **自定义类需要实现NSCopying、NSMutableCopying协议才能调用copy或者mutableCopy方法**
+>
+> > ```
+> > @interface Person : NSObject<NSCopying,NSMutableCopying,NSCoding>
+> >
+> > @property(nonatomic, copy)NSMutableString *name;
+> > @property(nonatomic, assign)NSInteger age;
+> > @property(nonatomic, copy)NSString *cardId;
+> >
+> > @end
+> >
+> > @implementation Person
+> > - (id)copyWithZone:(NSZone *)zone
+> > {
+> >     Person *person = [Person allocWithZone:zone];
+> >     //由于属性中响应字段已经设置为copy属性，因此不需要copy
+> >     person.name = _name;
+> >     person.age = _age;
+> >     person.cardId = _cardId;
+> >  
+> >     return person;
+> > }
+> >
+> > - (id)mutableCopyWithZone:(NSZone *)zone
+> > {
+> >     Person *person = [Person allocWithZone:zone];
+> >     person.name = _name;
+> >     person.age = _age;
+> >     person.cardId = _cardId;
+> >     
+> >     return person;
+> > }
+> > @end
+> > ```
 
 #### 面试例题
 

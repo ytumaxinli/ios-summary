@@ -116,7 +116,7 @@
 > > >
 > > > 通知系统用户交互transition取消。_Notifies the system that user interactions canceled the transition._
 > > >
-> > > [**transitionWasCancelled**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622039-transitionwascancelled?language=objc)
+> > > [**transitionWasCancelled**](https://developer.apple.com/documentation/uikit/uiviewcontrollercontexttransitioning/1622039-transitionwascancelled?language=objc)   
 > > >
 > > > 返回一个bool值，指示转场是否被取消。_Returns a Boolean value indicating whether the transition was canceled._
 > >
@@ -146,6 +146,6 @@
 > > >
 > > > 一组用于实现自定义视图控制器转换的动画的方法。_A set of methods for implementing the animations for a custom view controller transition._
 
-[                              
+[                                
 ](https://developer.apple.com/documentation/uikit/uitransitioncontextviewcontrollerkey?language=objc)
 

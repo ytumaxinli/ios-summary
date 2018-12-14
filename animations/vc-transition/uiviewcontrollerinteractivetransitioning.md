@@ -76,11 +76,11 @@
 > >
 > > 修改正在运行的动画的接口。An interface for modifying an animation while it is running.[  ](https://developer.apple.com/documentation/uikit/uipercentdriveninteractivetransition?language=objc)
 
-
-
 **注意：**
 
 > 交互式转场只支持UIView动画，不支持CALayer动画
+>
+> 交互式转场不支持嵌套动画
 
 
 

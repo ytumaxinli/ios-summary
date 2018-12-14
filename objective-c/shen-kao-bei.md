@@ -9,7 +9,6 @@
 > **自定义类需要实现NSCopying、NSMutableCopying协议才能调用copy或者mutableCopy方法**
 >
 > ```
->
 > @property(nonatomic, copy)NSMutableString *name;
 > @property(nonatomic, assign)NSInteger age;
 > @property(nonatomic, copy)NSString *cardId;
@@ -102,8 +101,26 @@
 > > array:0x60000192b090, cArray:0x60000192b060, array.firstObject:0x10c584280, cArray.firstObject:0x10c584280
 > > mArray:0x60000197f870, cMarray:0x60000197f9c0, mArray.firstObject:0x10c584300, cMarray.firstObject:0x10c584300
 > > ```
-
-
+>
+> **完全深拷贝**
+>
+> > 方法一：- \(instancetype\)initWithArray:\(NSArray&lt;ObjectType&gt; \*\)array copyItems:\(BOOL\)flag;
+> >
+> > ```
+> > If YES, each object in array receives acopyWithZone:message to create a copy of the object—objects must conform to the NSCopying protocol. In a managed memory environment, this is instead of the retain message the object would otherwise receive. The object copy is then added to the returned array.
+> > If NO, then in a managed memory environment each object inarraysimply receives aretainmessage when it is added to the returned array.
+> > ```
+> >
+> > ```
+> > NSMutableArray *array1 = [NSMutableArray arrayWithObjects:[NSMutableString stringWithString:@"a"],@"b",@"c", nil];
+> > NSMutableArray *array2 = [[NSMutableArray alloc] initWithArray:array1 copyItems:YES];
+> > NSLog(@"%p %p",array1,array2);
+> > NSLog(@"%p %p",array1[0],array2[0]);
+> >
+> > //打印结果
+> > 0x6000023de8e0 0x6000023de8b0
+> > 0x6000023de910 0x9a838cca1910ed4a
+> > ```
 
 #### 面试例题
 

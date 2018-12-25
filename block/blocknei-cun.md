@@ -59,8 +59,6 @@
 >
 > **堆区：    \_\_NSMallocBlock\_\_  -&gt;  \_\_NSMallocBlock  -&gt;  NSBlock  -&gt;  NSObject**
 
-
-
 **Block的类型与外部变量及修饰符之间的关系**
 
 > **分别在由strong、copy、weak修饰的block中，通过不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量、局部外部变量来分析block类的类型。**
@@ -111,7 +109,7 @@
 >
 > 2. **由strong、copy、weak修饰的block中，使用局部变量时，block的类型分别为，\_\_NSMallocBlock\_\_，\_\_NSMallocBlock\_\_，\_\_NSStackBlock\_\_，即block被strong和copy修饰是被拷贝到了堆区，而weak修饰的未进行拷贝**
 >
-> 3. **block在初始化的时候都是在栈区，只是在一些情况下block被从栈区拷贝到了全局、堆区。**
+> 3. **block在初始化的时候都是在栈区，只是在一些情况下block被从栈区拷贝到了全局区、堆区。**
 
 
 

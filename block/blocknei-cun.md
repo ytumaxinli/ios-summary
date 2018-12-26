@@ -64,17 +64,21 @@
 >
 > **总结**
 >
-> 以上代码中通过打印，可以看出block有三种类继承关系。
+> 1.以上代码中通过打印，可以看出block有三种类继承关系。
 >
 > **全局区： \_\_NSGlobalBlock\_**_**  **_**-&gt;  \_\_NSGlobalBlock  -&gt;  NSBlock  -&gt;  NSObject**
 >
 > **栈区：    \_\_NSStackBlock\_\_  -&gt; \_\_NSStackBlock  -&gt;  NSBlock  -&gt;  NSObject**
 >
 > **堆区：    \_\_NSMallocBlock\_\_  -&gt;  \_\_NSMallocBlock  -&gt;  NSBlock  -&gt;  NSObject**
+>
+> 2.block默认使用strong修饰符，block不使用修饰符与使用strong修饰符效果相同
+
+
 
 **Block的类型与外部变量及修饰符之间的关系**
 
-> **分别在由strong、copy、weak修饰的block中，通过不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量、局部外部变量来分析block类的类型。**
+> **在不使用修饰符和使用strong、copy、weak三种修饰的block中，通过不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量、局部外部变量来分析block类的类型。**
 >
 > ```
 > typedef void(^testBlock) (int a);
@@ -90,6 +94,10 @@
 >     static int variable_2 = 10000;
 >     int variable_3 = 10000; 
 >     
+>     void (^ block)(void) = ^{
+>         NSLog(@"variable %d", variable_2);
+>     };
+>     
 >     _strongBlock = ^(int a) {
 >         NSLog(@"variable %d", variable_2);
 >     };
@@ -102,23 +110,22 @@
 >         NSLog(@"variable %d", variable_2);
 >     };
 >     
->     NSLog(@"strongBlock %@, copyBlock %@, weakBlock %@", object_getClass(_strongBlock), object_getClass(_copyBlock), object_getClass(_weakBlock));
+>     NSLog(@"block:%@, strongBlock:%@, copyBlock:%@, weakBlock:%@",
+>           object_getClass(block),object_getClass(_strongBlock), object_getClass(_copyBlock), object_getClass(_weakBlock));
 > }
 > ```
 >
 > **打印结果**
 >
 > ```
-> [717:26061] strongBlock __NSGlobalBlock__, copyBlock __NSGlobalBlock__, weakBlock __NSGlobalBlock__
+> block:__NSGlobalBlock__, strongBlock:__NSGlobalBlock__, copyBlock:__NSGlobalBlock__, weakBlock:__NSGlobalBlock__
 > ```
 >
 > ```
-> [702:25403] strongBlock __NSMallocBlock__, copyBlock __NSMallocBlock__, weakBlock __NSStackBlock__
+> block:__NSMallocBlock__, strongBlock:__NSMallocBlock__, copyBlock:__NSMallocBlock__, weakBlock:__NSStackBlock__
 > ```
 >
-> **总结**
->
-> 1. **由strong、copy、weak修饰的block中，不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量时block的类型都为\_\_NSGlobalBlock\_\_，即block被拷贝到了全局区**
+> 1. **在不使用修饰符和使用strong、copy、weak三种修饰的block中，不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量时block的类型都为\_\_NSGlobalBlock\_\_，即block被拷贝到了全局区**
 >
 > 2. **由strong、copy、weak修饰的block中，使用局部变量时，block的类型分别为，\_\_NSMallocBlock\_\_，\_\_NSMallocBlock\_\_，\_\_NSStackBlock\_\_，即block被strong和copy修饰是被拷贝到了堆区，而weak修饰的未进行拷贝**
 >

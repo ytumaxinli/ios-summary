@@ -1,6 +1,12 @@
+**使用成员变量的block**
+
 > OC源码
 >
 > ```
+> @interface BlockStructureViewController () {
+>     UILabel *label;
+> }
+>
 > - (void)classDataBlockFunction {
 >     
 >     void (^classDataBlock)(void) = ^{

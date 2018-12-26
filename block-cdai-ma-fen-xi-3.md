@@ -101,25 +101,30 @@
 > } __BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0), __BlockStructureViewController__objcDataBlockFunction_block_copy_0, __BlockStructureViewController__objcDataBlockFunction_block_dispose_0};
 > ```
 >
-> > 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
-> >
+> 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
+>
+> ```
+> //将局部变量tmpLabel和flags=570425344通过构造方法传给block结构体成员 
+> void (*objcDataBlock)(void) = ((void (*)())&__BlockStructureViewController__objcDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__objcDataBlockFunction_block_func_0, &__BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA, tmpLabel, 570425344));
+>
+> //编译后的objcDataBlock结构体，多了一个强引用的tmpLabel
+> struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0
+> {
+>     struct __block_impl impl;
+>     struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0* Desc;
+>     UILabel *__strong tmpLabel;
+>     __BlockStructureViewController__objcDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 *desc, UILabel *__strong _tmpLabel, int flags=0) : tmpLabel(_tmpLabel) {
+>         impl.isa = &_NSConcreteStackBlock;
+>         impl.Flags = flags;
+>         impl.FuncPtr = fp;
+>         Desc = desc;
+>     }
+> };
+>
+> ```
+>
 > > ```
-> > //将局部变量i通过构造方法传给block结构体成员变量i
-> > void (*simpleDataBlock)(void) = ((void (*)())&__BlockStructureViewController__simpleDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__simpleDataBlockFunction_block_func_0, &__BlockStructureViewController__simpleDataBlockFunction_block_desc_0_DATA, i));
 > >
-> > //编译后的simpleDataBlock结构体，多了一个成员变量i
-> > struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 
-> > {
-> >   struct __block_impl impl;
-> >   struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0* Desc;
-> >   int i;
-> >   __BlockStructureViewController__simpleDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0 *desc, int _i, int flags=0) : i(_i) {
-> >     impl.isa = &_NSConcreteStackBlock;
-> >     impl.Flags = flags;
-> >     impl.FuncPtr = fp;
-> >     Desc = desc;
-> >   }
-> > };
 > > ```
 > >
 > > 5、调用block结构体中的函数指针FuncPtr即fp。

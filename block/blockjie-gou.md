@@ -3,13 +3,15 @@
 > **1.查看当前xcode正在使用的编译版本**
 >
 > ```
+> //终端中输入xcodebuild -showsdks
 > bogon:~ tsmc$ xcodebuild -showsdks
 >
+> //输出结果
 > iOS SDKs:
-> 	iOS 12.1                      	-sdk iphoneos12.1
+>     iOS 12.1                          -sdk iphoneos12.1
 >
 > iOS Simulator SDKs:
-> 	Simulator - iOS 12.1          	-sdk iphonesimulator12.1
+>     Simulator - iOS 12.1              -sdk iphonesimulator12.1
 > ```
 >
 > **2. 通过clang编译器将OC转化为C++代码命令**
@@ -21,8 +23,6 @@
 > //mac
 > xcrun -sdk macosx10.14 clang -S -rewrite-objc -fobjc-arc 文件名
 > ```
-
-
 
 
 

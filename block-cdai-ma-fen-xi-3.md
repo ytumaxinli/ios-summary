@@ -108,9 +108,9 @@
 > 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针。
 >
 > ```
->  4.1 block结构体中多了一个UILable \*\_\_string tmpLable成员,对传入的UILab进行**强引用**。
+>  4.1 block结构体中多了一个UILable *__strong tmpLable成员,对传入的UILab进行强引用。
 >
->  4.2 调用block构造方法，传入的flags=570425344。BLOCK\_HAS\_COPY\_DISPOSE\|BLOCK\_USE\_STRET
+>  4.2 调用block构造方法，传入的flags=570425344。BLOCK_HAS_COPY_DISPOSE|BLOCK_USE_STRET
 > ```
 >
 > ```

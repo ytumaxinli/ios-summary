@@ -38,6 +38,6 @@
     * [Block C++代码分析4](block-cdai-ma-fen-xi-4.md)
     * [Block C++代码分析5](block-cdai-ma-fen-xi-5.md)
     * [Block C++代码分析6](block-cdai-ma-fen-xi-6.md)
-    * Block C++代码分析7
+    * [Block C++代码分析7](block-cdai-ma-fen-xi-7.md)
     * Block C++代码分析8
 

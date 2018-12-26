@@ -26,7 +26,7 @@
 >         NSLog(@"a = %d",a);
 >     };
 >     
->     //打印block_0、block_1、block_2的类名及集成关系
+>     //打印block_0、block_1、block_2、block_3的类名及继承关系
 >     Class blockClass = object_getClass(block_0);
 >     NSLog(@"blockClass %@", blockClass);
 >     Class blockSuperClass = [blockClass superclass];

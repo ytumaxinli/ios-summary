@@ -117,7 +117,43 @@
 >
 > 4、描述block结构体信息的\_\_BlockStructureViewController\_\_blockDataBlockFunction\_block\_desc\_0\_DATA
 >
-> 5、
+> 5、调用block构造方法\_\_BlockStructureViewController\_\_blockDataBlockFunction\_block\_impl\_0，得到block函数指针。
+>
+> > 5.1 构造方法参数: \_\_Block\_byref\_a\_0 \*a=&a, flags= 570425344
+> >
+> > ```
+> > void (*blockDataBlock)(void) = ((void (*)())&__BlockStructureViewController__blockDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__blockDataBlockFunction_block_func_0, &__BlockStructureViewController__blockDataBlockFunction_block_desc_0_DATA, (__Block_byref_a_0 *)&a, 570425344));
+> > ```
+> >
+> > 5.2 block实现结构体中，增加了成员\_\_Block\_byref\_a\_0 \*a
+> >
+> > ```
+> > struct __BlockStructureViewController__blockDataBlockFunction_block_impl_0 
+> > {
+> >   struct __block_impl impl;
+> >   struct __BlockStructureViewController__blockDataBlockFunction_block_desc_0* Desc;
+> >   __Block_byref_a_0 *a; // by ref
+> >   __BlockStructureViewController__blockDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__blockDataBlockFunction_block_desc_0 *desc, __Block_byref_a_0 *_a, int flags=0) : a(_a->__forwarding) {
+> >     impl.isa = &_NSConcreteStackBlock;
+> >     impl.Flags = flags;
+> >     impl.FuncPtr = fp;
+> >     Desc = desc;
+> >   }
+> > };
+> > ```
+>
+> 6.block体中的逻辑代码的调用
+>
+> ```
+> static void __BlockStructureViewController__blockDataBlockFunction_block_func_0(struct __BlockStructureViewController__blockDataBlockFunction_block_impl_0 *__cself) 
+> {
+>   __Block_byref_a_0 *a = __cself->a; // bound by ref
+>   
+>   (a->__forwarding->a) = 1000;
+>   
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_7, (a->__forwarding->a));
+> }
+> ```
 
 
 

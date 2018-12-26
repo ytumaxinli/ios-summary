@@ -81,6 +81,54 @@
 >   _Block_object_dispose((void*)src->tmpLabel, 3/*BLOCK_FIELD_IS_OBJECT*/);
 > }
 > ```
+>
+> **分析调用步骤**
+>
+> 1、调用\_I\_BlockStructureViewController\_objcDataBlockFunction方法；
+>
+> 2、block体中逻辑代码编译后的函数\_\_BlockStructureViewController\_\_objcDataBlockFunction\_block\_func\_0
+>
+> 3、描述block结构体信息的\_\_BlockStructureViewController\_\_objcDataBlockFunction\_block\_desc\_0\_DATA
+>
+> ```
+> //结构体与使用简单外部变量相比多了copy 和 dispose方法
+> static struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 
+> {
+>   size_t reserved;
+>   size_t Block_size;
+>   void (*copy)(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*, struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*);
+>   void (*dispose)(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*);
+> } __BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0), __BlockStructureViewController__objcDataBlockFunction_block_copy_0, __BlockStructureViewController__objcDataBlockFunction_block_dispose_0};
+> ```
+>
+> > 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
+> >
+> > ```
+> > //将局部变量i通过构造方法传给block结构体成员变量i
+> > void (*simpleDataBlock)(void) = ((void (*)())&__BlockStructureViewController__simpleDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__simpleDataBlockFunction_block_func_0, &__BlockStructureViewController__simpleDataBlockFunction_block_desc_0_DATA, i));
+> >
+> > //编译后的simpleDataBlock结构体，多了一个成员变量i
+> > struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 
+> > {
+> >   struct __block_impl impl;
+> >   struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0* Desc;
+> >   int i;
+> >   __BlockStructureViewController__simpleDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0 *desc, int _i, int flags=0) : i(_i) {
+> >     impl.isa = &_NSConcreteStackBlock;
+> >     impl.Flags = flags;
+> >     impl.FuncPtr = fp;
+> >     Desc = desc;
+> >   }
+> > };
+> > ```
+> >
+> > 5、调用block结构体中的函数指针FuncPtr即fp。
+> >
+> > 6、block体中的逻辑代码的调用
+> >
+> > ```
+> >
+> > ```
 
 
 

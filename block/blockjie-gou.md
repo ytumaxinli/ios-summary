@@ -24,8 +24,6 @@
 > xcrun -sdk macosx10.14 clang -S -rewrite-objc -fobjc-arc 文件名
 > ```
 
-
-
 **分析多种block转化后的C++代码**
 
 * **空的block**
@@ -53,13 +51,16 @@
   >     //参数2：__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA结构体地址，此结构体存储了emptyBlock为结构体的size
   >     void (*emptyBlock)(void) = ((void (*)())&__BlockStructureViewController__emptyBlockFunction_block_impl_0((void *)__BlockStructureViewController__emptyBlockFunction_block_func_0, &__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA));
   >     
+  >     //调用block方法，即调用参数1传递的函数
   >     ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
   > }
   >
   > //转化后的emptyBlock为结构体
   > struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 
   > {
+  >   //当前结构体的内容
   >   struct __block_impl impl;
+  >   //当前结构体的描述
   >   struct __BlockStructureViewController__emptyBlockFunction_block_desc_0* Desc;
   >   
   >   //结构体构造函数
@@ -84,7 +85,66 @@
   >   size_t Block_size;
   > } __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
   >
+  > //block体内的逻辑代码被编译到了此函数中
+  > static void __BlockStructureViewController__emptyBlockFunction_block_func_0(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 *__cself) 
+  > {
+  >   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_0);
+  > }
+  > ```
   >
+  > **分析调用步骤**
+  >
+  > 1、 调用\_I\_BlockStructureViewController\_emptyBlockFunction方法；
+  >
+  > ```
+  > //emptyBlockFunction编译后方法名为_I_BlockStructureViewController_emptyBlockFunction。此方法注册到了当前类的方法列表_method_list_t中，
+  >
+  > static struct /*_method_list_t*/ {
+  > 	...
+  > 	{(struct objc_selector *)"emptyBlockFunction", "v16@0:8", (void *)_I_BlockStructureViewController_emptyBlockFunction},
+  > 	...
+  > }; 
+  > ```
+  >
+  > 2、block体中逻辑代码编译后的函数\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_func\_0
+  >
+  > ```
+  > //block体内的逻辑代码被编译到了此函数中
+  > static void __BlockStructureViewController__emptyBlockFunction_block_func_0(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 *__cself) 
+  > {
+  >   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_0);
+  > }
+  > ```
+  >
+  > 3、初始化描述block结构体信息的\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_desc\_0\_DATA
+  >
+  > ```
+  > //参数reserved：0
+  > //参数Block_size：block的size，sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)
+  >
+  > __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
+  > ```
+  >
+  > 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
+  >
+  > ```
+  > //参数*fp：步骤2中的函数指针，(void *)__BlockStructureViewController__emptyBlockFunction_block_func_0
+  > //参数*desc：步骤3中__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA结构体地址，&__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA
+  > //参数flags：0
+  > void (*emptyBlock)(void) = ((void (*)())&__BlockStructureViewController__emptyBlockFunction_block_impl_0((void *)__BlockStructureViewController__emptyBlockFunction_block_func_0, &__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA));
+  > ```
+  >
+  > 5、调用block结构体中的函数指针FuncPtr即fp。
+  >
+  > ```
+  > //在步骤4中fp为(void *)__BlockStructureViewController__emptyBlockFunction_block_func_0,即调用此方法。
+  > ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
+  > ```
+  >
+  > 6、block体中的逻辑代码的调用
+  >
+  > ```
+  > //调用NSLog方法
   > static void __BlockStructureViewController__emptyBlockFunction_block_func_0(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 *__cself) 
   > {
   >   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_0);

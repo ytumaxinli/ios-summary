@@ -6,18 +6,26 @@
 > - (void)main 
 > {
 >     int a = 100;
->     void (^ block_0)(void) = ^{
+>     //不使用外部变量
+>     void (^ block_0)(int a) = ^(int a){
 >         NSLog(@"a = %d",a);
 >     };
 >
+>     //使用局部外部变量 与 __weak修饰符
 >     __weak void (^ block_1)(void) = ^{
 >         NSLog(@"a = %d",a);
 >     };
 >     
->     __strong void (^ block_2)(void) = ^{
+>     //使用局部外部变量 与 不使用修饰符
+>     void (^ block_2)(void) = ^{
 >         NSLog(@"a = %d",a);
 >     };
->
+>     
+>     //使用局部外部变量 与 __strong修饰符
+>     __strong void (^ block_3)(void) = ^{
+>         NSLog(@"a = %d",a);
+>     };
+>     
 >     //打印block_0、block_1、block_2的类名及集成关系
 >     Class blockClass = object_getClass(block_0);
 >     NSLog(@"blockClass %@", blockClass);
@@ -42,6 +50,11 @@
 > 2018-12-25 15:01:00.961476+0800 Block内存[545:17511] blockSuperClass __NSStackBlock
 > 2018-12-25 15:01:00.961562+0800 Block内存[545:17511] blockSuperClass NSBlock
 > 2018-12-25 15:01:00.961641+0800 Block内存[545:17511] blockSuperClass NSObject
+>
+> 2018-12-26 14:50:00.693276+0800 Block内存[4123:234809] blockClass __NSMallocBlock__
+> 2018-12-26 14:50:00.693411+0800 Block内存[4123:234809] blockSuperClass __NSMallocBlock
+> 2018-12-26 14:50:00.693468+0800 Block内存[4123:234809] blockSuperClass NSBlock
+> 2018-12-26 14:50:00.693519+0800 Block内存[4123:234809] blockSuperClass NSObject
 >
 > 2018-12-25 14:33:56.442816+0800 Block内存[431:12598] blockClass __NSMallocBlock__
 > 2018-12-25 14:33:56.443027+0800 Block内存[431:12598] blockSuperClass __NSMallocBlock

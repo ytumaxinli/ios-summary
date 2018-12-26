@@ -70,6 +70,10 @@
 >   _Block_object_dispose((void*)src->wself, 3/*BLOCK_FIELD_IS_OBJECT*/);
 > }
 > ```
+>
+> **逻辑分析**
+>
+> 使用WeakSelf.属性的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_weak wself;，即**对当前类进行了强引用，因此会造成循环引用**
 
 
 

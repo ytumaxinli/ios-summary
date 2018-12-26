@@ -22,14 +22,15 @@
 >
 > ```
 > //编译后的classDataBlockFunction
-> static void _I_BlockStructureViewController_classDataBlockFunction(BlockStructureViewController * self, SEL _cmd) {
->
+> static void _I_BlockStructureViewController_classDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
+> {
 >     void (*classDataBlock)(void) = ((void (*)())&__BlockStructureViewController__classDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__classDataBlockFunction_block_func_0, &__BlockStructureViewController__classDataBlockFunction_block_desc_0_DATA, self, 570425344));
 >
 >     ((void (*)(__block_impl *))((__block_impl *)classDataBlock)->FuncPtr)((__block_impl *)classDataBlock);
 > }
 >
-> //编译后的classDataBlock
+>
+> //编译后的classDataBlock。增加了__strong self强引用
 > struct __BlockStructureViewController__classDataBlockFunction_block_impl_0 {
 >   struct __block_impl impl;
 >   struct __BlockStructureViewController__classDataBlockFunction_block_desc_0* Desc;
@@ -42,12 +43,13 @@
 >   }
 > };
 >
+>
 > //block体内的逻辑代码编译生成的函数
 > static void __BlockStructureViewController__classDataBlockFunction_block_func_0(struct __BlockStructureViewController__classDataBlockFunction_block_impl_0 *__cself) 
 > {
 >   BlockStructureViewController *const __strong self = __cself->self; // bound by copy
 >   
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_5, (*(UILabel *__strong *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$label)));
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_5, (*(UILabel *__strong *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$_label)));
 > }
 >     
 > //_block_copy
@@ -56,6 +58,7 @@
 >   _Block_object_assign((void*)&dst->self, 
 >   (void*)src->self, 3/*BLOCK_FIELD_IS_OBJECT*/);
 > }
+>
 >
 > //_block_dispose
 > static void __BlockStructureViewController__classDataBlockFunction_block_dispose_0(struct __BlockStructureViewController__classDataBlockFunction_block_impl_0*src) 
@@ -76,8 +79,6 @@
 > **逻辑分析**
 >
 > 1. 使用成员变量的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_strong self;，即**对当前类进行了强引用，因此会造成循环引用**
-
-
 
 
 

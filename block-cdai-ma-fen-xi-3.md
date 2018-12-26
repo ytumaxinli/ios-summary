@@ -90,7 +90,9 @@
 >
 > 3、描述block结构体信息的\_\_BlockStructureViewController\_\_objcDataBlockFunction\_block\_desc\_0\_DATA
 >
->       **增加了copy，dispose方法**
+> ```
+>   **增加了copy，dispose方法**
+> ```
 >
 > ```
 > //结构体与使用简单外部变量相比多了copy 和 dispose方法
@@ -105,9 +107,11 @@
 >
 > 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针。
 >
->      4.1 block结构体中多了一个UILable \*\_\_string tmpLable成员,对传入的UILab进行**强引用**。
+> ```
+>  4.1 block结构体中多了一个UILable \*\_\_string tmpLable成员,对传入的UILab进行**强引用**。
 >
->      4.2 调用block构造方法，传入的flags=570425344。BLOCK\_HAS\_COPY\_DISPOSE\|BLOCK\_USE\_STRET
+>  4.2 调用block构造方法，传入的flags=570425344。BLOCK\_HAS\_COPY\_DISPOSE\|BLOCK\_USE\_STRET
+> ```
 >
 > ```
 > //将局部变量tmpLabel和flags=570425344通过构造方法传给block结构体成员

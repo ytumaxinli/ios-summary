@@ -90,6 +90,8 @@
 >
 > 3、描述block结构体信息的\_\_BlockStructureViewController\_\_objcDataBlockFunction\_block\_desc\_0\_DATA
 >
+>       **增加了copy，dispose方法**
+>
 > ```
 > //结构体与使用简单外部变量相比多了copy 和 dispose方法
 > static struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 
@@ -101,13 +103,19 @@
 > } __BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0), __BlockStructureViewController__objcDataBlockFunction_block_copy_0, __BlockStructureViewController__objcDataBlockFunction_block_dispose_0};
 > ```
 >
-> 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
+> 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针。
+>
+>      4.1 block结构体中多了一个UILable \*\_\_string tmpLable成员,对传入的UILab进行**强引用**。
+>
+>      4.2 调用block构造方法，传入的flags=570425344。BLOCK\_HAS\_COPY\_DISPOSE\|BLOCK\_USE\_STRET
 >
 > ```
-> //将局部变量tmpLabel和flags=570425344通过构造方法传给block结构体成员 
+> //将局部变量tmpLabel和flags=570425344通过构造方法传给block结构体成员
+> //block 
 > void (*objcDataBlock)(void) = ((void (*)())&__BlockStructureViewController__objcDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__objcDataBlockFunction_block_func_0, &__BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA, tmpLabel, 570425344));
 >
 > //编译后的objcDataBlock结构体，多了一个强引用的tmpLabel
+> //flags=570425344。BLOCK_HAS_COPY_DISPOSE|BLOCK_USE_STRET
 > struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0
 > {
 >     struct __block_impl impl;
@@ -120,20 +128,20 @@
 >         Desc = desc;
 >     }
 > };
->
 > ```
 >
-> > ```
-> >
-> > ```
-> >
-> > 5、调用block结构体中的函数指针FuncPtr即fp。
-> >
-> > 6、block体中的逻辑代码的调用
-> >
-> > ```
-> >
-> > ```
+> 5、调用block结构体中的函数指针FuncPtr即fp。
+>
+> 6、block体中的逻辑代码的调用
+>
+> ```
+> //从block结构体中取出tmpLabel成员进行强引用后，打印。
+> static void __BlockStructureViewController__objcDataBlockFunction_block_func_0(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0 *__cself) 
+> {
+> UILabel *__strong tmpLabel = __cself->tmpLabel; // bound by copy
+> NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_3, tmpLabel);
+> }
+> ```
 
 
 

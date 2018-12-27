@@ -24,8 +24,58 @@
 > xcrun -sdk macosx10.14 clang -S -rewrite-objc -fobjc-arc 文件名
 > ```
 
-**Block中使用外部变量结论总结**
+**Block C++代码分析总结**
 
+> **不使用外部变量**：如当前类BlockStructureViewController,  block名emptyBlock
+>
+> > 1.block OC源码
+> > ```
+> > - (void)emptyBlockFunction {
+> >     
+> >     void (^emptyBlock)(void) = ^{
+> >         NSLog(@"八点钟学院");
+> >     };
+> >     emptyBlock();
+> > }
+> > ```
+> >
+> > 2.编译后block由结构体实现
+> > ```
+> > struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 {
+> >   struct __block_impl impl;
+> >   struct __BlockStructureViewController__emptyBlockFunction_block_desc_0* Desc;
+> >
+> >     //结构体构造方法
+> >   __BlockStructureViewController__emptyBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__emptyBlockFunction_block_desc_0 *desc, int flags=0) {
+> >     impl.isa = &_NSConcreteStackBlock;
+> >     impl.Flags = flags;
+> >     impl.FuncPtr = fp;
+> >     Desc = desc;
+> >   }
+> > };
+> > ```
+> >
+> > 3.当前emptyBlock是\_\_BlockStrucureViewController\_\_emptyBlockFunction\_block\_impl\_0结构体的一个实例
+> >
+> > ```
+> > void (*emptyBlock)(void) = ((void (*)())&__BlockStrucureViewController__emptyBlockFunction_block_impl_0((void *)__BlockStructureViewController__emptyBlockFunction_block_func_0, &__BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA));
+> > ```
+> >
+> > 4.block体内的逻辑代码被编译为一个独立的函数，该函数的参数为emptyBlock实例
+> >
+> > ```
+> > //函数调用
+> > ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
+> >
+> > //函数实现
+> > static void __BlockStructureViewController__emptyBlockFunction_block_func_0(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 *__cself)
+> > {
+> >     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_0);
+> > }
+> > ```
+>
+>
+>
 > **基础类型外部局部变量：**如 int i
 >
 > > 1. block结构体新增成员 int i

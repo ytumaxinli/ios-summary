@@ -78,7 +78,7 @@
 >
 > **逻辑分析**
 >
-> 使用成员变量的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_strong self;，即**对当前类进行了强引用，因此会造成循环引用**
+> 使用成员变量的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_strong self;，即**对当前类进行了强引用，因此如果此block也被当前类强引用时就会造成循环引用。**
 
 
 

@@ -72,8 +72,7 @@
 > > }
 > > ```
 > >
-> > 5. block的调用变为，\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0结构体FuncPtr指针的调用，即\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_func\_0独立函数的调用。
-> >
+> > 5.block的调用变为，\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0结构体FuncPtr指针的调用，即\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_func\_0独立函数的调用。
 > > ```
 > >  ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
 > > ```

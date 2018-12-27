@@ -56,7 +56,14 @@
 >
 > > 1. block结构体新增成员ViewController \*const \_\_weak wself，对当前类进行弱引用。即使当前类强引用block也不会出现循环引用。这就是\_\_weak typeof\(self\) weakSelf = self,作用的意义。
 > > 2. block构造方法中添加ViewController \*const \_\_weak \_wself参数，构造方法将当前类的弱引用传赋值给了block结构体的成员wself
-> > 3.
+> > 3. 使用weakSelf的时候，我们通常会在block体内强引用weakSelf（\_\_strong typeof\(self\) strongSelf = weakSelf）的原因是：由于block结构体的成员弱引用的当前类，而在block体的逻辑代码也是通过弱引用的wself索引对应的属性变量。由于弱引用的原因导致在执行block体内逻辑代码的过程中wself可能会被释放，因此在逻辑代码开头进行强引用。由于block体中的逻辑代码被编译到了一个独立函数中，并不在block结构体中，因此在这里强引用self不会造成循环引用。
+> > 4. block内外读取的属性值始终相同。
+>
+> **\_\_block外部局部变量**
+>
+> > 1. \_\_block关键字编译后成为结构体\_\_Block\_byref\_a\_0。结构体重包含成员\_\_Block\_byref\_a\_0 \*\_\_forwarding;
+> > 2. block结构体新增成员\_\_Block\_byref\_a\_0 \*a, 构造方法将赋值成员\_\_Block\_byref\_a\_0为地址\(\_\_Block\_byref\_a\_0 \*\)&a，falgs=570425344。
+> > 3. block方法体内逻辑代码使用的是a-&gt;\_\_forwarding-&gt;a。
 
 
 

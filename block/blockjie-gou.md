@@ -44,8 +44,9 @@
 > >
 > > ```
 > > struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 {
-> >   struct __block_impl impl;
-> >   struct __BlockStructureViewController__emptyBlockFunction_block_desc_0* Desc;
+> >   struct __block_impl impl;                                                    //见6
+> >   struct __BlockStructureViewController__emptyBlockFunction_block_desc_0* Desc;//见6
+> >
 > >
 > >     //结构体构造方法
 > >   __BlockStructureViewController__emptyBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__emptyBlockFunction_block_desc_0 *desc, int flags=0) {
@@ -73,8 +74,27 @@
 > > ```
 > >
 > > 5.block的调用变为，\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0结构体FuncPtr指针的调用，即\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_func\_0独立函数的调用。
+> >
 > > ```
 > >  ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
+> > ```
+> >
+> > 6.其他编译出的结构体
+> >
+> > ```
+> > //block实现结构体
+> > struct __block_impl {
+> >   void *isa;      //有属于block也是对象，此为对象的isa指针
+> >   int Flags;      //用于copy等操作时的标示
+> >   int Reserved;  
+> >   void *FuncPtr;  //函数指针指向block体逻辑代码编译出的函数
+> > };
+> >
+> > static struct __BlockStructureViewController__emptyBlockFunction_block_desc_0 {
+> >   size_t reserved;
+> >   size_t Block_size;//block的大小，在blockcopy时使用
+> > } __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
+> >
 > > ```
 >
 > **基础类型外部局部变量：**如 int i

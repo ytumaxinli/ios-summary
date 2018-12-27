@@ -29,6 +29,7 @@
 > **不使用外部变量**：如当前类BlockStructureViewController,  block名emptyBlock
 >
 > > 1.block OC源码
+> >
 > > ```
 > > - (void)emptyBlockFunction {
 > >     
@@ -40,6 +41,7 @@
 > > ```
 > >
 > > 2.编译后block由结构体实现
+> >
 > > ```
 > > struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 {
 > >   struct __block_impl impl;
@@ -64,17 +66,17 @@
 > > 4.block体内的逻辑代码被编译为一个独立的函数，该函数的参数为emptyBlock实例
 > >
 > > ```
-> > //函数调用
-> > ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
-> >
-> > //函数实现
 > > static void __BlockStructureViewController__emptyBlockFunction_block_func_0(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0 *__cself)
 > > {
 > >     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_0);
 > > }
 > > ```
->
->
+> >
+> > 5. block的调用变为，\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0结构体FuncPtr指针的调用，即\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_func\_0独立函数的调用。
+> >
+> > ```
+> >  ((void (*)(__block_impl *))((__block_impl *)emptyBlock)->FuncPtr)((__block_impl *)emptyBlock);
+> > ```
 >
 > **基础类型外部局部变量：**如 int i
 >

@@ -47,7 +47,6 @@
 > >   struct __block_impl impl;                                                    //见6
 > >   struct __BlockStructureViewController__emptyBlockFunction_block_desc_0* Desc;//见6
 > >
-> >
 > >     //结构体构造方法
 > >   __BlockStructureViewController__emptyBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__emptyBlockFunction_block_desc_0 *desc, int flags=0) {
 > >     impl.isa = &_NSConcreteStackBlock;
@@ -94,7 +93,6 @@
 > >   size_t reserved;
 > >   size_t Block_size;//block的大小，在blockcopy时使用
 > > } __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
-> >
 > > ```
 >
 > **基础类型外部局部变量：**如 int i

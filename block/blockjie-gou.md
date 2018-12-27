@@ -24,5 +24,16 @@
 > xcrun -sdk macosx10.14 clang -S -rewrite-objc -fobjc-arc 文件名
 > ```
 
+**Block中使用外部变量结论总结**
+
+* **基础类型外部局部变量：**如 int i
+* > 1. block结构体中，新增成员 int i;
+  > 2. block构造方法中增加形参int i,构造方法将外部变量i的值传递给形参int i;
+  > 3. block方法体内部不能修改外部变量int i的值；
+* **对象类型外局布局变量：**如 UILable \*lable
+* >
+
+
+
 
 

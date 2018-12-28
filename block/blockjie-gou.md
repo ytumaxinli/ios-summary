@@ -91,7 +91,7 @@
 > >
 > > static struct __BlockStructureViewController__emptyBlockFunction_block_desc_0 {
 > >   size_t reserved;
-> >   size_t Block_size;//block的大小，在blockcopy时使用
+> >   size_t Block_size;  //block的大小，在blockcopy时使用
 > > } __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
 > > ```
 >

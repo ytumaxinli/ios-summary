@@ -1,18 +1,23 @@
-**使用由\_\_weak修饰的局部外部变量的block**
+#### **使用\_\_weak类型局部变量的block**
 
-> **OC源代码**
+> #### **OC源代码**
 >
 > ```
 > - (void)weakObjcDataBlockFunction {
 >     
->    __weak UILabel *tmpLabel = [[UILabel alloc] init];
+>    __weak NSObject *weakObjcData = [[NSObject alloc] init];
 >     
->     void (^objcDataBlock)(void) = ^{        
->         NSLog(@"八点钟学院, %@", tmpLabel);
+>     void (^objcDataBlock)(void) = ^{
+>         NSLog(@"weak对象类型局部变量, %@", weakObjcData);
 >     };
->     
+>     weakObjcData = nil;
 >     objcDataBlock();
+>     NSLog(@"weak对象类型局部变量_1, %@", weakObjcData);
 > }
+>
+> //运行结果
+> [15148:878597] weak对象类型局部变量, (null)
+> [15148:878597] weak对象类型局部变量_1, (null)
 > ```
 >
 > **C++代码**

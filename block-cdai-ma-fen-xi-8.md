@@ -3,36 +3,42 @@
 > **OC源代码**
 >
 > ```
-> int globalValueOne = 10;
->
+> int globalData = 0;
 > - (void)globalDataBlockFunction {
 >     
 >     void (^globalDataBlock)(void) = ^{
->         
->         NSLog(@"八点钟学院 %d", globalValueOne);
+>         globalData = 1;
+>         NSLog(@"全局变量_1 %d", globalData);
 >     };
->     
+>     globalData = 2;
 >     globalDataBlock();
+>     NSLog(@"全局变量_2 %d", globalData);
 > }
+>
+> //运行结果
+> [14840:865914] 全局变量_1 1
+> [14840:865914] 全局变量_2 1
 > ```
+>
+>
 >
 > **C++代码**
 >
 > ```
-> //编译后的globalValueOne变量，仍为全局变量
-> int globalValueOne = 10;
+> //编译后的globalData变量，仍为全局变量
+> int globalData = 0;
 >
 > //编译后的globalDataBlockFunction方法
-> static void _I_BlockStructureViewController_globalDataBlockFunction(BlockStructureViewController * self, SEL _cmd) {
->
->     void (*globalDataBlock)(void) = ((void (*)())&__BlockStructureViewController__globalDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__globalDataBlockFunction_block_func_0, &__BlockStructureViewController__globalDataBlockFunction_block_desc_0_DATA));
->
->     ((void (*)(__block_impl *))((__block_impl *)globalDataBlock)->FuncPtr)((__block_impl *)globalDataBlock);
+> static void _I_BlockStructureViewController_globalDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
+> {
+>   void (*globalDataBlock)(void) = ((void (*)())&__BlockStructureViewController__globalDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__globalDataBlockFunction_block_func_0, &__BlockStructureViewController__globalDataBlockFunction_block_desc_0_DATA));
+>   globalData = 2;
+>   ((void (*)(__block_impl *))((__block_impl *)globalDataBlock)->FuncPtr)((__block_impl *)globalDataBlock);
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_2, globalData);
 > }
 >
 > //编译后的globalDataBlock结构
-> struct __BlockStructureViewController__globalDataBlockFunction_block_impl_0 
-> {
+> struct __BlockStructureViewController__globalDataBlockFunction_block_impl_0 {
 >   struct __block_impl impl;
 >   struct __BlockStructureViewController__globalDataBlockFunction_block_desc_0* Desc;
 >   __BlockStructureViewController__globalDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__globalDataBlockFunction_block_desc_0 *desc, int flags=0) {
@@ -43,10 +49,11 @@
 >   }
 > };
 >
-> //block体中的逻辑代码
+> //回调方法
 > static void __BlockStructureViewController__globalDataBlockFunction_block_func_0(struct __BlockStructureViewController__globalDataBlockFunction_block_impl_0 *__cself) 
 > {
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_9, globalValueOne);
+>     globalData = 1;
+>     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_1, globalData);
 > }
 >
 > //block的描述结构体

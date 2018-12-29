@@ -1,18 +1,23 @@
-**使用objc对象局部外部变量的block**
+#### **使用对象类型局部外部变量的block**
 
-> **OC源代码**
+> #### **OC源代码**
 >
 > ```
 > - (void)objcDataBlockFunction {
 >     
->     UILabel *tmpLabel = [[UILabel alloc] init];
+>     NSObject *objcData = [[NSObject alloc] init];
 >     
->     void (^objcDataBlock)(void) = ^{        
->         NSLog(@"八点钟学院, %@", tmpLabel);
+>     void (^objcDataBlock)(void) = ^{
+>         NSLog(@"对象类型局部变量, %@", objcData);
 >     };
->     
+>     objcData = nil;
 >     objcDataBlock();
+>     NSLog(@"对象类型局部变量_1, %@", objcData);
 > }
+>
+> //运行结果
+> [14994:871902] 对象类型局部变量, <NSObject: 0x2833574d0>
+> [14994:871902] 对象类型局部变量_1, (null)
 > ```
 >
 > **C++ 代码**

@@ -95,14 +95,34 @@
 > > } __BlockStructureViewController__emptyBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__emptyBlockFunction_block_impl_0)};
 > > ```
 >
-> **基础类型外部局部变量：**如 int i
+> **外部全局变量：**如 int globalValue = 10
 >
+> > 1. 全局变量编译后仍为全局变量
+> > 2. block结构体中不新增成员
+> > 3. block方法体内逻辑代码直接使用全局变量globalValue
+> > 4. block内外读取/设置全部变量效果相同
+>
+> **全局静态变量：**如 static int staticValue = 5
+>
+> > 1. 全局静态变量编译后仍为全局静态变量
+> > 2. block结构体中没有新增成员
+> > 3. block方法体内逻辑代码直接使用全局静态变量globalValue
+> > 4. block内外读取/设置全局静态变量效果相同
+>
+> **局部静态变量： 如**static int a
+>
+> > 1. 局部静态变量编译后仍为局部静态变量
+> > 2. block结构体中新增成员指针a\(int \*a\),构造方法中将局部静态变量a的地址赋\(&a\)值给结构体成员int \*a
+> > 3. block方法体内逻辑代码使用指针a\(int \*a\),操作a的值
+> > 4. 由于操作地址，block内外读取/设置局部静态变量的效果相同
+>
+> **基础类型外部局部变量：**如 int i
 > > 1. block结构体新增成员 int i
 > > 2. block构造方法中增加参数int i,构造方法将外部变量i的值传递给block结构体的成员int i
 > > 3. 由于block内的成员int i与 block外的int i,不是同一个变量因此block外部在block构造方法后如何改变外部int i值，block内部始终不会改变。
 > > 4. block回调方法内不能修改外部变量int i的值。
 >
-> **对象类型外局局部变量：如 UILable \*lable**
+> **对象类型外部局部变量：如 UILable \*lable**
 >
 > > 1. block结构体新增成员UILabel \*\_\_strong tmpLabel,对外部变量进行强引用；
 > > 2. block构造方法中增加参数UILabel \*\_\_strong \_tmpLabel,构造方法将外部变量lable所指向的地址赋值给参数\_tmpLabel进行强引用
@@ -134,27 +154,8 @@
 > > 1. \_\_block关键字编译后成为结构体\_\_Block\_byref\_a\_0。结构体重包含成员\_\_Block\_byref\_a\_0 \*\_\_forwarding;
 > > 2. block结构体新增成员\_\_Block\_byref\_a\_0 \*a, 构造方法将赋值成员\_\_Block\_byref\_a\_0为地址\(\_\_Block\_byref\_a\_0 \*\)&a，falgs=570425344。
 > > 3. block方法体内逻辑代码使用的是a-&gt;\_\_forwarding-&gt;a。
->
-> **外部全局变量：**如 int globalValue = 10
->
-> > 1. 全局变量编译后仍为全局变量
-> > 2. block结构体中没有新增成员
-> > 3. block方法体内逻辑代码直接使用全局变量globalValue
-> > 4. block内外读取/设置全部变量效果相同
->
-> **全局静态变量：**如 static int staticValue = 5
->
-> > 1. 全局静态变量编译后仍为全局静态变量
-> > 2. block结构体中没有新增成员
-> > 3. block方法体内逻辑代码直接使用全局静态变量globalValue
-> > 4. block内外读取/设置全局静态变量效果相同
->
-> **局部静态变量： 如**static int a
->
-> > 1. 局部静态变量编译后仍为局部静态变量
-> > 2. block结构体中新增成员指针a\(int \*a\),构造方法中将局部静态变量a的地址赋\(&a\)值给结构体成员int \*a
-> > 3. block方法体内逻辑代码使用指针a\(int \*a\),操作a的值
-> > 4. 由于操作地址，block内外读取/设置局部静态变量的效果相同
+
+
 
 
 

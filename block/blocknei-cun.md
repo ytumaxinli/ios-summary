@@ -126,11 +126,19 @@
 > block:__NSMallocBlock__, strongBlock:__NSMallocBlock__, copyBlock:__NSMallocBlock__, weakBlock:__NSStackBlock__
 > ```
 >
-> 1. 在不使用修饰符和使用strong、copy、weak三种修饰的block中，不使用外部变量、使用全局外部变量、静态全局外部变量、静态局部外部变量时block的类型都为**\_\_NSGlobalBlock\_\_**，即block被拷贝到了全局区
+> > 不使用外部变量 或 使用全局变量、外部静态变量（全局/局部）时block的，无论使用什么修饰符block类型都为**\_\_NSGlobalBlock\_\_**，即全局区block。
 >
-> 2. 在不使用修饰符和使用strong、copy、weak三种修饰的block中，使用局部变量时或者**成员变量**时，block的类型分别为，\_\_NSMallocBlock\_\_，\_\_NSMallocBlock\_\_，\_\_NSMallocBlock\_\_，\_\_NSStackBlock\_\_，即block被strong和copy修饰是被拷贝到了堆区，而weak修饰的未进行拷贝
->
-> 3. block在初始化的时候都是在**栈区**，只是在一些情况下block被从栈区拷贝到了全局区或者堆区。
+> > 使用 非全局变量 或 外部静态变量（全局/局部）时
+> >
+> > 1. 不使用修饰符 和 使用strong、copy、weak三种修饰符的block均为\_\_NSMallocBlock\_\_，即堆区block；
+> > 2. 使用weak修饰符的block为\_\_NSStackBlock，即栈区block；
+> > 3. 只实现不进行等号赋值的block也\_\_NSStackBlock,即为栈区。如`NSLog(@"%@",^{NSLog(@"variable:%d",variable_3);});`
+
+
+
+
+
+
 
 
 

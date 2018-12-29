@@ -1,6 +1,6 @@
 #### **使用对象类型局部外部变量的block**
 
-> #### **OC源代码**
+> **OC源代码**
 >
 > ```
 > - (void)objcDataBlockFunction {
@@ -24,22 +24,22 @@
 >
 > ```
 > //编译后的objcDataBlockFunction方法
-> static void _I_BlockStructureViewController_objcDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
-> {
->     UILabel *tmpLabel = ((UILabel *(*)(id, SEL))(void *)objc_msgSend)((id)((UILabel *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("UILabel"), sel_registerName("alloc")), sel_registerName("init"));
+> static void _I_BlockStructureViewController_objcDataBlockFunction(BlockStructureViewController * self, SEL _cmd) {
 >
->     void (*objcDataBlock)(void) = ((void (*)())&__BlockStructureViewController__objcDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__objcDataBlockFunction_block_func_0, &__BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA, tmpLabel, 570425344));
+>     NSObject *objcData = ((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)((NSObject *(*)(id, SEL))(void *)objc_msgSend)((id)objc_getClass("NSObject"), sel_registerName("alloc")), sel_registerName("init"));
 >
+>     void (*objcDataBlock)(void) = ((void (*)())&__BlockStructureViewController__objcDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__objcDataBlockFunction_block_func_0, &__BlockStructureViewController__objcDataBlockFunction_block_desc_0_DATA, objcData, 570425344));
+>     objcData = __null;
 >     ((void (*)(__block_impl *))((__block_impl *)objcDataBlock)->FuncPtr)((__block_impl *)objcDataBlock);
+>     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_10, objcData);
 > }
 >
-> //编译后的objcDataBlock
-> struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0 
-> {
+> //编译后的objcDataBlock，新增成员NSObject *__strong objcData;
+> struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0 {
 >   struct __block_impl impl;
 >   struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0* Desc;
->   UILabel *__strong tmpLabel;
->   __BlockStructureViewController__objcDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 *desc, UILabel *__strong _tmpLabel, int flags=0) : tmpLabel(_tmpLabel) {
+>   NSObject *__strong objcData;
+>   __BlockStructureViewController__objcDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 *desc, NSObject *__strong _objcData, int flags=0) : objcData(_objcData) {
 >     impl.isa = &_NSConcreteStackBlock;
 >     impl.Flags = flags;
 >     impl.FuncPtr = fp;
@@ -47,15 +47,8 @@
 >   }
 > };
 >
-> //block实现结构体
-> struct __block_impl {
-> void *isa;
-> int Flags; //与Block源码中Block_private.h中的枚举相对应。标示block是否被copy、是否为全局block、是否为堆block等
-> int Reserved;
-> void *FuncPtr; //函数调用指针。编译后block中的逻辑代码被编译到了一个独立函数中，此函数指针用来指向和调用这个独立函数。
-> };
 >
-> //block描述结构体
+> //block描述结构体，这里与之前相比较多了两个函数指针，copy、dispose这两个方法在block的拷贝和释放时使用
 > static struct __BlockStructureViewController__objcDataBlockFunction_block_desc_0 
 > {
 >   size_t reserved;

@@ -61,11 +61,10 @@
 > //block体内的逻辑代码编译生成的函数
 > static void __BlockStructureViewController__objcDataBlockFunction_block_func_0(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0 *__cself) 
 > {
->   UILabel *__strong tmpLabel = __cself->tmpLabel; // bound by copy
->   
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_3, tmpLabel);
-> }
+>   NSObject *__strong objcData = __cself->objcData; // bound by copy
 >
+>         NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_9, objcData);
+>     }
 > //block copy方法
 > static void __BlockStructureViewController__objcDataBlockFunction_block_copy_0(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*dst, struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*src) 
 > {

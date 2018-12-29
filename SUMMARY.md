@@ -38,6 +38,6 @@
     * [Block C++代码分析6](block-cdai-ma-fen-xi-6.md)
     * [Block C++代码分析7](block-cdai-ma-fen-xi-7.md)
     * [Block-全局变量](block-cdai-ma-fen-xi-8.md)
-    * [Block C++代码分析9](block-cdai-ma-fen-xi-9.md)
+    * [Block-全局静态变量](block-cdai-ma-fen-xi-9.md)
     * [Block C++代码分析10](block-cdai-ma-fen-xi-10.md)
 

@@ -23,15 +23,13 @@
 >
 > ```
 > //编译后的simpleDataBlockFunction方法
-> static void _I_BlockStructureViewController_simpleDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
-> {
->   int i = 10;
+> static void _I_BlockStructureViewController_simpleDataBlockFunction(BlockStructureViewController * self, SEL _cmd) {
 >
->   void (*simpleDataBlock)(void) = ((void (*)())&__BlockStructureViewController__simpleDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__simpleDataBlockFunction_block_func_0, &__BlockStructureViewController__simpleDataBlockFunction_block_desc_0_DATA, i));
->
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_2, i);
->
->   ((void (*)(__block_impl *))((__block_impl *)simpleDataBlock)->FuncPtr)((__block_impl *)simpleDataBlock);
+>     int simpleData = 0;
+>     void (*simpleDataBlock)(void) = ((void (*)())&__BlockStructureViewController__simpleDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__simpleDataBlockFunction_block_func_0, &__BlockStructureViewController__simpleDataBlockFunction_block_desc_0_DATA, simpleData));
+>     simpleData = 1;
+>     ((void (*)(__block_impl *))((__block_impl *)simpleDataBlock)->FuncPtr)((__block_impl *)simpleDataBlock);
+>     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_8, simpleData);
 > }
 >
 > //block实现结构体
@@ -51,12 +49,11 @@
 >
 >
 > //编译后的simpleDataBlock结构体
-> struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 
-> {
+> struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 {
 >   struct __block_impl impl;
 >   struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0* Desc;
->   int i;
->   __BlockStructureViewController__simpleDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0 *desc, int _i, int flags=0) : i(_i) {
+>   int simpleData;
+>   __BlockStructureViewController__simpleDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0 *desc, int _simpleData, int flags=0) : simpleData(_simpleData) {
 >     impl.isa = &_NSConcreteStackBlock;
 >     impl.Flags = flags;
 >     impl.FuncPtr = fp;
@@ -64,55 +61,27 @@
 >   }
 > };
 >
-> //block体内的逻辑代码编译生成的函数
+>
+> //block回调方法
 > static void __BlockStructureViewController__simpleDataBlockFunction_block_func_0(struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 *__cself) 
 > {
->   int i = __cself->i; // bound by copy  
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_1, i);
+>   int simpleData = __cself->simpleData; // bound by copy
+>
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_7, simpleData);
 > }
 > ```
 >
-> **分析调用步骤**
+> **逻辑分析**
 >
-> 1、调用\_I\_BlockStructureViewController\_simpleDataBlockFunction方法；
+> 1、当使用基础类型局部变量时，block编译后得到的结构体中新增成员int simpleData;。
 >
-> 2、block体中逻辑代码编译后的函数\_\_BlockStructureViewController\_\_simpleDataBlockFunction\_block\_func\_0
+> 2、block结构体构造方法调用时，将局部变量的值传递给结构体成员simpleData。
 >
-> 3、初始化描述block结构体信息的\_\_BlockStructureViewController\_\_simpleDataBlockFunction\_block\_desc\_0\_DATA
+> 3、block的回调方法通过参数block结构体来获取到结构体成员simpleData的值。
 >
-> 4、调用block构造方法\_\_BlockStructureViewController\_\_emptyBlockFunction\_block\_impl\_0，得到block函数指针
+> 4、在构造方法调用后，外部变量与结构体成员simpleData已经是不同的变量，因此改变外部变量不影响结构体成员的值。
 >
-> ```
-> //将局部变量i通过构造方法传给block结构体成员变量i
-> void (*simpleDataBlock)(void) = ((void (*)())&__BlockStructureViewController__simpleDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__simpleDataBlockFunction_block_func_0, &__BlockStructureViewController__simpleDataBlockFunction_block_desc_0_DATA, i));
->
-> //编译后的simpleDataBlock结构体，多了一个成员变量i
-> struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 
-> {
->   struct __block_impl impl;
->   struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0* Desc;
->   int i;
->   __BlockStructureViewController__simpleDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__simpleDataBlockFunction_block_desc_0 *desc, int _i, int flags=0) : i(_i) {
->     impl.isa = &_NSConcreteStackBlock;
->     impl.Flags = flags;
->     impl.FuncPtr = fp;
->     Desc = desc;
->   }
-> };
-> ```
->
-> 5、调用block结构体中的函数指针FuncPtr即fp。
->
-> 6、block体中的逻辑代码的调用
->
-> ```
-> static void __BlockStructureViewController__simpleDataBlockFunction_block_func_0(struct __BlockStructureViewController__simpleDataBlockFunction_block_impl_0 *__cself) 
-> {
->   //从block结构体中取出成员i,进行打印。此 i 值在block构造方法中传入
->   int i = __cself->i; // bound by copy  
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_dd128d_mi_1, i);
-> }
-> ```
+> 5、block回调函数内不能修改，外部变量的值。
 
 
 

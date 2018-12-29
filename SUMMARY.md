@@ -31,7 +31,7 @@
   * [Block内存](block/blocknei-cun.md)
   * [Block C++代码分析](block/blockjie-gou.md)
     * [Block-无外部变量](block-cdai-ma-fen-xi-1.md)
-    * [Block C++代码分析2](block-cdai-ma-fen-xi-2.md)
+    * [Block-基础类型外部变量](block-cdai-ma-fen-xi-2.md)
     * [Block C++代码分析3](block-cdai-ma-fen-xi-3.md)
     * [Block C++代码分析4](block-cdai-ma-fen-xi-4.md)
     * [Block C++代码分析5](block-cdai-ma-fen-xi-5.md)

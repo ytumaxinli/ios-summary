@@ -1,20 +1,22 @@
-**使用简单类型（如int型）局部外部变量的block**
+#### **使用基础类型（如int型）局部外部变量的block**
 
-> **OC源码**
+> #### **OC源码**
 >
 > ```
 > - (void)simpleDataBlockFunction {
 >     
->     int i = 10;
->     
->     void (^simpleDataBlock)(void) = ^{        
->         NSLog(@"八点钟学院 %d", i);
+>     int simpleData = 0;
+>     void (^simpleDataBlock)(void) = ^{
+>         NSLog(@"基础类型局部变量 == %d", simpleData);
 >     };
->     
->     NSLog(@"i == %d", i);
->     
+>     simpleData = 1;
 >     simpleDataBlock();
+>     NSLog(@"基础类型局部变量 == %d", simpleData);
 > }
+>
+> //运行结果
+> [14948:869974] 基础类型局部变量 == 0
+> [14948:869974] 基础类型局部变量 == 1
 > ```
 >
 > **C++ 代码**

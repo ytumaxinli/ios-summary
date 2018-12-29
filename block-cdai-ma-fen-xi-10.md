@@ -10,18 +10,20 @@
 >
 > - (void)tmpStaticDataBlockFunction {
 >     
->     static int b = 11;
->     
+>     static int tmpStaticData = 0;
 >     instanceBlock = ^{
->         
-> //        b = 110;
->         NSLog(@"八点钟学院 %d", b);
->         
+>         tmpStaticData = 1;
+>         NSLog(@"局部静态变量_1 %d", tmpStaticData);
 >     };
 >     
->     b= 100;
+>     tmpStaticData = 2;
 >     instanceBlock();
+>     NSLog(@"局部静态变量_2 %d", tmpStaticData);
 > }
+>
+> //运行结果
+> [14893:867918] 局部静态变量_1 1
+> [14893:867918] 局部静态变量_2 1
 > ```
 >
 > **C++代码**
@@ -37,21 +39,21 @@
 > //编译后的tmpStaticDataBlockFunction方法
 > static void _I_BlockStructureViewController_tmpStaticDataBlockFunction(BlockStructureViewController * self, SEL _cmd) {
 >     //静态变量
->     static int b = 11;
->     //将静态变量b的地址&b，传入block结构的构造函数中
->     (*(__strong eocblock *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$instanceBlock)) = ((void (*)())&__BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__tmpStaticDataBlockFunction_block_func_0, &__BlockStructureViewController__tmpStaticDataBlockFunction_block_desc_0_DATA, &b));
+>     static int tmpStaticData = 0;
+>     //将静态变量的地址传递到构造函数中
+>     (*(__strong eocblock *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$instanceBlock)) = ((void (*)())&__BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__tmpStaticDataBlockFunction_block_func_0, &__BlockStructureViewController__tmpStaticDataBlockFunction_block_desc_0_DATA, &tmpStaticData));
 >
->     b= 100;
->     
+>     tmpStaticData = 2;
 >     ((void (*)(__block_impl *))((__block_impl *)(*(__strong eocblock *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$instanceBlock)))->FuncPtr)((__block_impl *)(*(__strong eocblock *)((char *)self + OBJC_IVAR_$_BlockStructureViewController$instanceBlock)));
+>     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_6, tmpStaticData);
 > }
 >
-> //编译后的instanceBlock结构。新增成员指针b,int *b。
+> //编译后的instanceBlock结构。新增成员int *tmpStaticData。
 > struct __BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0 {
 >   struct __block_impl impl;
 >   struct __BlockStructureViewController__tmpStaticDataBlockFunction_block_desc_0* Desc;
->   int *b;
->   __BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__tmpStaticDataBlockFunction_block_desc_0 *desc, int *_b, int flags=0) : b(_b) {
+>   int *tmpStaticData;
+>   __BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0(void *fp, struct __BlockStructureViewController__tmpStaticDataBlockFunction_block_desc_0 *desc, int *_tmpStaticData, int flags=0) : tmpStaticData(_tmpStaticData) {
 >     impl.isa = &_NSConcreteStackBlock;
 >     impl.Flags = flags;
 >     impl.FuncPtr = fp;
@@ -62,10 +64,12 @@
 > //block体中逻辑代码编译到此函数中
 > static void __BlockStructureViewController__tmpStaticDataBlockFunction_block_func_0(struct __BlockStructureViewController__tmpStaticDataBlockFunction_block_impl_0 *__cself) 
 > {
->   //获取指针b
->   int *b = __cself->b; // bound by copy
->
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_11, (*b));
+>   //获取指针
+>   int *tmpStaticData = __cself->tmpStaticData; // bound by copy
+>   //通过指针赋值
+>   (*tmpStaticData) = 1;
+>   //通过指针取值
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_5, (*tmpStaticData));
 > }
 >
 > //block描述结构体

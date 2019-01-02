@@ -72,7 +72,7 @@
 >
 > **逻辑分析**
 >
-> mkm,..,kjpl,在编译后的block结构体的增加的成员NSObject \*\_\_weak weakObjcData也使用了\_\_weak修饰，即对外部局部变量进行**弱引用**
+> 当使用**\_\_**weak修饰的局部外部变量时,在编译后的block结构体的增加的成员NSObject \*\_\_weak weakObjcData也使用了\_\_weak修饰，即对外部局部变量进行**弱引用**
 
 
 

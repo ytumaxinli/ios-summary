@@ -8,14 +8,19 @@
 > }
 >
 > - (void)classDataBlockFunction {
+>     self.label = [UILabel new];
 >     
->     void (^classDataBlock)(void) = ^{
->         
->         NSLog(@"八点钟学院 %@", label);
+>    __strong void (^classDataBlock)(void) = ^{
+>         NSLog(@"成员变量 %@", _label);
 >     };
->     
+>     _label = nil;
 >     classDataBlock();
+>     NSLog(@"成员变量_1 %@", _label);
 > }
+>
+> //打印结果
+> [1111:66234] 成员变量 (null)
+> [1111:66234] 成员变量_1 (null)
 > ```
 >
 > C++代码

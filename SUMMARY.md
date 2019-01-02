@@ -42,4 +42,5 @@
     * [Block-局部静态变量](block-cdai-ma-fen-xi-10.md)
     * [Block GCD](block-gcd.md)
   * [Block Copy](block/block-copy.md)
+    * [Block copy源码分析](block/block-copy/block-copyyuan-ma-fen-xi.md)
 

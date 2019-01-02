@@ -7,12 +7,17 @@
 > - (void)weakSelfClassDataBlockFunction {
 >     
 >     __weak typeof(self) wself = self;
->     
->     void (^classDataBlock)(void) = ^{        
->         NSLog(@"八点钟学院 %@", wself.label);
+>     void (^classDataBlock)(void) = ^{
+>         NSLog(@"weakself成员变量 %@", wself.label);
 >     };
+>     _label = nil;
 >     classDataBlock();
+>     NSLog(@"weakself成员变量_1 %@", wself.label);
 > }
+>
+> //运行结果
+> [1149:67840] weakself成员变量 (null)
+> [1149:67840] weakself成员变量_1 (null)
 > ```
 >
 > #### **C++代码**
@@ -73,7 +78,7 @@
 >
 > **逻辑分析**
 >
-> 使用WeakSelf.属性的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_weak wself;，即**对当前类进行了弱引用，不会造成循环引用**
+> 使用weakSelf.属性的block，在编译后的block结构体的增加的成员BlockStructureViewController \*const \_\_weak wself;，即**对当前类进行了弱引用，不会造成循环引用**
 
 
 

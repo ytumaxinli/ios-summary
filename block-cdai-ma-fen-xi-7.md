@@ -5,16 +5,20 @@
 > ```
 > - (void)blockDataBlockFunction {
 >     
->     __block int a = 100;   ///栈区
+>     __block int a = 0;   ///栈区
 >     
 >     void (^blockDataBlock)(void) = ^{
->         a = 1000;
->         NSLog(@"八点钟学院, %d", a);     ///堆区
+>         a = 1;
+>         NSLog(@"__block变量_1, %d", a);
 >     };
->     
+>     a = 2;
 >     blockDataBlock();
->     NSLog(@"a = %d", a);
+>     NSLog(@"__block变量_2, %d", a);
 > }
+>
+> //打印结果
+> [1181:69230] __block变量_1, 1
+> [1181:69230] __block变量_2, 1
 > ```
 >
 > **C++代码**
@@ -31,16 +35,15 @@
 > };
 >
 >
-> //编译后的blockDataBlockFunction方法。block构造函数的参数变为了a.__forwarding->a
+> //编译后的blockDataBlockFunction方法。block构造方法传入的是__Block_byref_a_0结构体的地址(__Block_byref_a_0 *)&a
 > static void _I_BlockStructureViewController_blockDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
 > {
->     __attribute__((__blocks__(byref))) __Block_byref_a_0 a = {(void*)0,(__Block_byref_a_0 *)&a, 0, sizeof(__Block_byref_a_0), 100};
+>     __attribute__((__blocks__(byref))) __Block_byref_a_0 a = {(void*)0,(__Block_byref_a_0 *)&a, 0, sizeof(__Block_byref_a_0), 0};
 >
 >     void (*blockDataBlock)(void) = ((void (*)())&__BlockStructureViewController__blockDataBlockFunction_block_impl_0((void *)__BlockStructureViewController__blockDataBlockFunction_block_func_0, &__BlockStructureViewController__blockDataBlockFunction_block_desc_0_DATA, (__Block_byref_a_0 *)&a, 570425344));
->
+>     (a.__forwarding->a) = 2;
 >     ((void (*)(__block_impl *))((__block_impl *)blockDataBlock)->FuncPtr)((__block_impl *)blockDataBlock);
->     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_8, (a.__forwarding->a));
->
+>     NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_18, (a.__forwarding->a));
 > }
 >
 > //编译后的blockDataBlock实现。增加了一个__Block_byref_a_0结构体指针a.

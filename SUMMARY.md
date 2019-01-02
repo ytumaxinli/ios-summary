@@ -40,4 +40,6 @@
     * [Block-全局变量](block-cdai-ma-fen-xi-8.md)
     * [Block-全局静态变量](block-cdai-ma-fen-xi-9.md)
     * [Block-局部静态变量](block-cdai-ma-fen-xi-10.md)
+    * [Block GCD](block-gcd.md)
+  * [Block Copy](block/block-copy.md)
 

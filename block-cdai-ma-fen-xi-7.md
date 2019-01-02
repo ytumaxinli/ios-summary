@@ -36,6 +36,7 @@
 >
 >
 > //编译后的blockDataBlockFunction方法。block构造方法传入的是__Block_byref_a_0结构体的地址(__Block_byref_a_0 *)&a
+> //__Block_byref_a_0结构体的*__forwarding=&a
 > static void _I_BlockStructureViewController_blockDataBlockFunction(BlockStructureViewController * self, SEL _cmd) 
 > {
 >     __attribute__((__blocks__(byref))) __Block_byref_a_0 a = {(void*)0,(__Block_byref_a_0 *)&a, 0, sizeof(__Block_byref_a_0), 0};
@@ -60,14 +61,13 @@
 >   }
 > };
 >
-> //block体内的逻辑代码编译生成的函数
+> //block回调方法
 > static void __BlockStructureViewController__blockDataBlockFunction_block_func_0(struct __BlockStructureViewController__blockDataBlockFunction_block_impl_0 *__cself) 
 > {
 >   __Block_byref_a_0 *a = __cself->a; // bound by ref
->   
->   (a->__forwarding->a) = 1000;
->   
->   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_9bab5e_mi_7, (a->__forwarding->a));
+>
+>   (a->__forwarding->a) = 1;
+>   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_17, (a->__forwarding->a));
 > }
 >
 > //_block_copy

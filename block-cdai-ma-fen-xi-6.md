@@ -1,4 +1,4 @@
-#### **使用 WeakSelf.属性 的block**
+#### **使用 weakSelf.属性 的block**
 
 > #### OC**代码**
 >

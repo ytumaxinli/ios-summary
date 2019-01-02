@@ -35,7 +35,7 @@
     * [Block-对象类型局部变量](block-cdai-ma-fen-xi-3.md)
     * [Block-weak类型局部变量](block-cdai-ma-fen-xi-4.md)
     * [Block-成员变量](block-cdai-ma-fen-xi-5.md)
-    * [Block C++代码分析6](block-cdai-ma-fen-xi-6.md)
+    * [Block-weakSelf.属性](block-cdai-ma-fen-xi-6.md)
     * [Block C++代码分析7](block-cdai-ma-fen-xi-7.md)
     * [Block-全局变量](block-cdai-ma-fen-xi-8.md)
     * [Block-全局静态变量](block-cdai-ma-fen-xi-9.md)

@@ -65,9 +65,9 @@
 >
 > 2.根据原block结构体重flags的值，判断是栈区？堆区？全局区？block
 >
-> 3.原block为栈区block是，根据size在堆上分配内存空间并拷贝内存中数据到堆
+> 3.原block为堆区block时引用计数增加，全局区block时直接返回，栈区block时根据size在堆上分配内存空间并拷贝内存中数据到堆
 >
-> 4.调用block结构体中的copy方法，copy外部变量索引
+> 4.调用block结构体中的copy方法，拷贝外部变量索引
 >
 > 5.结构体的copy方法调用block源码\_Block\_object\_assign，并将copy方法中的外部变量索引类型传递给\_Block\_object\_assign方法
 >
@@ -83,16 +83,6 @@
 > 11.结构体的copy方法调用block源码 \_Block\_object\_assign,，并将\_\_block 变量类型传递给\_Block\_object\_assign方法
 >
 > 12.\_Block\_object\_assign根据外部变量索引类型对变量进行引用计数增加、直接复制或者拷贝等处理
-
-
-
-
-
-
-
-
-
-
 
 
 

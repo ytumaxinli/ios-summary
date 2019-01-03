@@ -66,13 +66,13 @@
 >   NSLog((NSString *)&__NSConstantStringImpl__var_folders_s9_886c185n58l8zmt9rwkglcsc0000gn_T_BlockStructureViewController_cc4365_mi_9, objcData);
 > }
 >
-> //block copy方法
+> //block结构体中增加的外部变量索引 copy方法
 > static void __BlockStructureViewController__objcDataBlockFunction_block_copy_0(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*dst, struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*src) 
 > {
 >   _Block_object_assign((void*)&dst->objcData, (void*)src->objcData, 3/*BLOCK_FIELD_IS_OBJECT*/);
 > }
 >
-> //block dispose方法
+> //block结构体中增加的外部变量索引 dispose方法
 > static void __BlockStructureViewController__objcDataBlockFunction_block_dispose_0(struct __BlockStructureViewController__objcDataBlockFunction_block_impl_0*src) 
 > {
 >   _Block_object_dispose((void*)src->objcData, 3/*BLOCK_FIELD_IS_OBJECT*/);
@@ -92,8 +92,6 @@
 > 5、block回调函数内不能修改，外部变量的值。
 >
 > 6、构造方法中flags=570425344,以及新增的copy和dispose方法在后面探讨
-
-
 
 
 

@@ -124,7 +124,9 @@
 >
 > **改变响应链**
 >
-> > 可以通过覆盖响应程序对象的nextResponder属性来更改响应程序链。 执行此操作时，下一个响应者是返回的对象。
+> > 1.可以通过覆盖响应程序对象的nextResponder属性来更改响应程序链。 执行此操作时，下一个响应者是返回的对象。
+> >
+> > 2.touchesCancelled:withEvent:方法中调用\[super touchesBegan:touches withEvent:event\]将事件转发给响应链
 
 #### 参考
 

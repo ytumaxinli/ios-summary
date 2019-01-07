@@ -82,8 +82,6 @@
 > >
 > > > 当一个view添加了手势识别，则手势识别器会对该view和该view的所有子view进行命中测试。当子view被命中但是不响应事件时，会触发手势识别器的selector.**手势识别器不参与视图的响应者链。**
 
-
-
 #### 事件（Events）
 
 > **事件传递**
@@ -91,8 +89,6 @@
 > > 在主事件循环中，应用程序对象在其事件队列中获取（原始）触摸事件，将它们打包为UIEvent对象中的UITouch对象，并将它们发送到发生触摸的视图窗口。 反过来，窗口对象将这些对象发送到此视图，这称为命中测试视图。 如果此视图无法处理触摸事件（通常是因为它尚未实现必需的事件处理方法），则事件会在响应程序链中向上移动，直到它被处理或丢弃为止。
 > >
 > > ![](/assets/event_delivery.jpg)
->
->
 >
 > **处理事件（Handle Events）**
 >
@@ -125,6 +121,10 @@
 > > UIApplication: 当app delegate是**UIResponder的实例**时下一个响应者是app delegate。其他实例则不行如View，ViewController或UIApplication对象本身。
 > >
 > > ![](/assets/ResponderChain.png)
+>
+> **改变响应链**
+>
+> > 可以通过覆盖响应程序对象的nextResponder属性来更改响应程序链。 执行此操作时，下一个响应者是返回的对象。
 
 
 

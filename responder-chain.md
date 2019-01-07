@@ -92,7 +92,7 @@
 >
 > **处理事件（Handle Events）**
 >
-> > 视图命中测试后，需要判断该视图是否能够处理事件。判断能否处理事件的方法是看视图是否**重写touches的四个方法。系统默认的实现是调用\[super touchesBegan:touches withEvent:event\],将事件转发给响应链。部分系统子控件已经重写了touches方法，如UIButton就是通过重写达到相应事件的能力。**
+> > 视图命中测试后，需要判断该视图是否能够处理事件。判断能否处理事件的方法是看视图是否重写touches的四个方法**。系统默认的实现是调用\[super touchesBegan:touches withEvent:event\],将事件转发给响应链。部分系统子控件已经重写了touches方法，如UIButton就是通过重写达到相应事件的能力。**
 > >
 > > [`touchesBegan:withEvent:`](https://developer.apple.com/documentation/uikit/uiresponder/1621142-touchesbegan)is called for touch objects in the Began phase.
 > >
@@ -126,15 +126,13 @@
 >
 > > 可以通过覆盖响应程序对象的nextResponder属性来更改响应程序链。 执行此操作时，下一个响应者是返回的对象。
 
-
-
 #### 参考
 
-> https://developer.apple.com/documentation/uikit/touches\_presses\_and\_gestures/using\_responders\_and\_the\_responder\_chain\_to\_handle\_events?language=objc
+> [https://developer.apple.com/documentation/uikit/touches\_presses\_and\_gestures/using\_responders\_and\_the\_responder\_chain\_to\_handle\_events?language=objc](https://developer.apple.com/documentation/uikit/touches_presses_and_gestures/using_responders_and_the_responder_chain_to_handle_events?language=objc)
 >
-> https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/EventHandlingiPhone.html\#//apple\_ref/doc/uid/TP40009071-CH13-SW2
+> [https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/EventHandlingiPhone.html\#//apple\_ref/doc/uid/TP40009071-CH13-SW2](https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/EventHandlingiPhone.html#//apple_ref/doc/uid/TP40009071-CH13-SW2)
 >
-> http://smnh.me/hit-testing-in-ios/
+> [http://smnh.me/hit-testing-in-ios/](http://smnh.me/hit-testing-in-ios/)
 
 
 

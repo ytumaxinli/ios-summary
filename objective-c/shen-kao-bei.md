@@ -106,6 +106,10 @@
 >
 > > 方法一：- \(instancetype\)initWithArray:\(NSArray&lt;ObjectType&gt; \*\)array copyItems:\(BOOL\)flag;
 > >
+> > 方法二：遍历数组对每个item调用copy操作
+> >
+> > 需要实现**NSCopying**协议
+> >
 > > ```
 > > If YES, each object in array receives acopyWithZone:message to create a copy of the object—objects must conform to the NSCopying protocol. In a managed memory environment, this is instead of the retain message the object would otherwise receive. The object copy is then added to the returned array.
 > > If NO, then in a managed memory environment each object inarraysimply receives aretainmessage when it is added to the returned array.
@@ -121,9 +125,7 @@
 > > 0x6000023de8e0 0x6000023de8b0
 > > 0x6000023de910 0x9a838cca1910ed4a
 > > ```
->
->
->
+> >
 > > 方法二：归档
 > >
 > > 归档的自定义类需要实现NSCoding协议
@@ -161,7 +163,7 @@
 > a1,a1,a1
 >
 > NSMutableArray *mArray = [NSMutableArray arrayWithObjects:[NSMutableString stringWithString:@"a"],@"b",@"c", nil];
-> //浅拷贝：仅拷贝数组指针
+> //单层深拷贝：拷贝数组对象，不拷贝数组中的对象
 > NSArray *array1 = [mArray copy];
 > //单层深拷贝：拷贝数组对象，不拷贝数组中的对象
 > NSMutableArray *mArray1 = [mArray mutableCopy];

@@ -128,3 +128,13 @@
 
 
 
+#### 参考
+
+> https://developer.apple.com/documentation/uikit/touches\_presses\_and\_gestures/using\_responders\_and\_the\_responder\_chain\_to\_handle\_events?language=objc
+>
+> https://developer.apple.com/library/archive/documentation/General/Conceptual/Devpedia-CocoaApp/EventHandlingiPhone.html\#//apple\_ref/doc/uid/TP40009071-CH13-SW2
+>
+> http://smnh.me/hit-testing-in-ios/
+
+
+

@@ -44,4 +44,8 @@
   * [Block Copy](block/block-copy.md)
     * [Block copy源码分析](block/block-copy/block-copyyuan-ma-fen-xi.md)
     * [\_\_block copy 源码分析](block/block-copy/block-copy-yuan-ma-fen-xi.md)
+* [Responder Chain](responder-chain.md)
+  * [UIGestureRecognizer](responder-chain/uigesturerecognizer.md)
+* [Category](category.md)
+* [话述](hua-shu.md)
 

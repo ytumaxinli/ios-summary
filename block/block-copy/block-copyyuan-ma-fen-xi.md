@@ -16,8 +16,6 @@
 }
 ```
 
-
-
 #### **C++代码**
 
 ```
@@ -75,26 +73,23 @@ static void __BlockStructureViewController__objcDataBlockFunction_block_dispose_
 {
   _Block_object_dispose((void*)src->objcData, 3/*BLOCK_FIELD_IS_OBJECT*/);
 }
-
 ```
-
-
 
 #### **block copy源码分析**
 
 ```
 //block拷贝方法
 void *_Block_copy(const void *arg) { //栈区的block
-    
+
     struct Block_layout *aBlock;
 
     if (!arg) return NULL;
-    
+
     // The following would be better done as a switch statement
     aBlock = (struct Block_layout *)arg;
-    
+
     //aBlock->flags = BLOCK_HAS_COPY_DISPOSE|BLOCK_USE_STRET
-    
+
     if (aBlock->flags & BLOCK_NEEDS_FREE) {  //block在堆区，只要把block引用计数+1就可以了
         // latches on high
         latching_incr_int(&aBlock->flags);
@@ -106,7 +101,7 @@ void *_Block_copy(const void *arg) { //栈区的block
         struct Block_layout *result = malloc(aBlock->descriptor->size);
         if (!result) return NULL;
         memmove(result, aBlock, aBlock->descriptor->size); // bitcopy first
-            
+
         // 清空flags标示
         result->flags &= ~(BLOCK_REFCOUNT_MASK|BLOCK_DEALLOCATING);
         //设置引用计数 和 堆标示BLOCK_NEEDS_FREE
@@ -118,7 +113,6 @@ void *_Block_copy(const void *arg) { //栈区的block
         return result;
     }
 }
-
 ```
 
 ```
@@ -143,7 +137,7 @@ static void __BlockStructureViewController__objcDataBlockFunction_block_copy_0(s
 ```
 //flags = 3/*BLOCK_FIELD_IS_OBJECT*/
 void _Block_object_assign(void *destArg, const void *object, const int flags) {
-    
+
     const void **dest = (const void **)destArg;
     switch ((flags & BLOCK_ALL_COPY_DISPOSE_FLAGS)) {
       case BLOCK_FIELD_IS_OBJECT:
@@ -154,7 +148,6 @@ void _Block_object_assign(void *destArg, const void *object, const int flags) {
         ...
     }
 }
-
 ```
 
 #### 

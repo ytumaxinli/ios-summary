@@ -12,7 +12,7 @@
 
 通过Xcode获取到崩溃日志，方法是Xcode-&gt;Window-&gt;Devices and Simulators -&gt; View Device Logs,来查看测试机的Crash Log。
 
-3.友盟等第三方可已经dSYM符号表文件上传至平台符号表管理，由第三方平台进行解析。
+3.友盟、bugly、Crashlytics，Flurry等第三方可已经dSYM符号表文件上传至平台符号表管理，由第三方平台进行解析。
 
 **获取崩溃信息**
 

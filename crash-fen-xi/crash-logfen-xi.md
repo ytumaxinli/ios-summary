@@ -1,26 +1,8 @@
-接下来就让我们对已经符号化以后的crash文件进行分析。  
-**一、Crash文件结构**
+#### 一、**Crash文件结构**
 
-网上已有的分类比较多，我这里直接把我目前一般找crash原因的模块展示出来，其他的就留待各位自己去研究了，分别是设备和crash信息、异常信息、线程信息  
- 1、首先是设备和crash信息
+1.Process Information\(进程信息\)
 
 ```
-ncident Identifier: F3573A...E2F244A               //crash的id
-CrashReporter Key:   cc2298...es77eeb              //crash的设备id
-Hardware Model:      iPhone7,2                     //手机型号
-Process:             [AppName] [1816]              //APP的名字[进程的id]
-Path:                /private/.../Application...   //APP的位置
-Identifier:          com....                       //bundle ID
-Version:             14 (2.3.5)                    //版本号
-Code Type:           ARM-64 (Native)               //CPU类型
-Parent Process:      launchd [1]
-
-Date/Time:           2015-10-26 15:03:29.29 +0800    //crash发生时间
-Launch Time:         2015-10-26 14:58:28.28 +0800    //进入应用时间
-OS Version:          iOS 9.1 (13B143)                //iOS版本
-Report Version:      105
-
-
 Incident Identifier: 94CBAC98-A567-4AFB-A645-B6056211845B        //崩溃报告的唯一标识符
 CrashReporter Key:   733a3d2e7316c1b1fb6bc050b38da6e5301da268    //设备标识相对应的唯一键值(并非真正的UDID)通常同一设备上同一版本的App发生Crash时，该值相同
 Hardware Model:      iPhone8,2                                   //Crash的设备类型 
@@ -30,116 +12,128 @@ Identifier:          com.xxx.www                                 //App的Indenti
 Version:             1 (1.0)                                     //当前App的版本号，即Info.plist中CFBundleShortVersionString and CFBundleVersion
 AppStoreTools:       10B61
 Code Type:           ARM-64 (Native)                             //当前App的CPU架构
-Role:                Non UI
-Parent Process:      launchd [1]
-Coalition:           com.xxx.www [1371]
-
-Date/Time:           2019-01-09 18:30:40.5953 +0800             //crash发生时间
-Launch Time:         2019-01-09 18:08:58.7742 +0800             //进入应用时间
-OS Version:          iPhone OS 12.1.2 (16C101)                  //操作系统版本
-Baseband Version:    5.32.00
-Report Version:      104
-
 ```
 
-当你有大量的crash文件的时候，你就可以对crash文件里面的 Hardware Model，Version ， OS Version等进行分类，就可以获知到很多信息，比如说，你会知道crash一般发生原因是因为手机型号，还是App版本，或者还是手机版本的原因。
-
-2、其次是异常信息
+2.Basic Information（基本信息）
 
 ```
-Exception Type:  EXC_BAD_ACCESS (SIGABRT)                      //异常的类型
-Exception Subtype: KERN_INVALID_ADDRESS at 0x0000000000000118  //异常子类型
-Triggered by Thread:  0                    //异常发生的线程(0为主线程，其他为子线程)
+Date/Time: 2019-01-09 18:30:40.5953 +0800 //crash发生时间
+Launch Time: 2019-01-09 18:08:58.7742 +0800 //进入应用时间
+OS Version: iPhone OS 12.1.2 (16C101) //操作系统版本
+Baseband Version: 5.32.00
+Report Version: 104
 ```
 
-3、线程信息
+3.Exception（非常重要）
 
 ```
+Exception Type:  EXC_CRASH (SIGABRT)                                 //异常类型
+Exception Codes: 0x0000000000000000, 0x0000000000000000              //异常子类型
+Exception Note:  EXC_CORPSE_NOTIFY
+Triggered by Thread:  0                                              //发生异常的线程号
+
 Last Exception Backtrace:
-0   CoreFoundation                  0x182780f48 __exceptionPreprocess + 124
-1   libobjc.A.dylib                 0x197333f80 objc_exception_throw + 56
-2   CoreFoundation                  0x182780e90 +[NSException raise:format:] + 120
-3   [AppName]                           0x100c42a40 UmengSignalHandler + 144
-4   libsystem_platform.dylib        0x197d6193c _sigtramp + 52
-5   [AppName]                           0x1005d9f38 CScopePtr<IAVGAudioLogic>::operator IAVGAudioLogic*<IAVGAudioLogic>() (xprefc.h:165)
-6   [AppName]                           0x1005d3b8c tencent::av::AVRoomMultiImpl::GetAudioLogic() (av_room_multi_impl.h:119)
-7   [AppName]                           0x10057076c tencent::av::AVAudioCtrlImpl::SetAudioOutputMode(int) (av_audio_ctrl_impl.cpp:443)
-8   [AppName]                           0x10044dc3c -[AVBasicManager changeSpeakerMode:] (AVManager.mm:525)
-9   [AppName]                           0x100296e1c -[KTQAVRoom enableSpeakerMode:] (KTQAVRoom.m:345)
-10  [AppName]                           0x1002970d0 -[KTQAVRoom settingSpeaker:] (KTQAVRoom.m:362)
-11  [AppName]                           0x1003d5464 -[KTChatView onAudioNotificationReceived:] (KTChatView.m:685)
+0   CoreFoundation                    0x20f574ec4 __exceptionPreprocess + 228
+1   libobjc.A.dylib                   0x20e745a40 objc_exception_throw + 55
+2   CoreFoundation                    0x20f4ec494 _CFThrowFormattedException + 111
+3   CoreFoundation                    0x20f45c678 -[__NSArrayM objectAtIndex:] + 187
+4   AutoLayout                        0x1047e7268 _hidden#4_ + 29288 (__hidden#15_:59)
+5   UIKitCore                         0x23c9184b8 -[UITableView _selectRowAtIndexPath:animated:scrollPosition:notifyDelegate:] + 1347
+...
+15  UIKitCore                         0x23c70ad40 UIApplicationMain + 211
+16  AutoLayout                        0x1047e7494 main + 29844 (__hidden#18_:14)
+17  libdyld.dylib                     0x20efbebb4 start + 34.
 ```
 
-**二、常见的Crash类型**
+4.线程回溯:  线程的回溯日志
 
-> **1、Watchdog timeout**
->
-> > Exception Code：0x8badf00d， 不太直观，可以读成“eat bad food”，意思是don‘t block main thread
-> >
-> > 紧接着下面会有一段描述：
-> >
-> > ```
-> > Application Specific Information：
-> > com.xxx.yyy　　 failed to resume in time
-> > ```
-> >
-> > 对于此类Crash，我们应该去审视自己App初始化时做的事情是否正确，是否在主线程请求了网络，或者其他耗时的事情卡住了正常初始化流程。
-> >
-> > 通常系统允许一个App从启动到可以相应用户事件的时间最多为5S，如果超过了5S，App就会被系统终止掉。在Launch，resume，suspend，quit时都会有相应的时间要求。在Highlight Thread里面我们可以看到被终止时调用到的位置，xxxAppDelegate加上行号。
-> >
-> > PS. 在连接Xcode调试时为了便于调试，系统会暂时禁用掉Watchdog，所以此类问题的发现需要使用正常的启动模式。
->
-> **2、User force-quit**
->
-> > ```
-> > Exception Codes: 0xdeadfa11, deadfall
-> > ```
-> >
-> > 这个强制退出跟我们平时所说的kill掉后台任务操作还不太一样，通常在程序bug造成系统无法响应时可以采用长按电源键，当屏幕出现关机确认画面时按下Home键即可关闭当前程序。
->
-> **3、Low Memory termination**
->
-> > 跟一般的Crash结构不太一样，通常有Free pages，Wired Pages，Purgeable pages，largest process 组成，同事会列出当前时刻系统运行所有进程的信息。
-> >
-> > 关于Memory warning可以参看我之前写的一篇文章IOS 内存警告[Memory warning level](http://www.cnblogs.com/smileEvday/archive/2012/03/07/MemoryWarning.html)。
-> >
-> > App在运行过程中，系统内存紧张时通常会先发警告，同时把后台挂起的程序终止掉，最终如果还是内存不够的话就会终止掉当前前台的进程。
-> >
-> > 当接受到内存警告的事后，我们应该释放尽可能多的内存，Crash其实也可以看做是对App的一种保护。
->
-> **4、Crash due to bugs**
->
-> > 因为程序bug导致的Crash通常千奇百怪，很难一概而论。大部分情况通过Crash日志就可以定位出问题，当然也不排除部分疑难杂症看半天都不值问题出在哪儿。这个就只能看功底了，一点点找，总是能发现蛛丝马迹。是在看不出来时还可以求助于Google大神，总有人遇到和你一样的Bug
+```
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   libsystem_kernel.dylib            0x000000020f10b104 __pthread_kill + 8
+1   libsystem_pthread.dylib           0x000000020f187020 pthread_kill$VARIANT$mp + 380
+2   libsystem_c.dylib                 0x000000020f062d78 abort + 140
+...
+12  AutoLayout                        0x00000001047e7494 main + 29844 (__hidden#18_:14)
+13  libdyld.dylib                     0x000000020efbebb4 start + 4
+```
 
-**三、常见的Exception Type & Exception Code**
+5.线程状态: 闪退时寄存器中的值
 
-> **1、Exception Type**
+```
+thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000000   x1: 0x0000000000000000   x2: 0x0000000000000000   x3: 0x0000000283388637
+    x4: 0x000000020e73cb81   x5: 0x000000016b61f4b0   x6: 0x000000000000006e   x7: 0x0000000060814842
+    ...
+    x28: 0x000000016b61fb10   fp: 0x000000016b61f410   lr: 0x000000020f187020
+    sp: 0x000000016b61f3e0   pc: 0x000000020f10b104 cpsr: 0x00000000
+```
+
+6.二进制映象: 列出了闪退时已经加载的二进制文件。
+
+```
+Binary Images:
+0x1047e0000 - 0x1047f3fff AutoLayout arm64  <3b2463066e3736d3a73fbe8f1ad652da> /var/containers/Bundle/Application/25EF8451-297B-48BB-BFD0-6FD928B8123B/AutoLayout.app/AutoLayout
+0x1048ec000 - 0x1048f7fff libobjc-trampolines.dylib arm64  <2333d24ae8953e6199e1594fdf3bb8ab> /usr/lib/libobjc-trampolines.dylib
+0x1049a4000 - 0x104a07fff dyld arm64  <30ff59036c17348cb2f0bb93dbc8f07a> /usr/lib/dyld
+0x20e6ce000 - 0x20e6cffff libSystem.B.dylib arm64  <cb8c1b2d743f35a6ab42d1ba08356fd1> /usr/lib/libSystem.B.dylib
+```
+
+#### 二、两种主要产生崩溃日志的情况:
+
+> **1.应用违反操作系统规则**
 >
-> > 1\) EXC\_BAD\_ACCESS**:** 此类型的Excpetion是我们最长碰到的Crash，通常用于访问了不改访问的内存导致。一般EXC\_BAD\_ACCESS后面的"\(\)"还会带有补充信息。
+> > 违反iOS规则包括在启动、恢复、挂起、退出时watchdog超时、用户强制退出和低内存终止。让我们详细了解一下吧。
 > >
-> > > **SIGABRT:**收到Abort信号退出，通常Foundation库中的容器为了保护状态正常会做一些检测，例如插入nil到数组中等会遇到此类错误。
+> > **1.1 Watchdog 超时机制**
 > >
-> > 2）EXC\_BAD\_INSTRUCTION
+> > > 从iOS 4.x开始，退出应用时并不会立即终止，而是退到后台。但是，如果你的应用响应不够快，操作系统有可能会终止你的应用，并产生一个崩溃日志。产生这种情况的主要原因是将耗时较长的操作\(如网络访问）放在后台线程上。
+> > >
+> > > Exception Code：0x8badf00d， 不太直观，可以读成“eat bad food”，意思是don‘t block main thread
 > >
-> > 此类异常通常由于线程执行非法指令导致
+> > **1.2 用户强制退出 （待确认）**
 > >
-> > 3）EXC\_ARITHMETIC
+> > > 这个强制退出跟我们平时所说的kill掉后台任务操作还不太一样，通常在程序bug造成系统无法响应时可以采用长按电源键，当屏幕出现关机确认画面时按下Home键即可关闭当前程序。
+> > >
+> > > Exception Codes: 0xdeadfa11, deadfall
 > >
-> > 除以零错误会抛出此类异常
+> > **1.3低内存终止**
+> >
+> > > 跟一般的Crash结构不太一样，通常有Free pages，Wired Pages，Purgeable pages，largest process 组成.
 >
-> **2、Exception Code**
 >
-> > **0xbaaaaaad **此种类型的log意味着该Crash log并非一个真正的Crash，它仅仅只是包含了整个系统某一时刻的运行状态。通常可以通过同时按Home键和音量键，可能由于用户不小心触发
+>
+> **2.应用中有Bug**
+>
+> > **1、Exception Type**
 > >
-> > **0xbad22222**当VOIP程序在后台太过频繁的激活时，系统可能会终止此类程序
+> > > 1\) EXC\_BAD\_ACCESS**:** 此类型的Excpetion是我们最长碰到的Crash，通常用于访问了不改访问的内存导致。一般EXC\_BAD\_ACCESS后面的"\(\)"还会带有补充信息。
+> > >
+> > > > **SIGABRT:**收到Abort信号退出，通常Foundation库中的容器为了保护状态正常会做一些检测，例如插入nil到数组中等会遇到此类错误。
+> > >
+> > > 2）EXC\_BAD\_INSTRUCTION
+> > >
+> > > 此类异常通常由于线程执行非法指令导致
+> > >
+> > > 3）EXC\_ARITHMETIC
+> > >
+> > > 除以零错误会抛出此类异常
 > >
-> > **0x8badf00d**这个前面已经介绍了，程序启动或者恢复时间过长被watch dog终止
+> > **2、Exception Code**
 > >
-> > **0xc00010ff**程序执行大量耗费CPU和GPU的运算，导致设备过热，触发系统过热保护被系统终止
-> >
-> > **0xdead10cc**程序退到后台时还占用系统资源，如通讯录被系统终止
-> >
-> > **0xdeadfa11**前面也提到过，程序无响应用户强制关闭
+> > > **0xbaaaaaad **此种类型的log意味着该Crash log并非一个真正的Crash，它仅仅只是包含了整个系统某一时刻的运行状态。通常可以通过同时按Home键和音量键，可能由于用户不小心触发
+> > >
+> > > **0xbad22222**当VOIP程序在后台太过频繁的激活时，系统可能会终止此类程序
+> > >
+> > > **0x8badf00d**这个前面已经介绍了，程序启动或者恢复时间过长被watch dog终止
+> > >
+> > > **0xc00010ff**程序执行大量耗费CPU和GPU的运算，导致设备过热，触发系统过热保护被系统终止
+> > >
+> > > **0xdead10cc**程序退到后台时还占用系统资源，如通讯录被系统终止
+> > >
+> > > **0xdeadfa11**前面也提到过，程序无响应用户强制关闭
+
+
 
 
 

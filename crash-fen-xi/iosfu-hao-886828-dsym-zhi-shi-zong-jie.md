@@ -1,7 +1,5 @@
 #### **将可执行文件的16进制地址转化成文件名、函数名、行号的过程称之为Symbolication（符号化）**
 
-
-
 #### 什么是符号表\(**dsym**\)
 
 > iOS构建时产生的符号表，它是内存地址与文件名、函数名、行号的映射表。 符号表元素如下所示:
@@ -34,6 +32,8 @@
 > >
 > > 3.崩溃时产生的Crash文件,例如：xx.crash。
 >
+>
+>
 > **检查UUID一致性**
 >
 > > 每一个xx.dSYM 文件和 xx.crash 文件都有自己的 UUID，只要这两个文件的 UUID 一致，我们才可以通过他们解析出正确的错误函数信息了。\(xx代表你的项目名\)
@@ -50,6 +50,8 @@
 > > Binary Images:
 > > 0x1047e0000 - 0x1047f3fff AutoLayout arm64  <3b2463066e3736d3a73fbe8f1ad652da> /var/containers/Bundle/Application/25EF8451-297B-48BB-BFD0-6FD928B8123B/AutoLayout.app/AutoLayout
 > > ```
+>
+>
 >
 > **符号化操作**
 >
@@ -80,6 +82,7 @@
 > > ```
 > >
 > > 3.设置环境变量成功后，重新符号化xx.crash得到符号化后的yy.crash文件
+> >
 > > ```
 > > ./symbolicatecrash xx.crash xx.app.dSYM > yy.crash
 > > ```

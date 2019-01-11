@@ -15,6 +15,7 @@
 > 1. 首先找到selector对应的方法实现。由于相同的方法可以由不同的类以不同的方式实现，因此找到方法实现需要receiver
 >
 > 2. 调用方法实现，传入参数
+>
 > 3. 接收方法实现的返回值并将这个返回值作为自己的返回值
 >
 > 消息传递的关键在于编译器为每个类和对象构建的结构。每个类结构都包含这两个基本元素
@@ -22,7 +23,9 @@
 > 1. 指向superclass的指针,即isa指针。isa的指针使对象可以访问它的类，并通过该类访问它继承的所有类。
 > 2. 方法调度表（_dispatch table_） 。这个表具有将方法选择器selector与方法实现imp地址相关联的条目， 比如 sestOrigin:: 的 selector 对应的是 setOrigin::的方法实现地址。
 >
->                                    ![](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Art/messaging1.gif)
+>    ```
+>                                ![](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Art/messaging1.gif)
+>    ```
 >
 > 当消息发送到对象时，消息传递函数遵循对象的isa指向类结构的指针，在调度表中查找方法选择器。如果该选择器，objc\_msgSend尝试在superclass其调度表中寻找。如果还是没有找到，就会沿着类继承层次依次寻找superclass直到 NSObject。一旦找到了 method selector,那么就调用 method selector 对应的方法实现并传入对应的参数。这就是 runtime 寻找方法实现的方式，消息动态绑定到方法实现。
 >
@@ -36,7 +39,7 @@
 >
 > * The selector for the method
 >
->  它们被称为“隐藏”，因为它们未在定义方法的源代码中声明。 它们在编译代码时插入到实现中。虽然这些参数没有显式声明，但源代码仍然可以引用它们（就像它可以引用接收对象的实例变量一样）。 方法将the receiving object称为self，并将其自身的selector称为\_cmd。 在下面的示例中，\_cmd引用strange方法的选择器，并指向接收奇怪消息的对象的self。
+>   它们被称为“隐藏”，因为它们未在定义方法的源代码中声明。 它们在编译代码时插入到实现中。虽然这些参数没有显式声明，但源代码仍然可以引用它们（就像它可以引用接收对象的实例变量一样）。 方法将the receiving object称为self，并将其自身的selector称为\_cmd。 在下面的示例中，\_cmd引用strange方法的选择器，并指向接收奇怪消息的对象的self。
 >
 > ```
 > - strange
@@ -75,20 +78,13 @@
 >
 > 注意，methodForSelector：由Cocoa运行时系统提供; 它不是Objective-C语言本身的一个特性。
 
+
+
+#### 参考链接
+
+> https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html\#//apple\_ref/doc/uid/TP40008048-CH104-SW1
+
 #### 
-
-
-
-  
-
-
-####  
-
-
-
-
-
-####  
 
 
 

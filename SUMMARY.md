@@ -56,5 +56,8 @@
   * [Crash Log获取](crash-fen-xi/crash-loghuo-qu.md)
   * [Crash Log符号化](crash-fen-xi/iosfu-hao-886828-dsym-zhi-shi-zong-jie.md)
   * [Crash Log分析](crash-fen-xi/crash-logfen-xi.md)
-  * Crash Log收集
+  * [Crash Log收集](crash-fen-xi/crash-logshou-ji.md)
+* [RunTime](runtime.md)
+  * [Runtime 消息转发](runtime-xiao-xi-zhuan-fa.md)
+  * [Runtime Messaging](runtime-messaging.md)
 

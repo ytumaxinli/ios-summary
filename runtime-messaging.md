@@ -78,11 +78,9 @@
 >
 > 注意，methodForSelector：由Cocoa运行时系统提供; 它不是Objective-C语言本身的一个特性。
 
-
-
 #### 参考链接
 
-> https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html\#//apple\_ref/doc/uid/TP40008048-CH104-SW1
+> [https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html\#//apple\_ref/doc/uid/TP40008048-CH104-SW1](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtHowMessagingWorks.html#//apple_ref/doc/uid/TP40008048-CH104-SW1)
 
 #### 
 

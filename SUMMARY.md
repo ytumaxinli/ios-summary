@@ -61,4 +61,6 @@
   * [Runtime 消息转发](runtime-xiao-xi-zhuan-fa.md)
   * [Runtime Messaging](runtime-messaging.md)
   * [Dynamic Method Resolution](dynamic-method-resolution.md)
+  * [Message Forwarding](message-forwarding.md)
+  * Type Encodings
 

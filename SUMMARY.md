@@ -62,5 +62,5 @@
   * [Runtime Messaging](runtime-messaging.md)
   * [Dynamic Method Resolution](dynamic-method-resolution.md)
   * [Message Forwarding](message-forwarding.md)
-  * Type Encodings
+  * [Type Encodings](type-encodings.md)
 

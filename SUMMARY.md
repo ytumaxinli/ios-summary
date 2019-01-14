@@ -59,7 +59,7 @@
   * [Crash Log收集](crash-fen-xi/crash-logshou-ji.md)
 * [RunTime](runtime.md)
   * [Runtime 方法寻找](runtime-fang-fa-xun-zhao.md)
-  * [Runtime 消息转发](runtime-xiao-xi-zhuan-fa.md)
+  * [Runtime方法解析与消息转发](runtime-xiao-xi-zhuan-fa.md)
   * [Messaging](runtime-messaging.md)
   * [Interacting with the Runtime](interacting-with-the-runtime.md)
   * [Dynamic Method Resolution](dynamic-method-resolution.md)

@@ -29,6 +29,7 @@
     * [UIPresentationController](animations/vc-transition/uipresentationcontroller.md)
 * [Objective-C](objective-c.md)
   * [01浅拷贝vs深拷贝](objective-c/shen-kao-bei.md)
+  * [Class Properties](objective-c/class-properties.md)
 * [Storage](storage.md)
   * [NSKeyedArchiver](storage/nskeyedarchiver.md)
 * [Block](block.md)

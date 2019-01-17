@@ -20,6 +20,10 @@
 > //ios
 > xcrun -sdk iphonesimulator11.4 clang -S -rewrite-objc -fobjc-arc -fobjc-runtime=ios-11.4 文件名
 >
+> xcrun -sdk iphoneos12.1 clang -S -rewrite-objc -fobjc-arc -fobjc-runtime=ios-12.1 CrashProtectHandler.m
+>
+>
+>
 > //mac
 > xcrun -sdk macosx10.14 clang -S -rewrite-objc -fobjc-arc 文件名
 > ```
@@ -117,6 +121,7 @@
 > > 4. 由于操作地址，block内外读取/设置局部静态变量的效果相同
 >
 > **基础类型外部局部变量：**如 int i
+>
 > > 1. block结构体新增成员 int i
 > > 2. block构造方法中增加参数int i,构造方法将外部变量i的值传递给block结构体的成员int i
 > > 3. 由于block内的成员int i与 block外的int i,不是同一个变量因此block外部在block构造方法后如何改变外部int i值，block内部始终不会改变。
@@ -154,8 +159,6 @@
 > > 1. \_\_block关键字编译后成为结构体\_\_Block\_byref\_a\_0。结构体重包含成员\_\_Block\_byref\_a\_0 \*\_\_forwarding;
 > > 2. block结构体新增成员\_\_Block\_byref\_a\_0 \*a, 构造方法将赋值成员\_\_Block\_byref\_a\_0为地址\(\_\_Block\_byref\_a\_0 \*\)&a，falgs=570425344。
 > > 3. block方法体内逻辑代码使用的是a-&gt;\_\_forwarding-&gt;a。
-
-
 
 
 

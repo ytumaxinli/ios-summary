@@ -57,6 +57,7 @@
   * [Crash Log符号化](crash-fen-xi/iosfu-hao-886828-dsym-zhi-shi-zong-jie.md)
   * [Crash Log分析](crash-fen-xi/crash-logfen-xi.md)
   * [Crash Log收集](crash-fen-xi/crash-logshou-ji.md)
+  * [Crash 防护 - unrecognized selector crash](crash-fen-xi/crash-fang-hu-unrecognized-selector-crash.md)
 * [RunTime](runtime.md)
   * [Runtime 方法寻找](runtime-fang-fa-xun-zhao.md)
   * [Runtime方法解析与消息转发](runtime-xiao-xi-zhuan-fa.md)

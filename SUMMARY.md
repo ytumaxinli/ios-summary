@@ -72,4 +72,5 @@
   * [Type Encodings](type-encodings.md)
   * [Declared Properties](declared-properties.md)
   * [Runtime源码-消息发送](yuan-7801-xiao-xi-fa-song.md)
+  * [Runtime源码-消息转发](runtimeyuan-7801-xiao-xi-zhuan-fa.md)
 

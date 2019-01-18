@@ -41,14 +41,12 @@
 > {
 >     if (! cls->isMetaClass()) {
 >         // try [cls resolveInstanceMethod:sel]
->         _class_resolveInstanceMethod(cls, sel, inst);
->     } 
->     else {
+>         _class_resolveInstanceMethod(cls, sel, inst);    //实例对象动态方法解析
+>     } else {
 >         // try [nonMetaClass resolveClassMethod:sel]
 >         // and [cls resolveInstanceMethod:sel]
->         _class_resolveClassMethod(cls, sel, inst);
->         if (!lookUpImpOrNil(cls, sel, inst, 
->                             NO/*initialize*/, YES/*cache*/, NO/*resolver*/)) 
+>         _class_resolveClassMethod(cls, sel, inst);       //类对象动态方法解析
+>         if (!lookUpImpOrNil(cls, sel, inst,NO/*initialize*/, YES/*cache*/, NO/*resolver*/)) 
 >         {
 >             _class_resolveInstanceMethod(cls, sel, inst);
 >         }

@@ -1,4 +1,4 @@
-ss
+**lookUpImpOrForward**
 
 > ```
 > IMP lookUpImpOrForward(Class cls, SEL sel, id inst, 
@@ -33,10 +33,8 @@ ss
 >     return imp;
 > }
 > ```
->
-> ```
->
-> ```
+
+
 
 
 

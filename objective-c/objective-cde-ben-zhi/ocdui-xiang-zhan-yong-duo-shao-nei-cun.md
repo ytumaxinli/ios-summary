@@ -1,13 +1,12 @@
-**NSObject 对象内存中布局**
+#### **NSObject 对象内存中布局**
 
-> ![](/assets/OC对象本质.png)
+> #### ![](/assets/OC对象本质.png)
 
-**查看内存布局方法**
+#### **查看内存布局方法**
 
 > **方法定义**
 >
 > > ```
-> > //返回指针ptr的大小（Returns size of given ptr ）
 > > size_t malloc_size(const void *ptr);
 > >
 > > //返回类的实例的大小（Returns the size of instances of a class.）
@@ -47,14 +46,11 @@
 > >
 > > class\_getInstanceSize方法获取的是内存对齐后的成员变量所占的内存大小，而不是分配的内存的大小。
 
-
-
 #### **alloc方法内存分配**
 
 > **源码流程**
 >
 > ```
->
 > 2. id class_createInstance(Class cls, size_t extraBytes)
 >    {
 >       return _class_createInstanceFromZone(cls, extraBytes, nil);

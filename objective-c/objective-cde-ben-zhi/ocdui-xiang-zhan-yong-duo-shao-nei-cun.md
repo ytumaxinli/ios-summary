@@ -82,14 +82,13 @@
 >
 > **总结**
 
-
-
 #### **面试问题**
 
 > 1 一个NSObject 对象占用多少内存？
+>
 > > 系统分配了NSObject 对象分配16个字节的内存（使用malloc\_size方法获得）
 > >
-> > 但NSObject内部只是用了8个字节（在64位下环境下，可以使用class\_getInstanceSize获得）
+> > 但NSObject对象内部只有一个成员变量isa,在64位环境下占用8字节（可以使用class\_getInstanceSize获得）
 
 
 

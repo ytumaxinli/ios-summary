@@ -48,23 +48,15 @@
 >
 > * 1.Mach-O 可执行文件会把签名直接写入文件里
 >
->   
+> ![](https://mmbiz.qpic.cn/mmbiz/yoM0qNN7RwbMzODS0N8ZbEkhU1pcPTUd3bfyMmxjjbNCFMRJjAPTMBSbvZibtETGibvibI2npEs5ge4czZgiciaMGeg/640?wx_fmt=other&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 >
->
->   ![](https://mmbiz.qpic.cn/mmbiz/yoM0qNN7RwbMzODS0N8ZbEkhU1pcPTUd3bfyMmxjjbNCFMRJjAPTMBSbvZibtETGibvibI2npEs5ge4czZgiciaMGeg/640?wx_fmt=other&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
->
->
->
->   **MachOView查看**
+> **MachOView查看**
 >
 > * 2.其他资源文件则会保存在 \_CodeSignature 目录下在APP包里。
 >
->   
->
->
->   ![](https://mmbiz.qpic.cn/mmbiz/yoM0qNN7RwbMzODS0N8ZbEkhU1pcPTUdJaBuFz8FhUdddZ7m6v8Tj3ZBt9Qqic1P9KcjPrwp68iapMosZEfiarHgg/640?wx_fmt=other&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+> ![](https://mmbiz.qpic.cn/mmbiz/yoM0qNN7RwbMzODS0N8ZbEkhU1pcPTUdJaBuFz8FhUdddZ7m6v8Tj3ZBt9Qqic1P9KcjPrwp68iapMosZEfiarHgg/640?wx_fmt=other&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-####  非对称加密
+#### 非对称加密
 
 > 通常我们说的签名就是数字签名，它是基于非对称加密算法实现的。对称加密是通过同一份密钥加密和解密数据，而非对称加密则有两份密钥，分别是公钥和私钥，用公钥加密的数据，要用私钥才能解密，用私钥加密的数据，要用公钥才能解密。
 >
@@ -82,7 +74,16 @@
 
 #### 
 
-  
+#### **参考文献**
+
+> http://wereadteam.github.io/2017/03/13/Signature/
+>
+> https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483771&idx=1&sn=aeef3ae164197b472aa5c3b92e85366e&chksm=feb1db1bc9c6520dec9e391e124f5d5482298906391dfbeaaaa57e5ce9c5a52b06786bf3522c&mpshare=1&scene=23&srcid=1031Qt2WSUR1flo9VmNqhuMX%23rd
+>
+> https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483775&idx=1&sn=d16071e1b95adbffa9f13763234b389b&chksm=feb1db1fc9c652094112df723eae9b371ece321c7573381a38223a4b3516d570de3e2ac1f619&mpshare=1&scene=23&srcid=102955kjq0NWUyIN9QN1yUk5%23rd
+>
+> https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40005929-CH1-SW1
+
 
 
 

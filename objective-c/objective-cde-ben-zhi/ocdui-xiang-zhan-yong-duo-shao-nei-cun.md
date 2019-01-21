@@ -47,12 +47,13 @@
 > >
 > > class\_getInstanceSize方法获取的是内存对齐后的成员变量所占的内存大小，而不是分配的内存的大小。
 
-**alloc方法内存分配**
+
+
+#### **alloc方法内存分配**
 
 > **源码流程**
 >
 > ```
-> 1. obj = class_createInstance(cls, 0);
 >
 > 2. id class_createInstance(Class cls, size_t extraBytes)
 >    {

@@ -82,6 +82,16 @@
 >
 > **总结**
 
+#### 
+
+#### **内存查看**
+
+> 方法一：Xcode-&gt;Debug-&gt;Debug Workflow-&gt;View Memory
+>
+> 方法二：LLDB指令![](/assets/LLDB指令.png)
+
+#### 
+
 #### **面试问题**
 
 > 1 一个NSObject 对象占用多少内存？

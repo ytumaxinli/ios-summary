@@ -1,6 +1,8 @@
 #### **NSObject 对象内存中布局**
 
-> #### ![](/assets/OC对象本质.png)
+> **NSObject 对象内存中布局**![](/assets/OC对象本质.png)
+>
+> **Student 对象在内存中的分布**![](/assets/Student内存分布1.png)![](/assets/Student内存分布2.png)
 
 #### **查看内存布局方法**
 

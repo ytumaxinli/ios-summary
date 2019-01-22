@@ -33,6 +33,7 @@
   * [ARC下dealloc过程](objective-c/arcxia-dealloc-guo-cheng.md)
   * [OC对象本质](objective-c/objective-cde-ben-zhi.md)
     * [OC对象占用多少内存](objective-c/objective-cde-ben-zhi/ocdui-xiang-zhan-yong-duo-shao-nei-cun.md)
+    * [OC对象分类](objective-c/objective-cde-ben-zhi/ocdui-xiang-fen-lei.md)
 * [Storage](storage.md)
   * [NSKeyedArchiver](storage/nskeyedarchiver.md)
 * [Block](block.md)

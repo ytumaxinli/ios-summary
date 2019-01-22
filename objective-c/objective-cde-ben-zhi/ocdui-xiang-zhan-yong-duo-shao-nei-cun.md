@@ -2,7 +2,7 @@
 
 > **示例一：NSObject 对象内存中布局（系统分配内存16）**![](/assets/OC对象本质.png)
 >
-> **示例二：Student 对象在内存中的分布（系统分配内存16）**![](/assets/OC对象本质.png)![](/assets/Student内存分布1.png)![](/assets/Student内存分布2.png)
+> **示例二：Student 对象在内存中的分布（系统分配内存16）**![](/assets/Student内存分布1.png)![](/assets/Student内存分布2.png)
 >
 > **示例三：person 和 student内存布局（系统分配内存16 16）**![](/assets/OC对象本质.png)![](/assets/instance内存布局3.png)
 
@@ -99,9 +99,52 @@
 
 #### **内存查看**
 
-> 方法一：Xcode-&gt;Debug-&gt;Debug Workflow-&gt;View Memory
+> **方法一：**
 >
-> 方法二：LLDB指令![](/assets/LLDB指令.png)
+> > Xcode-&gt;Debug-&gt;Debug Workflow-&gt;View Memory
+>
+> **方法二：**
+>
+> > LLDB指令![](/assets/LLDB指令.png)
+>
+> **实例分析：**
+>
+> > 在内存中寻找\_name 和 \_no成员变量的值
+> >
+> > ```
+> > @interface Person : NSObject{
+> >     @public
+> >     NSString *_name;
+> >     char _no;
+> > }
+> >
+> > Person *person = [[Person alloc] init];
+> > person->_name = @"name";
+> > person->_no = '2';
+> > NSLog(@"%zd",class_getInstanceSize([Person class]));
+> > NSLog(@"%zd",malloc_size((__bridge const void *)person));
+> >
+> > //输出结果
+> > 24 32
+> > ```
+> >
+> > LLDB打印
+> >
+> > ```
+> > (lldb) p person                         //打印person实例的地址
+> > (Person *) $0 = 0x0000000101e0f060
+> >
+> > (lldb) x/4xg 0x0000000101e0f060        //按16进制的形式打印person实例对象地址中的内容
+> > 0x101e0f060: 0x001d800100001225 0x0000000100001068
+> > 0x101e0f070: 0x0000000000000032 0x0000000000000000
+> >
+> > //person实例对象中包含isa指针、_name、_no 三个成员变量成员。isa、_name 64位下占8字节，_no占1个字节。因此
+> > //0x001d800100001225为isa的内容，指向Person类地址
+> > //0x0000000100001068为_name的内容，存放字符串对象的地址
+> > //0x0000000000000032位
+> >
+> >
+> > ```
 
 #### 
 

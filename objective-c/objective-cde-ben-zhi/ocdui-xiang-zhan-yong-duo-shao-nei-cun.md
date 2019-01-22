@@ -79,7 +79,7 @@
 >     return obj;
 > }
 > 4.  size_t instanceSize(size_t extraBytes) {
->         //此size及class_getInstanceSize方法获取到的对齐后的成员变量的大小。
+>         //此size即class_getInstanceSize方法获取到的对齐后的成员变量的大小。
 >         size_t size = alignedInstanceSize() + extraBytes;
 >         // 成员变量大小小于16，设置为16（CF requires all objects be at least 16 bytes.）
 >         if (size < 16) size = 16;

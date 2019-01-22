@@ -34,6 +34,7 @@
   * [OC对象本质](objective-c/objective-cde-ben-zhi.md)
     * [OC对象占用多少内存](objective-c/objective-cde-ben-zhi/ocdui-xiang-zhan-yong-duo-shao-nei-cun.md)
     * [OC对象分类](objective-c/objective-cde-ben-zhi/ocdui-xiang-fen-lei.md)
+    * [isa 和 superclass](objective-c/objective-cde-ben-zhi/isa-he-superclass.md)
 * [Storage](storage.md)
   * [NSKeyedArchiver](storage/nskeyedarchiver.md)
 * [Block](block.md)

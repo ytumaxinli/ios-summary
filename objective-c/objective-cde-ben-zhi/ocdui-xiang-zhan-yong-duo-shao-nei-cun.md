@@ -1,8 +1,10 @@
-#### **NSObject 对象内存中布局**
+#### **对象内存中布局**
 
-> **NSObject 对象内存中布局**![](/assets/OC对象本质.png)
+> **示例一：NSObject 对象内存中布局（系统分配内存16）**![](/assets/OC对象本质.png)
 >
-> **Student 对象在内存中的分布**![](/assets/Student内存分布1.png)![](/assets/Student内存分布2.png)
+> **示例二：Student 对象在内存中的分布（系统分配内存16）**![](/assets/OC对象本质.png)![](/assets/Student内存分布1.png)![](/assets/Student内存分布2.png)
+>
+> **示例三：person 和 student内存布局（系统分配内存16 16）**![](/assets/OC对象本质.png)![](/assets/instance内存布局3.png)
 
 #### **查看内存布局方法**
 
@@ -38,15 +40,21 @@
 > >         return data()->ro->instanceSize;
 > >     }
 > >
-> > 4. // 将未对齐的内存大小进行对齐操作，从实现代码上可以看出对齐操作是让内存大小为8的倍数
+> > 4. // 将未对齐的内存大小进行对齐操作，从实现代码上可以看出对齐操作是让内存大小64位下为8的倍数、32位下为4的倍数
 > >    static inline uint32_t word_align(uint32_t x) {
 > >         return (x + WORD_MASK) & ~WORD_MASK;
 > >    }
+> >    
+> > #ifdef __LP64__
+> > #   define WORD_MASK 7UL
+> > #else
+> > #   define WORD_MASK 3UL
+> > #endif
 > > ```
 > >
-> > 总结：
+> > **总结：**
 > >
-> > class\_getInstanceSize方法获取的是内存对齐后的成员变量所占的内存大小，而不是分配的内存的大小。
+> > class\_getInstanceSize方法获取的是内存对齐后的成员变量所占的内存大小，而不是分配的内存的大小。内存对齐的结果是64位下为8的倍数、32位下为4的倍数。
 
 #### **alloc方法内存分配**
 
@@ -79,7 +87,13 @@
 >     }
 > ```
 >
-> **总结**
+> **总结：内存大小分配遵循的原则是**
+>
+> 1.size\_t size = alignedInstanceSize\(\) + extraBytes;首先将成员变量大小进行内存对齐。
+>
+> 2.if \(size &lt; 16\) size = 16;如果对齐后内存大小小于16，则设置为16
+>
+> 3.void \*calloc\(size\_t num\_items, size\_t size\)，系统分配内存时也遵循内存对齐，内存需为对齐数（16）的倍数。\#define NANO\_MAX\_SIZE256 /\* Buckets sized {16, 32, 48, ..., 256} \*/
 
 #### 
 

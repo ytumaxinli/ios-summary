@@ -1,8 +1,10 @@
 #### 目的
 
-> 1.保证每一个安装到 iOS 上的 APP 都是经过苹果官方授权未被篡改的
+> 1.保证安装包未被篡改
 >
-> 2.控制app权限（设备列表，push等）
+> 2.保证每一个安装到 iOS 上的 APP 都是经过苹果官方授权
+>
+> 3.控制app权限（设备列表，push等）
 
 #### **概念**
 
@@ -76,15 +78,13 @@
 
 #### **参考文献**
 
-> http://wereadteam.github.io/2017/03/13/Signature/
+> [http://wereadteam.github.io/2017/03/13/Signature/](http://wereadteam.github.io/2017/03/13/Signature/)
 >
-> https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483771&idx=1&sn=aeef3ae164197b472aa5c3b92e85366e&chksm=feb1db1bc9c6520dec9e391e124f5d5482298906391dfbeaaaa57e5ce9c5a52b06786bf3522c&mpshare=1&scene=23&srcid=1031Qt2WSUR1flo9VmNqhuMX%23rd
+> [https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483771&idx=1&sn=aeef3ae164197b472aa5c3b92e85366e&chksm=feb1db1bc9c6520dec9e391e124f5d5482298906391dfbeaaaa57e5ce9c5a52b06786bf3522c&mpshare=1&scene=23&srcid=1031Qt2WSUR1flo9VmNqhuMX%23rd](https://mp.weixin.qq.com/s?__biz=MzU5OTcyMzc5MQ==&mid=2247483771&idx=1&sn=aeef3ae164197b472aa5c3b92e85366e&chksm=feb1db1bc9c6520dec9e391e124f5d5482298906391dfbeaaaa57e5ce9c5a52b06786bf3522c&mpshare=1&scene=23&srcid=1031Qt2WSUR1flo9VmNqhuMX%23rd)
 >
-> https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483775&idx=1&sn=d16071e1b95adbffa9f13763234b389b&chksm=feb1db1fc9c652094112df723eae9b371ece321c7573381a38223a4b3516d570de3e2ac1f619&mpshare=1&scene=23&srcid=102955kjq0NWUyIN9QN1yUk5%23rd
+> [https://mp.weixin.qq.com/s?\_\_biz=MzU5OTcyMzc5MQ==&mid=2247483775&idx=1&sn=d16071e1b95adbffa9f13763234b389b&chksm=feb1db1fc9c652094112df723eae9b371ece321c7573381a38223a4b3516d570de3e2ac1f619&mpshare=1&scene=23&srcid=102955kjq0NWUyIN9QN1yUk5%23rd](https://mp.weixin.qq.com/s?__biz=MzU5OTcyMzc5MQ==&mid=2247483775&idx=1&sn=d16071e1b95adbffa9f13763234b389b&chksm=feb1db1fc9c652094112df723eae9b371ece321c7573381a38223a4b3516d570de3e2ac1f619&mpshare=1&scene=23&srcid=102955kjq0NWUyIN9QN1yUk5%23rd)
 >
-> https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40005929-CH1-SW1
-
-
+> [https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html\#//apple\_ref/doc/uid/TP40005929-CH1-SW1](https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40005929-CH1-SW1)
 
 
 

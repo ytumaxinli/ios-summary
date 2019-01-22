@@ -4,13 +4,11 @@
 
 #### **isa指针**
 
-> #### ![](/assets/isa指针.png) 
+> #### ![](/assets/isa指针.png)
 >
 > #### ISA\_MASK
 >
-> > ![](/assets/isa_mask.png)
-> >
-> > 在新版本中isa所存放的地址并不直接是对应的类或者元类的地址，而是一个经过优化的指针。需要通过与ISA\_MASK安位“与”操作，得到真实的类或者元类的地址
+> > 从64位开始isa所存放的地址并不直接是对应的类或者元类的地址，isa则是一个经过优化的指针。需要通过与ISA\_MASK安位“与”操作，得到真实的类或者元类的地址![](/assets/isa_mask.png)
 > >
 > > ```
 > > //宏定义
@@ -18,8 +16,6 @@
 > > #   define ISA_MASK        0x0000000ffffffff8ULL
 > > # elif __x86_64__
 > > #   define ISA_MASK        0x00007ffffffffff8ULL
-> > # else
-> > #   error unknown architecture for packed isa
 > > # endif
 > >
 > > inline Class objc_object::ISA() 
@@ -40,14 +36,21 @@
 > > **示例**
 > >
 > > > ```
+> > > //由于类对象的isa指针无法通过lldb打印，因此新建一个与类对象相同的结构体然后强转为改结构体就可以进行打印
+> > > struct m_object_class {
+> > >     Class isa;
+> > > };
+> > >
 > > > NSObject *object = [[NSObject alloc] init];
-> > > Class objectClass = [object class];
-> > > Class metaClass = object_getClass(objectClass);
+> > > //强转
+> > > struct m_object_class *objectClass = (__bridge struct m_object_class *)([object class]);
+> > > //强转
+> > > struct m_object_class *metaClass = (__bridge struct m_object_class *)(object_getClass([NSObject class]));
 > > > //分别打印实例对象、类对象、元类对象的地址
 > > > NSLog(@"%p  %p  %p",object, objectClass, metaClass);
 > > >
 > > > //打印结果
-> > > 0x100e60c10  0x100b16140  0x100b160f0
+> > > 0x100e82710  0x100b16140  0x100b160f0
 > > > ```
 > > >
 > > > 通过lldb调试
@@ -55,13 +58,16 @@
 > > > ```
 > > > //按16进制输出实例对象的isa的值
 > > > (lldb) p/x object->isa
-> > > (Class) $1 = 0x001d800100b16141 NSObject            //发现isa中所存的地址与类对象objectClass的地址并不相同
+> > > (Class) $2 = 0x001d800100b16141 NSObject                //发现isa中所存的地址与类对象objectClass的地址并不相同
 > > >
-> > > (lldb) p/x 0x001d800100b16141 & 0x00007ffffffffff8  //isa所存地址与ISA_MASK安位'与'操作此时返回值相同
-> > > (long) $2 = 0x0000000100b16140
+> > > (lldb) p/x 0x001d800100b16141 & 0x00007ffffffffff8      //isa所存地址与ISA_MASK安位'与'操作此时返回值相同
+> > > (long) $3 = 0x0000000100b16140  
 > > >
-> > > (lldb) po 0x0000000100b16140                        //打印mask后的isasuo'zhi
-> > > NSObject
+> > > (lldb) p/x (long)objectClass.isa                    
+> > > (long) $5 = 0x001d800100b160f1                          //类对象的isa也与元类对象的地址不相同
+> > >
+> > > (lldb) p/x (long)objectClass.isa & 0x00007ffffffffff8   //isa所存地址与ISA_MASK安位'与'操作此时返回值相同
+> > > (long) $6 = 0x0000000100b160f0
 > > > ```
 
 #### 总结

@@ -68,7 +68,7 @@
 
 > 您可以使用property\_getAttributes函数来发现名称，属性的@encode类型字符串以及属性的其他属性。
 >
-> 该字符串以**T开头，后跟@encode类型和逗号，并以V结尾，最后跟实例变量的名称**。 在这些属性之间，属性由以下描述符指定，以逗号分隔：![](/assets/屏幕快照 2019-01-12 下午3.22.44.png)
+> 该字符串以**T开头，后跟@encode类型和逗号，并以V结尾，最后跟实例变量的名称**。 在这些属性之间，属性由以下描述符指定，以逗号分隔：![](/assets/property_type_encodings.png)
 
 #### Property Attribute Description Examples
 

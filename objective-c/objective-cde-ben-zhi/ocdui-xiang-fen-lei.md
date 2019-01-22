@@ -8,7 +8,7 @@
 
 #### 类对象包含信息
 
-> #### ![](/assets/class内存结构.png)
+> #### ![](/assets/class内存结构.png)![](/assets/objc_class结构.png)
 
 #### **元类对象包含信息**
 

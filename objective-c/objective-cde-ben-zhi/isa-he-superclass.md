@@ -8,7 +8,7 @@
 
 #### 总结
 
-> ![](/assets/isa superclass总结.png)
+> ![](/assets/isa_superclass.png)
 >
 > **在类方法调用的过程中，未找到对应的类方法时会类的继承关系中的父类的方法列表中寻找。由于root meta-class的superclass是root class\(一般为NSObject\)，由于root class中存储的是对象方法，因此对类方法的调用有可能会调用到根类中的对象方法。示例如下：**
 >

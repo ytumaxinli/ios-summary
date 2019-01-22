@@ -1,6 +1,6 @@
 #### superclass指针
 
-> ![](/assets/class superclass.png)![](/assets/meta-class superclass.png)
+> ![](/assets/class_superclass.png)![](/assets/meta-class_superclass.png)
 
 #### **isa指针**
 

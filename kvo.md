@@ -67,7 +67,13 @@
 >
 > ⑥ 通过打印新增类的方法列表也可以看出，新增类重写了setAge: 、class 、dealloc 、\_isKVOA方法。
 
-![](/assets/KVO01.png)![](/assets/KVO02.png)
+#### KVO本质
+
+> ![](/assets/KVO01.png)![](/assets/KVO02.png)
+
+#### 
+
+#### 
 
 #### 参考文献：
 

@@ -71,7 +71,32 @@
 
 > ![](/assets/KVO01.png)![](/assets/KVO02.png)
 
-#### 
+#### KVO内部调用流程
+
+> ![](/assets/KVO03.png)**伪代码**
+>
+> > ```
+> > //新增类的set方法内部会调用_NSSetIntValueAndNotify foundation方法
+> > - (void)setAge:(int)age {
+> >     _NSSetIntValueAndNotify();
+> > }
+> >
+> > //调用super set方法前调用willChangeValueForKey之后调用willChangeValueForKey
+> > void _NSSetIntValueAndNotify {
+> >     [self willChangeValueForKey:@"age"];
+> >     [super setAge:age];
+> >     [self didChangeValueForKey:@"age"];
+> > }
+> >  
+> > //通知observe的kvo监听方法
+> > - (void)didChangeValueForKey:(NSString *)key {
+> >     [observe observeValueForKeyPath:key ofObject:self change:nil context:nil];
+> > }
+> > ```
+>
+> **验证**
+>
+> >
 
 #### 
 

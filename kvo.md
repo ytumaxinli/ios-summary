@@ -71,3 +71,9 @@
 
 ![](/assets/KVO01.png)![](/assets/KVO02.png)
 
+#### 参考文献：
+
+> http://www.cocoachina.com/ios/20180522/23443.html
+
+
+

@@ -39,6 +39,7 @@
 >         SEL sel = method_getName(method);
 >         NSLog(@"sle:%@",NSStringFromSelector(sel));
 >     }
+>     free(methods);
 > }
 >
 >

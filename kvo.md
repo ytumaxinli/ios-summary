@@ -96,7 +96,51 @@
 >
 > **验证**
 >
+> > ```
+> > @interface MJPerson : NSObject
 > >
+> > @property (assign, nonatomic) int age;
+> >
+> > @end
+> >
+> > @implementation MJPerson
+> >
+> > - (void)setAge:(int)age
+> > {
+> >     _age = age;
+> >     NSLog(@"setAge:%d",age);
+> > }
+> >
+> > //重写父类的willChangeValueForKey方法，由于推测KVOset方法中会首先调用此方法，由于新增类中没有此方法因此会调用到此父类中的方法
+> > - (void)willChangeValueForKey:(NSString *)key
+> > {
+> >     [super willChangeValueForKey:key];
+> >     NSLog(@"willChangeValueForKey:%@",key);
+> > }
+> >
+> > //重写父类的didChangeValueForKey方法，原理同上。由于推测observe方法会在父类的此方法中调用，因此应该是先打印observeValueForKeyPath再打印第二个didChangeValueForKey。从打印结果的确验证了推测
+> > - (void)didChangeValueForKey:(NSString *)key
+> > {
+> >     NSLog(@"didChangeValueForKey:%@",key);
+> >     [super didChangeValueForKey:key];
+> >     NSLog(@"didChangeValueForKey:%@",key);
+> > }
+> >
+> > @end
+> >
+> >
+> > //打印结果
+> > willChangeValueForKey:age  //新增类调用set方法时首先调用了willChangeValueForKey:方法
+> > setAge:1                   //接着调用了super类MJPerson的set方法
+> > didChangeValueForKey:age   //开始调用didChangeValueForKey方法
+> > observeValueForKeyPath:<MJPerson: 0x281088680> ofObject:age change:{ //didChangeValueForKey的父类调用中出发了observeValueForKeyPath：ofObject: change: context:方法
+> >     kind = 1;
+> >     new = 1;
+> >     old = 0;
+> > } context:123
+> >
+> > didChangeValueForKey:age  //observe调用结束
+> > ```
 
 #### 
 

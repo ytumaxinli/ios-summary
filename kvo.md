@@ -65,15 +65,13 @@
 >
 > ⑤ 通过打断点发现self.person添加KVO后，调用set方法时最终仍会调用到原类MJPerson的set方法：可以推断出动态新增类NSKVONotifying\_MJPerson的set方法除了实现KVO通知的功能还会调用原来类set方法。
 >
-> ⑥ 断点发现调用原类set方法前调用了,\_NSSetIntValueAndNotify
->
-> ⑦ 通过打印新增类的方法列表也可以看出，新增类重写了setAge: 、class 、dealloc 、\_isKVOA方法。
+> ⑥ 通过打印新增类的方法列表也可以看出，新增类重写了setAge: 、class 、dealloc 、\_isKVOA方法。
 
 ![](/assets/KVO01.png)![](/assets/KVO02.png)
 
 #### 参考文献：
 
-> http://www.cocoachina.com/ios/20180522/23443.html
+> [http://www.cocoachina.com/ios/20180522/23443.html](http://www.cocoachina.com/ios/20180522/23443.html)
 
 
 

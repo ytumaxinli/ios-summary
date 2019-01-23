@@ -1,3 +1,5 @@
+#### 
+
 #### **通过案例探究KVO原理**
 
 > ```
@@ -145,9 +147,19 @@
 
 #### 
 
+#### 
+
+#### 
+
+#### 面试题
+
+> ![](/assets/KVO面试题.png)
+
 #### 参考文献：
 
 > [http://www.cocoachina.com/ios/20180522/23443.html](http://www.cocoachina.com/ios/20180522/23443.html)
+>
+> https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html\#//apple\_ref/doc/uid/10000177-BCICJDHA
 
 
 

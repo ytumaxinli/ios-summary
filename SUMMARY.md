@@ -59,6 +59,9 @@
 * [Category](category.md)
 * [话述](hua-shu.md)
 * [KVO](kvo.md)
+  * KVO初识
+  * [KVO原理探究](kvo/kvoyuan-li-tan-jiu.md)
+  * KVO模拟实现
 * [Crash 分析](crash-fen-xi.md)
   * [Crash Log获取](crash-fen-xi/crash-loghuo-qu.md)
   * [Crash Log符号化](crash-fen-xi/iosfu-hao-886828-dsym-zhi-shi-zong-jie.md)

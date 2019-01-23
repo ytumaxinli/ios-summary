@@ -43,6 +43,9 @@
 > > //此方法的默认实现是调用validate<Key>:error:方法，如果找到此方法则调用（需要用户实现），未找到则直接返回YES
 > > - (BOOL)validateValue:(inout id _Nullable * _Nonnull)ioValue forKey:(NSString *)inKey error:(out NSError **)outError;
 > > - (BOOL)validateValue:(inout id _Nullable * _Nonnull)ioValue forKeyPath:(NSString *)inKeyPath error:(out NSError **)outError;
+> >
+> > //其他集合类的方法
+> >
 > > ```
 
 #### 

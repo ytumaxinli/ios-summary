@@ -8,7 +8,9 @@
 > > >
 > > > 1.1 如果结果类型是对象类型，则将结果直接返回。
 > > >
-> > > 1.2 如果结果类型是NSNumber支持的标量类型\(NSInteger、char、int等\)，
+> > > 1.2 如果结果类型是NSNumber支持的标量类型\(NSInteger/char/int/BOOL等\)，则会将该结果转换成NSNumber类型的值进行返回。
+> > >
+> > > 1.3 如果结果类型是NSNumber不支持的标量类型\(CGRect/CGSize/CGPoint等\)，则会将该结果转化为NSValue类型的值进行返回。
 >
 > ![](/assets/KVC02.png)
 

@@ -11,6 +11,8 @@
 > > ```
 > > @interface NSObject(NSKeyValueCoding)
 > >
+> > @property (class, readonly) BOOL accessInstanceVariablesDirectly; //类属性默认返回YES,用来返回是否能够访问成员变量
+> >
 > > - (nullable id)valueForKey:(NSString *)key; //获取属性名为key的属性的值
 > > - (void)setValue:(nullable id)value forKey:(NSString *)key; //设置属性名为key的属性的值为value
 > >

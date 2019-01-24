@@ -38,6 +38,8 @@
 > > > 4 5中`@property (class, readonly) BOOL accessInstanceVariablesDirectly;`为类属性。其默认返回值是YES,可以通过重写类方法`+(BOOL)accessInstanceVariablesDirectly{returnNO;}`进行修改。当此值返回YES是会依次寻找符合\_&lt;key&gt;、\_is&lt;key&gt;、&lt;key&gt;、is&lt;key&gt;格式的变量直到寻找到任一一个。返回结果同1需要进行转化。
 > > >
 > > > 4 如果都为寻找到会调用`- valueForUndefinedKey:`方法，默认会抛出异常，该方法可以重写。
+>
+> ![](/assets/KVC01.jpg)
 
 #### **KVC设值的原理**
 
@@ -68,8 +70,6 @@
 > > **兼容性说明：**
 > >
 > > 在步骤1中也寻找符合-\_set &lt;Key&gt;：格式的方法。自Mac OS 10.3起，不推荐使用名称以下划线开头的KVC访问器方法。
->
-> ![](/assets/KVC01.png)
 >
 > ![](/assets/KVC01.png)
 

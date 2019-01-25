@@ -74,6 +74,10 @@
 >
 > ![](/assets/KVC02.jpg)
 
+#### **KVC是否会调用KVO**
+
+> ####
+
 #### 问题
 
 > ![](/assets/KVC03.png)

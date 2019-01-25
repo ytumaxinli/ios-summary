@@ -76,7 +76,47 @@
 
 #### **KVC是否会调用KVO**
 
-> ###
+> ```
+> @interface Person : NSObject
+>
+> @end
+>
+> @implementation Person{
+>     NSInteger _age;
+> }
+>
+> //- (void)setAge:(NSInteger)age
+> //{
+> //    _age = age;
+> //    NSLog(@"setAge:%zd",age);
+> //}
+>
+> - (void)willChangeValueForKey:(NSString *)key
+> {
+>     NSLog(@"willChangeValueForKey:%@",key);
+>     [super willChangeValueForKey:key];
+> }
+>
+> - (void)didChangeValueForKey:(NSString *)key
+> {
+>     NSLog(@"didChangeValueForKey:%@ start",key);
+>     [super didChangeValueForKey:key];
+>     NSLog(@"didChangeValueForKey:%@ end",key);
+> }
+> @end
+>
+> Person *person = [[Person alloc] init];
+> [person addObserver:self forKeyPath:@"age" options:NSKeyValueObservingOptionNew context:nil];
+> [person setValue:@"123" forKey:@"age"];
+>
+> - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
+> {
+>     NSLog(@"observeValueForKeyPath:%@ ofObject:%@ change:%@ context:%@",keyPath,object,change,context);
+> }
+>
+> //不屏蔽set方法的打印结果
+>
+> ```
 
 #### 问题
 

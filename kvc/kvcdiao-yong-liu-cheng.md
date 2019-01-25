@@ -115,6 +115,28 @@
 > }
 >
 > //不屏蔽set方法的打印结果
+> willChangeValueForKey:age
+> //setAge:123
+> didChangeValueForKey:age start
+> observeValueForKeyPath:age ofObject:<Person: 0x100f53130> change:{
+>     kind = 1;
+>     new = 123;
+> } context:(null)
+> didChangeValueForKey:age end
+> ```
+>
+> **总结：**
+>
+> 无论被监听者是否有set方法时都会触发KVO,即未找到KVC赋值过程中未找到set方法直接各成员变量赋值时也会触发KVO。此时KVO的实现流程大概是在新生成的子类中添加set方法，实现伪代码如下
+>
+> ```
+> -（void）setAge:(NSInteger)age
+> {
+>     [self willChangeValueForKey:age];
+>     self->_age = age;
+>     [self didChangeValueForKey:age];
+> }
+>
 >
 > ```
 

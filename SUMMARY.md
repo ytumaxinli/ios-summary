@@ -61,7 +61,7 @@
 * [KVO](kvo.md)
   * KVO初识
   * [KVO原理探究](kvo/kvoyuan-li-tan-jiu.md)
-  * KVO模拟实现
+  * [KVO模拟实现](kvo/kvomo-ni-shi-xian.md)
 * [KVC](kvc.md)
   * [KVC初识](kvc/kvcchu-shi.md)
   * [KVC调用流程](kvc/kvcdiao-yong-liu-cheng.md)

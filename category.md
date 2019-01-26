@@ -80,9 +80,9 @@
 > > };
 > >
 > > struct _objc_method {
-> > 	struct objc_selector * _cmd;
-> > 	const char *method_type;
-> > 	void  *_imp;
+> >     struct objc_selector * _cmd;
+> >     const char *method_type;
+> >     void  *_imp;
 > > };
 > >
 > > //class_methods
@@ -107,45 +107,45 @@
 > > };
 > >
 > > struct _protocol_t {
-> > 	void * isa;  // NULL
-> > 	const char *protocol_name;
-> > 	const struct _protocol_list_t * protocol_list; // super protocols
-> > 	const struct method_list_t *instance_methods;
-> > 	const struct method_list_t *class_methods;
-> > 	const struct method_list_t *optionalInstanceMethods;
-> > 	const struct method_list_t *optionalClassMethods;
-> > 	const struct _prop_list_t * properties;
-> > 	const unsigned int size;  // sizeof(struct _protocol_t)
-> > 	const unsigned int flags;  // = 0
-> > 	const char ** extendedMethodTypes;
+> >     void * isa;  // NULL
+> >     const char *protocol_name;
+> >     const struct _protocol_list_t * protocol_list; // super protocols
+> >     const struct method_list_t *instance_methods;
+> >     const struct method_list_t *class_methods;
+> >     const struct method_list_t *optionalInstanceMethods;
+> >     const struct method_list_t *optionalClassMethods;
+> >     const struct _prop_list_t * properties;
+> >     const unsigned int size;  // sizeof(struct _protocol_t)
+> >     const unsigned int flags;  // = 0
+> >     const char ** extendedMethodTypes;
 > > };
 > >
 > > struct _protocol_t _OBJC_PROTOCOL_NSCopying __attribute__ ((used)) = {
-> > 	0,
-> > 	"NSCopying",
-> > 	0,
-> > 	(const struct method_list_t *)&_OBJC_PROTOCOL_INSTANCE_METHODS_NSCopying,
-> > 	0,
-> > 	0,
-> > 	0,
-> > 	0,
-> > 	sizeof(_protocol_t),
-> > 	0,
-> > 	(const char **)&_OBJC_PROTOCOL_METHOD_TYPES_NSCopying
+> >     0,
+> >     "NSCopying",
+> >     0,
+> >     (const struct method_list_t *)&_OBJC_PROTOCOL_INSTANCE_METHODS_NSCopying,
+> >     0,
+> >     0,
+> >     0,
+> >     0,
+> >     sizeof(_protocol_t),
+> >     0,
+> >     (const char **)&_OBJC_PROTOCOL_METHOD_TYPES_NSCopying
 > > };
 > >
 > > struct _protocol_t _OBJC_PROTOCOL_NSCoding __attribute__ ((used)) = {
-> > 	0,
-> > 	"NSCoding",
-> > 	0,
-> > 	(const struct method_list_t *)&_OBJC_PROTOCOL_INSTANCE_METHODS_NSCoding,
-> > 	0,
-> > 	0,
-> > 	0,
-> > 	0,
-> > 	sizeof(_protocol_t),
-> > 	0,
-> > 	(const char **)&_OBJC_PROTOCOL_METHOD_TYPES_NSCoding
+> >     0,
+> >     "NSCoding",
+> >     0,
+> >     (const struct method_list_t *)&_OBJC_PROTOCOL_INSTANCE_METHODS_NSCoding,
+> >     0,
+> >     0,
+> >     0,
+> >     0,
+> >     sizeof(_protocol_t),
+> >     0,
+> >     (const char **)&_OBJC_PROTOCOL_METHOD_TYPES_NSCoding
 > > };
 > >
 > > //properties
@@ -160,8 +160,8 @@
 > > };
 > >
 > > struct _prop_t {
-> > 	const char *name;
-> > 	const char *attributes;
+> >     const char *name;
+> >     const char *attributes;
 > > };
 > > ```
 

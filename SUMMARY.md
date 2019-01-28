@@ -57,6 +57,7 @@
 * [Responder Chain](responder-chain.md)
   * [UIGestureRecognizer](responder-chain/uigesturerecognizer.md)
 * [Category](category.md)
+  * [Category基本使用](category/categoryji-ben-shi-yong.md)
 * [话述](hua-shu.md)
 * [Crash 分析](crash-fen-xi.md)
   * [Crash Log获取](crash-fen-xi/crash-loghuo-qu.md)
@@ -90,5 +91,7 @@
   * [KVC初识](kvc/kvcchu-shi.md)
   * [KVC调用流程](kvc/kvcdiao-yong-liu-cheng.md)
 * [Category](category.md)
-  * Category 初识
+  * [Category 初识](category/category-chu-shi.md)
+  * Category C++分析
+  * Category 源码分析
 

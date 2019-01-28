@@ -92,6 +92,6 @@
   * [KVC调用流程](kvc/kvcdiao-yong-liu-cheng.md)
 * [Category](category.md)
   * [Category 初识](category/category-chu-shi.md)
-  * Category C++分析
+  * [Category C++分析](category/category-cfen-xi.md)
   * Category 源码分析
 

@@ -1,7 +1,7 @@
 #### **OC转C++命令行**
 
 ```
-xcrun -sdk -iphoneos -clang -arch -arm64 -rewrite-objc 文件名.m [-o 导出文件名.cpp] //中括号内可选
+xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc 文件名.m [-o 导出文件名.cpp] //中括号内可选
 ```
 
 #### **转化后的C++代码**
@@ -121,6 +121,29 @@ xcrun -sdk -iphoneos -clang -arch -arm64 -rewrite-objc 文件名.m [-o 导出文
 > struct _prop_t {
 >     const char *name;
 >     const char *attributes;
+> };
+> ```
+
+#### 源码中category结构声明
+
+> ```
+> struct category_t {
+>     const char *name;                                         //结构体名称                               
+>     classref_t cls;
+>     struct method_list_t *instanceMethods;                    //实例方法列表
+>     struct method_list_t *classMethods;                       //类方法列表 
+>     struct protocol_list_t *protocols;
+>     struct property_list_t *instanceProperties;               //属性列表
+>     
+>     // Fields below this point are not always present on disk.//以下部分不是
+>     struct property_list_t *_classProperties;
+>
+>     method_list_t *methodsForMeta(bool isMeta) {
+>         if (isMeta) return classMethods;
+>         else return instanceMethods;
+>     }
+>
+>     property_list_t *propertiesForMeta(bool isMeta, struct header_info *hi);
 > };
 > ```
 

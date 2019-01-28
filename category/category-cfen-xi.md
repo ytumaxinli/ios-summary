@@ -135,10 +135,10 @@ xcrun -sdk iphoneos clang -arch arm64 -rewrite-objc 文件名.m [-o 导出文件
 >     struct protocol_list_t *protocols;
 >     struct property_list_t *instanceProperties;               //属性列表
 >     
->     // Fields below this point are not always present on disk.//以下部分不是
->     struct property_list_t *_classProperties;
+>     // Fields below this point are not always present on disk.//以下部分不是所有版本都有
+>     struct property_list_t *_classProperties;                 //类属性列表
 >
->     method_list_t *methodsForMeta(bool isMeta) {
+>     method_list_t *methodsForMeta(bool isMeta) {             //如果当前类时元类返回类方法列表、否则返回实例方法列表
 >         if (isMeta) return classMethods;
 >         else return instanceMethods;
 >     }

@@ -11,7 +11,7 @@
 > #else
 >     b.eq    LReturnZero        // 如果为空跳转至LReturnZero
 > #endif
->     ldr    p13, [x0]        // p13 = isa 通过优化过的isa指针获取真实的isa之神
+>     ldr    p13, [x0]        // p13 = isa 通过优化过的isa指针获取真实的isa指针
 >     GetClassFromIsa_p16 p13    // p16 = class 通过isa指针获取到类对象
 >     
 > LGetIsaDone:                // 如果获取到了isa指针

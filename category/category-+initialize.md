@@ -14,8 +14,6 @@
 > >
 > > 子类不实现initialize方法时，父类的+initialize方法会被多次调用。但是此时的调用是实现的子类初始化，而非父类多次初始化。
 
-
-
 **源码流程**
 
 > objc-msg-arm64.s  -&gt;  ENTRY \_objc\_msgSend                                       //消息发送入口
@@ -35,8 +33,6 @@
 > void \_class\_initialize\(Class cls\)                                                              //递归调用初始化
 >
 > void callInitialize\(Class cls\)                                                                    //objc\_msgSend\(cls, SEL\_initialize\)
-
-
 
 **源码分析**
 
@@ -66,7 +62,6 @@
 >     }
 >     ...
 > }
->
 > ```
 >
 > \_class\_initialize   递归遍历cls父类
@@ -109,8 +104,6 @@
 >
 > （**消息发送机制：**遍历类的继承关系，依次从子类到父类的方法缓存列表和方法列表中寻找方法，未找到时进行动态方法解析，未能解析是走消息转发机制）
 
-
-
 **load、initialize方法的区别什么**
 
 > 调用方式
@@ -145,8 +138,6 @@
 > > >
 > > > 再初始化子类（可能最终调用的是父类的initialize方法）
 
-
-
 **示例**
 
 > ```
@@ -159,7 +150,6 @@
 > {
 >     NSLog(@"Person +initialize");
 > }
->
 > @end
 >
 > @interface Student : Person
@@ -185,8 +175,6 @@
 > Person +initialize
 > Person +initialize
 > ```
-
-
 
 
 

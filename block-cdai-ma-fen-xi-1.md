@@ -79,8 +79,6 @@
 > } __BlockStructureViewController__noDataBlockFunction_block_desc_0_DATA = { 0, sizeof(struct __BlockStructureViewController__noDataBlockFunction_block_impl_0)};
 > ```
 >
->
->
 > **逻辑分析**
 >
 > 1、 noDataBlockFunction方法注册被到\_method\_list\_t中，注册名为\_I\_BlockStructureViewController\_noDataBlockFunction；
@@ -89,13 +87,13 @@
 > //noDataBlockFunction编译后方法名为_I_BlockStructureViewController_noDataBlockFunction。此方法注册到了当前类的方法列表_method_list_t中，
 >
 > static struct /*_method_list_t*/ {
-> 	unsigned int entsize;  // sizeof(struct _objc_method)
-> 	unsigned int method_count;
-> 	struct _objc_method method_list[14];
+>     unsigned int entsize;  // sizeof(struct _objc_method)
+>     unsigned int method_count;
+>     struct _objc_method method_list[14];
 > } _OBJC_$_INSTANCE_METHODS_BlockStructureViewController __attribute__ ((used, section ("__DATA,__objc_const"))) = {
-> 	...
-> 	{(struct objc_selector *)"noDataBlockFunction", "v16@0:8", (void *)_I_BlockStructureViewController_noDataBlockFunction},
-> 	...
+>     ...
+>     {(struct objc_selector *)"noDataBlockFunction", "v16@0:8", (void *)_I_BlockStructureViewController_noDataBlockFunction},
+>     ...
 > };
 > ```
 >

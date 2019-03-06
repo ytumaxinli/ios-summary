@@ -24,23 +24,15 @@ typedef struct\_\_CFRunLoopMode \*CFRunLoopModeRef;
 > };
 > ```
 
-
-
-
-
 typedef struct CF\_BRIDGED\_MUTABLE\_TYPE\(id\) \_\_CFRunLoopSource \* CFRunLoopSourceRef;
 
-  
-
-
 typedefstruct CF\_BRIDGED\_MUTABLE\_TYPE\(id\) \_\_CFRunLoopObserver \* CFRunLoopObserverRef;
-
-  
-
 
 typedefstruct CF\_BRIDGED\_MUTABLE\_TYPE\(NSTimer\) \_\_CFRunLoopTimer \* CFRunLoopTimerRef;
 
 
+
+runloop启动![](/assets/9910A1D6-778D-4620-BF75-9150CDF02E5C.png)
 
 **CFRunLoopGetCurrent     CFRunLoop.c**
 
